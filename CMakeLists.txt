@@ -13,7 +13,10 @@ add_executable (Project_Rachel_Dekel_Esther_Wahnon WIN32 "")
 
 add_subdirectory (include)
 add_subdirectory (src)
-add_subdirectory (resources)
+add_subdirectory (resources/levels)
+add_subdirectory (resources/sound)
+add_subdirectory (resources/texture)
+add_subdirectory (resources/font)
 
 set (SFML_STATIC_LIBRARIES TRUE)
 set (SFML_DIR "C:/SFML/SFML-2.5.1/lib/cmake/SFML")

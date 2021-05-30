@@ -4,7 +4,10 @@
 class Screen
 {
     public:
-    virtual int run(sf::RenderWindow& gold_miner) = 0
+
+        Screen() {};
+        ~Screen() {};
+        virtual int run(sf::RenderWindow& gold_miner) = 0;
 
 
     private :

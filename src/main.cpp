@@ -1,8 +1,14 @@
 #include <SFML/Graphics.hpp>
+#include "ManagerScreen.h"
 
 int main()
 {
-    auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
+    ManagerScreen s;
+
+    s.main_run();
+
+
+    /*auto window = sf::RenderWindow(sf::VideoMode(300, 300), "Example");
 
     while (window.isOpen())
     {
@@ -19,4 +25,5 @@ int main()
             }
         }
     }
+    */
 }

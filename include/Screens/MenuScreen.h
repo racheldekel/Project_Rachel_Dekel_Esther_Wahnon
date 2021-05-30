@@ -1,10 +1,13 @@
 #pragma once
+#include "Screen.h"
 
-
-class Screen
+class MenuScreen : Screen
 {
 public:
-    virtual int run(sf::RenderWindow& gold_miner) = 0
+
+	MenuScreen() {};
+	~MenuScreen() {};
+	int run(sf::RenderWindow& gold_miner) override;
 
 
 private:

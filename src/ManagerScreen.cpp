@@ -14,27 +14,13 @@
 
 
 
-int ManagerScreen ::main_run()
+void ManagerScreen ::main_run()
 {
-	sf::RenderWindow GoldMiner(sf::VideoMode(640, 480), "Gold Miner");
+	sf::RenderWindow GoldMiner(sf::VideoMode(1000, 1000), "Gold Miner");
 	int screen = 0;
-
-	std::vector<Screen*> Screens;
-
-
-	create_screens(Screens);
+	std::cout << "im here";
 	
-
-	while (screen != -1)
-	{
-		screen = Screens[screen]->run(GoldMiner);
-	}
-}
-
-//------------------------------------------------------------------------
-void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
-{
-	// start,  menu , introducction , level, goal , game , gameover
+	std::vector<Screen*> Screens;
 
 	StartScreen s0;
 	Screens.push_back(&s0);
@@ -56,7 +42,23 @@ void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
 
 	GameOverScreen s6;
 	Screens.push_back(&s6);
+	create_screens(Screens);
+	
 
 
+	
+	while (screen != -1)
+	{
+		screen = Screens[screen]->run(GoldMiner);
+	}
+}
 
+//------------------------------------------------------------------------
+void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
+{
+	// start,  menu , introducction , level, goal , game , gameover
+	
+
+
+	
 }

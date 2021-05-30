@@ -1,5 +1,5 @@
 #pragma once
-//#include "Screen.h"
+#include "Screens/Screen.h"
 
 class ManagerScreen
 {
@@ -7,9 +7,9 @@ public:
 
 	ManagerScreen() {};
 	~ManagerScreen() {};
-	int main_run();
+	void main_run();
 
-	void create_screens(std::vector<Screen*> Screens);
+	void  create_screens(std::vector<Screen*> Screens);
 
 private:
 };

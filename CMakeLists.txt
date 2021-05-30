@@ -9,7 +9,7 @@ if (MSVC)
     add_compile_options (/W4 /permissive- /Zc:externConstexpr /Zc:inline)
 endif ()
 
-add_executable (Project_Rachel_Dekel_Esther_Wahnon WIN32 "")
+add_executable (Project_Rachel_Dekel_Esther_Wahnon  "")
 
 add_subdirectory (include)
 add_subdirectory (src)

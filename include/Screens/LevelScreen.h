@@ -1,6 +1,6 @@
 #pragma once
 #include "Screen.h"
-
+#include <SFML/Graphics.hpp>
 class LevelScreen : public Screen
 {
 public:

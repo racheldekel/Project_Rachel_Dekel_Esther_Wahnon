@@ -2,4 +2,5 @@
 								"Controller.cpp"
 								"ManagerScreen.cpp"
 								"Screens/Screen.cpp"
-								"Screens/LevelScreen.cpp")
+								"Screens/LevelScreen.cpp"
+								"Screens/StartScreen.cpp")

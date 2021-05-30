@@ -1,6 +1,6 @@
 cmake_minimum_required (VERSION 3.15)
 
-project (oop2_ex04)
+project (Project_Rachel_Dekel_Esther_Wahnon)
 
 set (CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -9,7 +9,7 @@ if (MSVC)
     add_compile_options (/W4 /permissive- /Zc:externConstexpr /Zc:inline)
 endif ()
 
-add_executable (oop2_ex04 WIN32 "")
+add_executable (Project_Rachel_Dekel_Esther_Wahnon WIN32 "")
 
 add_subdirectory (include)
 add_subdirectory (src)
@@ -22,4 +22,4 @@ find_package (SFML 2.5 COMPONENTS graphics REQUIRED)
 
 set_target_properties (sfml-main sfml-system sfml-window sfml-graphics sfml-audio sfml-network PROPERTIES MAP_IMPORTED_CONFIG_RELWITHDEBINFO RELEASE)
 
-target_link_libraries (oop2_ex04 sfml-graphics sfml-main)
+target_link_libraries (Project_Rachel_Dekel_Esther_Wahnon sfml-graphics sfml-main)

@@ -1,15 +1,15 @@
 #pragma once
 #include "Screen.h"
 
-class MenuScreen : public  Screen
+class GoalScreen : public Screen
 {
 public:
 
-	MenuScreen() {};
-	~MenuScreen() {};
-	
+	GoalScreen() {};
+	~GoalScreen() {};
 	virtual int run(sf::RenderWindow& gold_miner) {};
 
 
 private:
+
 };

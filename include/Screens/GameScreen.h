@@ -1,13 +1,15 @@
 #pragma once
 #include "Screen.h"
 
-class GameScreen : Screen
+
+class GameScreen : public Screen
 {
 public:
 
 	GameScreen() {};
 	~GameScreen() {};
-	int run(sf::RenderWindow& gold_miner) override;
+	
+	virtual int run(sf::RenderWindow& gold_miner){};
 
 
 private:

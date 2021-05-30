@@ -9,6 +9,7 @@ public:
 	~ManagerScreen() {};
 	int main_run();
 
+	void create_screens(std::vector<Screen*> Screens);
 
 private:
 };

@@ -50,6 +50,9 @@ void ManagerScreen ::main_run()
 	while (screen != -1)
 	{
 		screen = Screens[screen]->run(GoldMiner);
+
+		if (screen == 2)
+			std::cout << "we got here";
 	}
 }
 

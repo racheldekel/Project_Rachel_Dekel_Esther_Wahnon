@@ -29,27 +29,14 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 		{
 			try
 			{
-				const sf::Time freezeLength{ sf::seconds(2.f) };
+				const sf::Time freezeLength{ sf::seconds(3.f) };
 				sf::Clock freezeClock;
 				while (freezeClock.getElapsedTime() < freezeLength)
 				{
-					sf::Event event;
-					switch (Event.type)
-					{
-					case sf::Event::Closed:
-						return -1;
-						break;
-		
-
-					case sf::Event::KeyPressed:
-						throw ActionError();
-
-						break;
+					;
 				}
 
-					return 4;
-
-				}
+				return 4;
 			}
 			catch (ActionError& de)
 			{

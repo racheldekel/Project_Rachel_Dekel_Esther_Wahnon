@@ -1,6 +1,7 @@
 #pragma once
 #include "Screen.h"
 #include <SFML/Graphics.hpp>
+#include "Controller.h"
 
 class GameScreen : public Screen
 {
@@ -13,4 +14,5 @@ public:
 
 
 private:
+	Controller m_controller;
 };

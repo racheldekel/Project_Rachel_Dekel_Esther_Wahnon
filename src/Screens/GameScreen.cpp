@@ -35,7 +35,6 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 					return -1;
 					break;
 				case sf::Event::MouseButtonReleased:
-					
 
 					break;
 
@@ -45,6 +44,20 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 					break;
 
 				}
+
+				m_controller.startGame(gold_miner);
+
+				if (m_controller.getLevel() <= NUM_OF_LEVELS)
+				{
+					return 3;
+
+				}
+
+
+				//else we have to print the end of the game 
+					//break;
+
+				
 			}
 			catch (ActionError& de)
 			{

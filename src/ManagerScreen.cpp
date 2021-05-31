@@ -55,7 +55,7 @@ void ManagerScreen ::main_run()
 //------------------------------------------------------------------------
 void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
 {
-	// start,  menu , introducction , level, goal , game , gameover
+	// start,  menu , introducction , goal , game , gameover
 	
 
 

@@ -1,6 +1,5 @@
 #include "Screens/Screen.h"
 #include "Screens/GameScreen.h"
-#include "Screens/LevelScreen.h"
 #include "Screens/StartScreen.h"
 #include "Screens/MenuScreen.h"
 #include "Screens/IntroductionScreen.h"
@@ -31,17 +30,15 @@ void ManagerScreen ::main_run()
 	IntroductionScreen s2;
 	Screens.push_back(&s2);
 
-	LevelScreen s3;
+
+	GoalScreen s3;
 	Screens.push_back(&s3);
 
-	GoalScreen s4;
+	GameScreen s4;
 	Screens.push_back(&s4);
 
-	GameScreen s5;
+	GameOverScreen s5;
 	Screens.push_back(&s5);
-
-	GameOverScreen s6;
-	Screens.push_back(&s6);
 	create_screens(Screens);
 	
 

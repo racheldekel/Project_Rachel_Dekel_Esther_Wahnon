@@ -23,11 +23,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 	
 
 
-	if (!Font.loadFromFile("Font1.otf"))
-	{
-		std::cerr << "Error loading verdanab.ttf" << std::endl;
-		return (-1);
-	}
 	
 	while (Running)
 	{
@@ -61,8 +56,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 			}
 			
 		}
-		//When getting at alpha_max, we stop modifying the sprite
-		
 		
 		
 

@@ -78,7 +78,7 @@ bool IntroductionScreen::mouse_button_released(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 280 && pos.x < 490) && (pos.y < 413 && pos.y > 386))
+	if ((pos.x > 264 && pos.x < 574) && (pos.y < 433 && pos.y > 367))
 		return true;
 
 	return false;

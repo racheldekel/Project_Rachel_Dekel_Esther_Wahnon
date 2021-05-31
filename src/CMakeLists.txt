@@ -2,7 +2,8 @@
 								"Controller.cpp"
 								"ManagerScreen.cpp"
 								"Screens/Screen.cpp"
-								"Screens/LevelScreen.cpp"
+								"Screens/GoalScreen.cpp"
 								"Screens/StartScreen.cpp"
 								"Screens/MenuScreen.cpp"
-								"Screens/IntroductionScreen.cpp")
+								"Screens/IntroductionScreen.cpp"
+								"Screens/GameScreen.cpp")

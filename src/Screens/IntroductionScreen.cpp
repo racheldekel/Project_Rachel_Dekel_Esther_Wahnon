@@ -14,7 +14,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 
 	int menu = 0;
 
-	if (!Texture.loadFromFile("instruction_final.jpg"))
+	if (!Texture.loadFromFile("instructions.png"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);

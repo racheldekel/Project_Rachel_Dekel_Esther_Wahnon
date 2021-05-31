@@ -2,6 +2,7 @@
 configure_file ("bigGold.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bigRock.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bone.png" ${CMAKE_BINARY_DIR} COPYONLY)
+configure_file ("menu2.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("dimond.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("menu.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("mouse.png" ${CMAKE_BINARY_DIR} COPYONLY)

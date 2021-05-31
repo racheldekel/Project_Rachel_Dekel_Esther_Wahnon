@@ -16,7 +16,7 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 	sf::Text Menu3;
 	int menu = 0;
 
-	if (!Texture.loadFromFile("menu.png"))
+	if (!Texture.loadFromFile("menu2.jpg"))
 	{
 		std::cerr << "Error loading file" << std::endl;
 		return (-1);

@@ -3,4 +3,5 @@
 								"ManagerScreen.cpp"
 								"Screens/Screen.cpp"
 								"Screens/LevelScreen.cpp"
-								"Screens/StartScreen.cpp")
+								"Screens/StartScreen.cpp"
+								"Screens/MenuScreen.cpp")

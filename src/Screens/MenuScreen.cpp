@@ -1,36 +1,32 @@
-#include "Screens/StartScreen.h"
+#include "Screens/MenuScreen.h"
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int StartScreen ::run(sf::RenderWindow& gold_miner)
+int MenuScreen::run(sf::RenderWindow& gold_miner)
 {
-	
+
 	sf::Event Event;
 	bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	int alpha = 0;
 	sf::Font Font;
-	
+	sf::Text Menu1;
+	sf::Text Menu2;
+	sf::Text Menu3;
 	int menu = 0;
 
-	if (!Texture.loadFromFile("startScreen.png"))
+	if (!Texture.loadFromFile("menu.png"))
 	{
-		std::cerr << "Error loading presentation.gif" << std::endl;
+		std::cerr << "Error loading file" << std::endl;
 		return (-1);
 	}
 	Sprite.setTexture(Texture);
 	
 
-
-	if (!Font.loadFromFile("Font1.otf"))
-	{
-		std::cerr << "Error loading verdanab.ttf" << std::endl;
-		return (-1);
-	}
-	
 	while (Running)
 	{
+		//gold_miner.clear();
 		//Verifying events
 		while (gold_miner.pollEvent(Event))
 		{
@@ -41,10 +37,15 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 				case sf::Event::Closed:
 					return -1;
 					break;
+
+
 				case sf::Event::MouseButtonReleased:
-					if (mouse_button_released(Event))
-						return 2;
-					
+					if (button_released_in_introduction(Event))
+						return 3;
+
+					else if( button_released_start_game(Event))
+						return 4;
+
 					break;
 
 				case sf::Event::KeyPressed:
@@ -59,38 +60,53 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 				std::cout << "Please click the mouse" << std::endl;
 
 			}
-			
+
 		}
-		//When getting at alpha_max, we stop modifying the sprite
-		
-		
 		
 
+
+
+		//Clearing screen
 		gold_miner.clear();
-		
+		//Drawing
 		gold_miner.draw(Sprite);
-		
+
 		gold_miner.display();
 	}
 
 	//Never reaching this point normally, but just in case, exit the gold_minerlication
 	return (-1);
-	
+
 
 }
 
 //-------------------------------------------------------
-bool StartScreen::mouse_button_released(sf::Event event)
+bool MenuScreen ::button_released_in_introduction(sf::Event event)
 
 {
 
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
-	sf::Vector2i pos(x , y );
+	sf::Vector2i pos(x, y);
 
 	std::cout << pos.x << " " << pos.y << std::endl;
 	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
 		return true;
 
 	return false;
+}
+//-----------------------------------------------------------------------------
+bool MenuScreen::button_released_start_game(sf::Event event)
+{
+
+	auto x = event.mouseButton.x;
+	auto y = event.mouseButton.y;
+	sf::Vector2i pos(x, y);
+
+	std::cout << pos.x << " " << pos.y << std::endl;
+	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
+		return true;
+
+	return false;
+
 }

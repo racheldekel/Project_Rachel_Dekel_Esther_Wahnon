@@ -1,23 +1,24 @@
 #include "FileManager.h"
+#include "Level.h"
 FileManager::FileManager()
 {
-	std::array <std::string, TEXTURES> file_names = { "bigGold.png","bigRock.png",
-	"bomb.png" ,"bone.png", "diamond.png", "mouse.png", "playerGrab.png", "playerStand.png",
-	"present.png", "smallGold.png", "smallRock.png" };
-	for (size_t i = 0; i < TEXTURES; ++i)
-		m_pTexture[i].loadFromFile(file_names[i]);
+	//std::array <std::string, TEXTURES> file_names = { "bigGold.png","bigRock.png",
+	//"bomb.png" ,"bone.png", "diamond.png", "mouse.png", "playerGrab.png", "playerStand.png",
+	//"present.png", "smallGold.png", "smallRock.png" };
+	//for (size_t i = 0; i < TEXTURES; ++i)
+	//	m_pTexture[i].loadFromFile(file_names[i]);
 	// loading images
-	//m_pTexture[PLAYER].loadFromFile("Player.png");
-	//m_pTexture[ROPE].loadFromFile("enemy.png");
-	//m_pTexture[BIG_GOLD].loadFromFile("Coin.png");
-	//m_pTexture[SMALL_GOLD].loadFromFile("wall.png");
-	//m_pTexture[BIG_ROCK].loadFromFile("Ladder.png");
-	//m_pTexture[SMALL_ROCK].loadFromFile("Rod.png");
-	//m_pTexture[DIAMOND].loadFromFile("present.png");
-	//m_pTexture[PRESENT].loadFromFile("wall.png");
-	//m_pTexture[BONE].loadFromFile("Ladder.png");
-	//m_pTexture[BOMB].loadFromFile("Rod.png");
-	//m_pTexture[MOUSE].loadFromFile("present.png");
+	m_pTexture[PLAYER].loadFromFile("Player.png");
+	m_pTexture[ROPE].loadFromFile("enemy.png");
+	m_pTexture[BIGGOLD].loadFromFile("Coin.png");
+	m_pTexture[SMALLGOLD].loadFromFile("wall.png");
+	m_pTexture[BIGROCK].loadFromFile("Ladder.png");
+	m_pTexture[SMALLROCK].loadFromFile("Rod.png");
+	m_pTexture[DIAMOND].loadFromFile("present.png");
+	m_pTexture[PRESENT].loadFromFile("wall.png");
+	m_pTexture[BONE].loadFromFile("Ladder.png");
+	m_pTexture[BOMB].loadFromFile("Rod.png");
+	m_pTexture[MOUSE].loadFromFile("present.png");
 
 
 

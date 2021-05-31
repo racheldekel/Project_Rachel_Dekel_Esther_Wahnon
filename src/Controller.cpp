@@ -47,7 +47,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 
 		gold_miner.display();
 
-		gold_miner.clear();
+		//gold_miner.clear();
 
 	}
 

@@ -1,4 +1,6 @@
 #pragma once
+#include  "Objects/Objects.h"
+
 #include <SFML/Graphics.hpp>
 #include <array>
 #include <fstream>
@@ -7,7 +9,7 @@
 #include <iostream>
 #include <vector>
 
-
+enum Object_t { PLAYER, BOMB, BONE, BIGGOLD, SMALLGOLD, DIAMOND, PRESENT, SMALLROCK, BIGROCK,ROPE, MOUSE };
 using std::ifstream;
 using std::string;
 

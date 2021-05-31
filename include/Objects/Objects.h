@@ -7,7 +7,7 @@
 using std::vector;
 
 
-//enum Object_t { TUBE, PIPE, SPIPE, SINK };
+
 //enum Direction_t { UP, RIGHT, DOWN, LEFT };
 
 class Objects

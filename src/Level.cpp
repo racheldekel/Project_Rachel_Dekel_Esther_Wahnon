@@ -24,7 +24,8 @@ void Level::read_level(int levelNumber)
 	ifstream input;
 	try
 	{
-		string file = std::to_string(levelNumber) + ".txt";
+		//string file = std::to_string(levelNumber) + ".txt";
+		string file = "1.txt";
 		input.open(file);
 		if (!input.is_open())
 		{
@@ -83,32 +84,54 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	{
 
 
-/*	
-	case '@': //אובייקט ההתחלה
-		m_board[i][j] = std::make_unique < Spipe >(pos, std::array<bool, DIRECTIONS>{0, 0, 0, 1});
+	case '=': //אובייקט ההתחלה
+		m_board[i][j] = std::make_unique < player >(pos);
 
 
 
 		break;
 
 
-	case '-': //  1 צינור -
-		m_board[i][j] = std::make_unique < Pipe >(pos, std::array<bool, DIRECTIONS>{1, 0, 1, 0});
-
-
-		break;
-	case '+': //צינור 2  ר
-		m_board[i][j] = std::make_unique < Tube >(pos, std::array<bool, DIRECTIONS>{0, 1, 1, 0});
-
-
-
+	case '*': //  1 צינור -
+		m_board[i][j] = std::make_unique < bomb >(pos);
 		break;
 
-
-	case '#': //כיור
-		m_board[i][j] = std::make_unique < Sink >(pos, std::array<bool, DIRECTIONS>{0, 0, 0, 1});
-		*/
+	case '%': //  1 צינור -
+		m_board[i][j] = std::make_unique < bone >(pos);
 		break;
+	case '$': //  1 צינור -
+		m_board[i][j] = std::make_unique < bigGold >(pos);
+		break;
+
+	case '&': //  1 צינור -
+		m_board[i][j] = std::make_unique < smallGold >(pos);
+		break;
+
+	case '^': 
+		m_board[i][j] = std::make_unique <diamond>(pos);
+		break;
+
+	case '@': 
+		m_board[i][j] = std::make_unique < present >(pos);
+		break;
+	case '!':
+		m_board[i][j] = std::make_unique < smallRock>(pos);
+		break;
+	case '#':
+		m_board[i][j] = std::make_unique < bigRock>(pos);
+		break;
+
+	case '+':
+		m_board[i][j] = std::make_unique < rope>(pos);
+		break;
+	case '~':
+		m_board[i][j] = std::make_unique < mouse>(pos);
+		break;
+
+	
+
+		
+
 
 	default:
 		break;

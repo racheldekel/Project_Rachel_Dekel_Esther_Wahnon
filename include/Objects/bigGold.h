@@ -1,13 +1,13 @@
 #pragma once
 #include "Objects.h"
 
-class rope : public Objects
+class bigGold : public Objects
 {
 public:
 
-	rope(sf::Vector2f pos) : Objects(pos)
+	bigGold(sf::Vector2f pos) : Objects(pos)
 	{
-		m_sprite.setTexture(*(FileManager::instance().getIconTexture(ROPE)));
+		m_sprite.setTexture(*(FileManager::instance().getIconTexture(BIGGOLD)));
 		auto rect = m_sprite.getGlobalBounds();
 		m_sprite.setScale(sf::Vector2f());
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });

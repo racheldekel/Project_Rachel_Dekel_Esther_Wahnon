@@ -7,4 +7,5 @@
 								"Screens/MenuScreen.cpp"
 								"Screens/IntroductionScreen.cpp"
 								"Screens/GameScreen.cpp"
-								"Level")
+								"Level"
+								"FileManager.cpp")

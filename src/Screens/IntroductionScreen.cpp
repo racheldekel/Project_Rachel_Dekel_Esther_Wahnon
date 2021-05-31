@@ -1,8 +1,8 @@
-#include "Screens/StartScreen.h"
+#include "Screens/IntroductionScreen.h"
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int StartScreen::run(sf::RenderWindow& gold_miner)
+int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 {
 
 	sf::Event Event;
@@ -14,7 +14,7 @@ int StartScreen::run(sf::RenderWindow& gold_miner)
 
 	int menu = 0;
 
-	if (!Texture.loadFromFile("startScreen.png"))
+	if (!Texture.loadFromFile("instruction_final.jpg"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
@@ -80,7 +80,7 @@ int StartScreen::run(sf::RenderWindow& gold_miner)
 }
 
 //-------------------------------------------------------
-bool StartScreen::mouse_button_released(sf::Event event)
+bool IntroductionScreen::mouse_button_released(sf::Event event)
 
 {
 

@@ -43,7 +43,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
-						return 2;
+						return 1;
 					
 					break;
 

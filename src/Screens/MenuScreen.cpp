@@ -9,6 +9,11 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 	bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
+	int alpha = 0;
+	sf::Font Font;
+	sf::Text Menu1;
+	sf::Text Menu2;
+	sf::Text Menu3;
 	int menu = 0;
 
 	if (!Texture.loadFromFile("menu_final.jpg"))
@@ -36,10 +41,10 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 
 				case sf::Event::MouseButtonReleased:
 					if (button_released_in_introduction(Event))
-						return 3;
+						return 2;
 
 					else if( button_released_start_game(Event))
-						return 4;
+						return 3;
 
 					break;
 
@@ -84,8 +89,8 @@ bool MenuScreen ::button_released_in_introduction(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
+	
+	if ((pos.x > 60 && pos.x < 320) && (pos.y < 380 && pos.y > 320))
 		return true;
 
 	return false;
@@ -99,7 +104,7 @@ bool MenuScreen::button_released_start_game(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
+	if ((pos.x > 80 && pos.x < 300) && (pos.y < 200 && pos.y > 18))
 		return true;
 
 	return false;

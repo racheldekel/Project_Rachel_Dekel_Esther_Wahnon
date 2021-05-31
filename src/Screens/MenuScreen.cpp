@@ -103,7 +103,7 @@ bool MenuScreen::button_released_start_game(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	std::cout << pos.x << " " << pos.y << std::endl;
+	
 	if ((pos.x > 80 && pos.x < 300) && (pos.y < 200 && pos.y > 18))
 		return true;
 

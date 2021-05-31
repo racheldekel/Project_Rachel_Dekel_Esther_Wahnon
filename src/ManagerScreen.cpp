@@ -18,7 +18,7 @@ void ManagerScreen ::main_run()
 {
 	sf::RenderWindow GoldMiner(sf::VideoMode(800, 450), "Gold Miner");
 	int screen = 0;
-	std::cout << "im here";
+
 	
 	std::vector<Screen*> Screens;
 

@@ -9,7 +9,6 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 	bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
-	int alpha = 0;
 	sf::Font Font;
 
 	int menu = 0;
@@ -22,12 +21,6 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 	Sprite.setTexture(Texture);
 
 
-
-	if (!Font.loadFromFile("Font1.otf"))
-	{
-		std::cerr << "Error loading verdanab.ttf" << std::endl;
-		return (-1);
-	}
 
 	while (Running)
 	{
@@ -43,7 +36,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
-						return 2;
+						return 1;
 
 					break;
 
@@ -61,11 +54,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 			}
 
 		}
-		//When getting at alpha_max, we stop modifying the sprite
-
-
-
-
+		
 		gold_miner.clear();
 
 		gold_miner.draw(Sprite);
@@ -89,7 +78,7 @@ bool IntroductionScreen::mouse_button_released(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
+	if ((pos.x > 280 && pos.x < 490) && (pos.y < 413 && pos.y > 386))
 		return true;
 
 	return false;

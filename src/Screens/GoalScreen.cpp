@@ -29,11 +29,12 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 		{
 			try
 			{
-				const sf::Time freezeLength{ sf::seconds(3.f) };
+				const sf::Time freezeLength{ sf::seconds(2.f) };
 				sf::Clock freezeClock;
 				while (freezeClock.getElapsedTime() < freezeLength)
 				{
-					;
+					sf::Event event;
+					gold_miner.pollEvent(event);
 				}
 
 				return 4;

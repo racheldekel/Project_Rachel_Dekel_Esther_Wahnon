@@ -9,16 +9,19 @@ FileManager::FileManager()
 	//	m_pTexture[i].loadFromFile(file_names[i]);
 	// loading images
 	m_pTexture[PLAYER].loadFromFile("Player.png");
-	m_pTexture[ROPE].loadFromFile("enemy.png");
-	m_pTexture[BIGGOLD].loadFromFile("Coin.png");
-	m_pTexture[SMALLGOLD].loadFromFile("wall.png");
-	m_pTexture[BIGROCK].loadFromFile("Ladder.png");
-	m_pTexture[SMALLROCK].loadFromFile("Rod.png");
-	m_pTexture[DIAMOND].loadFromFile("present.png");
-	m_pTexture[PRESENT].loadFromFile("wall.png");
-	m_pTexture[BONE].loadFromFile("Ladder.png");
-	m_pTexture[BOMB].loadFromFile("Rod.png");
-	m_pTexture[MOUSE].loadFromFile("present.png");
+	m_pTexture[ROPE].loadFromFile("bone.png"); //change it!!!!!!!!!!!!!!!!!!
+	m_pTexture[BIGGOLD].loadFromFile("bigGold.png");
+	m_pTexture[SMALLGOLD].loadFromFile("smallGold.png");
+	m_pTexture[BIGROCK].loadFromFile("bigRock.png");
+	m_pTexture[SMALLROCK].loadFromFile("smallRock.png");
+	m_pTexture[DIAMOND].loadFromFile("diamond.png");
+	m_pTexture[PRESENT].loadFromFile("present.png");
+	m_pTexture[BONE].loadFromFile("bone.png");
+	m_pTexture[BOMB].loadFromFile("bomb.png");
+	m_pTexture[MOUSE].loadFromFile("mouse.png");
+	m_font[0].loadFromFile("Font1.otf");
+	m_font[1].loadFromFile("Font2.otf");
+	m_font[2].loadFromFile("gameFont.otf");
 
 
 

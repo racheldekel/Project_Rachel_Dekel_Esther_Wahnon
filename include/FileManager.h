@@ -14,7 +14,7 @@ using std::ifstream;
 using std::string;
 
 const int NUM_OF_ICONS = 7;
-const int NUM_OF_FONTS = 2;
+const int NUM_OF_FONTS = 3;
 const int NUM_OF_SCREENS = 3;
 
 

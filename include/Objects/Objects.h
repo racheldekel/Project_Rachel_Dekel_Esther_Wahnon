@@ -8,19 +8,20 @@ using std::vector;
 
 
 
-//enum Direction_t { UP, RIGHT, DOWN, LEFT };
 
 class Objects
 {
 public:
 
-	
+	const int SIZE = 60;
 	Objects(sf::Vector2f location) 
 	{
+		
 		m_sprite.setPosition(location);
+	
 	}
 	
-		~Objects() = default;
+	~Objects() {};
 	virtual void draw(sf::RenderWindow& window) = 0;
 	
 	

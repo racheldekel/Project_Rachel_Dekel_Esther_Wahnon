@@ -28,14 +28,15 @@ using std::string;
 
 class Level
 {
+
 public:
 
 	Level()= default;
-	
+	const int SIZE = 60;
 	void addOnBoard(const char c, const size_t i, const size_t j);
 	Level(int levelNumber);
 
-
+	Objects* operator()(size_t row, size_t col);
 	void draw_static_figures(sf::RenderWindow& window);
 	void setBoardSize(int rows, int cols);
 	/*StaticObjects* getIcon(sf::Vector2f pos);

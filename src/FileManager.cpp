@@ -8,17 +8,19 @@ FileManager::FileManager()
 	//for (size_t i = 0; i < TEXTURES; ++i)
 	//	m_pTexture[i].loadFromFile(file_names[i]);
 	// loading images
-	m_pTexture[PLAYER].loadFromFile("Player.png");
-	m_pTexture[ROPE].loadFromFile("enemy.png");
-	m_pTexture[BIGGOLD].loadFromFile("Coin.png");
-	m_pTexture[SMALLGOLD].loadFromFile("wall.png");
-	m_pTexture[BIGROCK].loadFromFile("Ladder.png");
-	m_pTexture[SMALLROCK].loadFromFile("Rod.png");
-	m_pTexture[DIAMOND].loadFromFile("present.png");
-	m_pTexture[PRESENT].loadFromFile("wall.png");
-	m_pTexture[BONE].loadFromFile("Ladder.png");
-	m_pTexture[BOMB].loadFromFile("Rod.png");
-	m_pTexture[MOUSE].loadFromFile("present.png");
+
+
+	m_pTexture[PLAYER].loadFromFile("playerStand.png");
+	m_pTexture[BOMB].loadFromFile("bomb.png");
+	m_pTexture[BONE].loadFromFile("bone.png");
+	m_pTexture[BIGGOLD].loadFromFile("bigGold.png");
+	m_pTexture[SMALLGOLD].loadFromFile("smallGold.png");
+	m_pTexture[DIAMOND].loadFromFile("diamond.png");
+	m_pTexture[PRESENT].loadFromFile("present.png");
+	m_pTexture[BIGROCK].loadFromFile("bigRock.png");
+	m_pTexture[SMALLROCK].loadFromFile("smallRock.png");
+	//m_pTexture[BOMB].loadFromFile("bomb.png"); add the rope
+	m_pTexture[MOUSE].loadFromFile("mouse.png");
 
 
 
@@ -28,28 +30,30 @@ sf::Texture* FileManager::getIconTexture(size_t shape)
 {
 	return &m_pTexture[shape];
 }
-
+/*
 // this function used for returning the life's counter
 sf::Texture* FileManager::getLifeTexture()
 {
 	return &m_lifeCount;
 }
-
+*/
+/*
 // this function used for getting and return the fonts
 sf::Font* FileManager::getFont(size_t type)
 {
 	return &m_font[type];
 }
-
+*/
 // this function used for getting the sounds for the game
 FileManager& FileManager::instance()
 {
 	static FileManager instance;
 	return instance;
 }
-
+/*
 // this function used for getting screens, along the program
 sf::Texture* FileManager::getScreen(size_t screen)
 {
 	return &m_pScreeen[screen];
 }
+*/

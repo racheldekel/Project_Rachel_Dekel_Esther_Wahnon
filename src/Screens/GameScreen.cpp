@@ -11,7 +11,7 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-	int menu = 0;
+	
 
 	if (!Texture.loadFromFile("background.png"))
 	{
@@ -59,7 +59,7 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 
 				
 			}
-			catch (ActionError& de)
+			catch (ActionError)
 			{
 				std::cout << "Please click the mouse" << std::endl;
 

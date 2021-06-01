@@ -3,15 +3,19 @@ class ActionError{};
 
 void Controller::startGame(sf::RenderWindow& gold_miner)
 {
+	gold_miner.setFramerateLimit(60);
 	m_finish_level = false;
+
 	m_level.read_level(m_levelNumber);
+	
 
 	while (gold_miner.isOpen())
 	{
-		// the music goes here 
+		
 
 		if (m_finish_level)
 		{
+
 			m_levelNumber++;
 
 			break;
@@ -35,7 +39,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 
 				}
 			}
-			catch (ActionError& de)
+			catch (ActionError)
 			{
 				std::cout << "Please click the mouse" << std::endl;
 
@@ -43,9 +47,10 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 		}
 
 
+		
 		drawAllObject(gold_miner);
-
 		gold_miner.display();
+		
 
 		//gold_miner.clear();
 
@@ -70,7 +75,7 @@ void Controller::mouse_button_released(sf::Event event)
 {
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
-	sf::Vector2i pos(x , y );
+	sf::Vector2i pos(x /SIZE, y/SIZE );
 
 	/*
 	if (m_level(pos.y, pos.x))

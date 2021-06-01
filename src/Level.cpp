@@ -44,6 +44,8 @@ void Level::read_level(int levelNumber)
 	char c;
 	input >> rows >> cols;
 
+
+
 	m_row = rows, m_col = cols;
 
 	m_board.resize(rows);
@@ -76,10 +78,16 @@ int Level::getCols() const
 //--------------------------------------------------
 void Level::addOnBoard(const char c,const size_t i,const size_t j)	
 {
+	
+	std::cout << c;
+	
+	auto pos = sf::Vector2f(j, i) * (float)SIZE;
+	pos.x += SIZE/ 2;
+	pos.y += SIZE / 2;
+	
+	if (c == '=')
+		std::cout << "alls good";
 
-	auto pos = sf::Vector2f(i, j) ;
-	//pos.x += P_SIZE / 2;
-	//pos.y += P_SIZE / 2;
 	switch (c)
 	{
 
@@ -87,7 +95,7 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	case '=': //אובייקט ההתחלה
 		m_board[i][j] = std::make_unique < player >(pos);
 
-
+		
 
 		break;
 
@@ -148,13 +156,17 @@ void Level::draw_static_figures(sf::RenderWindow& window)
 		for (const auto& col : row)
 		{
 
-			if (col == nullptr)
-				continue;
-
-			else
+			if (col != nullptr)
 				col->draw(window);
 		}
 
 	}
 	
+}
+//------------------------------------
+Objects* Level::operator()(size_t row, size_t col)
+{
+	if (row >= m_board.size() || col >= m_board.begin()->size())
+		return nullptr;
+	return m_board[row][col].get();
 }

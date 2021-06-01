@@ -37,9 +37,9 @@ void ManagerScreen ::main_run()
 	GameScreen s4;
 	Screens.push_back(&s4);
 
-	GameOverScreen s5;
+/*	GameOverScreen s5;
 	Screens.push_back(&s5);
-	create_screens(Screens);
+	create_screens(Screens);*/
 	
 
 

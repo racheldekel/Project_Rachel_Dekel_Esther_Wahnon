@@ -17,7 +17,7 @@ using std::vector;
 class Controller
 {
 public:
-
+	const int SIZE = 60;
 	Controller() {};
 	~Controller() {};
 	void startGame(sf::RenderWindow& gold_miner);
@@ -25,7 +25,7 @@ public:
 	bool levelFinished();
 	void mouse_button_released(sf::Event event);
 	int getLevel()const;
-		//const vector<vector<std::unique_ptr<Objects>>>& board);
+	//const vector<vector<std::unique_ptr<Objects>>>& board;
 	
 private:
 
@@ -40,7 +40,7 @@ private:
 	bool m_endOfGame = false;
 
 
-	int m_levelNumber = 0;
+	int m_levelNumber = 1;
 
 
 

@@ -31,14 +31,9 @@ private:
 
 	bool m_finish_level = true;
 	Level m_level;
-	int long  m_position_func = 0;
-	int m_num_object = 0;
 	sf::Vector2f m_position;
 
-	bool m_read = 0;
-	bool m_out = 0;
-	bool m_endOfGame = false;
-
+//	bool m_endOfGame = false;
 
 	int m_levelNumber = 1;
 

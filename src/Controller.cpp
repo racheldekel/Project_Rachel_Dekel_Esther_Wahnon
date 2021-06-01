@@ -3,6 +3,11 @@ class ActionError{};
 
 void Controller::startGame(sf::RenderWindow& gold_miner)
 {
+
+	auto t = sf::Texture();
+	t.loadFromFile("background.png");
+	sf::Sprite s(t);
+
 	gold_miner.setFramerateLimit(60);
 	m_finish_level = false;
 
@@ -12,6 +17,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 	while (gold_miner.isOpen())
 	{
 		
+		gold_miner.draw(s);
 
 		if (m_finish_level)
 		{

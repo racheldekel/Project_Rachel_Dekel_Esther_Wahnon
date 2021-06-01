@@ -3,6 +3,14 @@
 #include <SFML\Graphics.hpp>
 #include "FileManager.h"
 #include <array>
+#include <fstream>
+#include <memory>
+#include <string>
+#include <iostream>
+#include <vector>
+
+using std::ifstream;
+using std::string;
 
 using std::vector;
 
@@ -24,12 +32,11 @@ public:
 	~Objects() {};
 	virtual void draw(sf::RenderWindow& window) = 0;
 	
-	
-
 protected:
-
-
+	
 	sf::Sprite m_sprite;
+
+
 
 private:
 	

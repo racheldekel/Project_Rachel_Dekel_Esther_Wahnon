@@ -2,13 +2,10 @@
 #include "Level.h"
 FileManager::FileManager()
 {
-	//std::array <std::string, TEXTURES> file_names = { "bigGold.png","bigRock.png",
-	//"bomb.png" ,"bone.png", "diamond.png", "mouse.png", "playerGrab.png", "playerStand.png",
-	//"present.png", "smallGold.png", "smallRock.png" };
-	//for (size_t i = 0; i < TEXTURES; ++i)
-	//	m_pTexture[i].loadFromFile(file_names[i]);
-	// loading images
 
+
+	/*std::array <std::string, TEXTURES> file_names = { "playerStand.png" , "bomb.png","bone.png" , "bigGold.png" ,"smallGold.png", "diamond.png",
+													"present.png" , "bigRock.png" , "smallRock.png", "mouse.png" };*/
 
 	m_pTexture[PLAYER].loadFromFile("playerStand.png");
 	m_pTexture[BOMB].loadFromFile("bomb.png");
@@ -19,41 +16,18 @@ FileManager::FileManager()
 	m_pTexture[PRESENT].loadFromFile("present.png");
 	m_pTexture[BIGROCK].loadFromFile("bigRock.png");
 	m_pTexture[SMALLROCK].loadFromFile("smallRock.png");
-	//m_pTexture[BOMB].loadFromFile("bomb.png"); add the rope
+	m_pTexture[ROPE].loadFromFile("bomb.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
-
-
 
 }
 // this functions gets icon texture and return the shpe
-sf::Texture* FileManager::getIconTexture(size_t shape)
+sf::Texture* FileManager::get_icon(size_t shape)
 {
 	return &m_pTexture[shape];
 }
-/*
-// this function used for returning the life's counter
-sf::Texture* FileManager::getLifeTexture()
-{
-	return &m_lifeCount;
-}
-*/
-/*
-// this function used for getting and return the fonts
-sf::Font* FileManager::getFont(size_t type)
-{
-	return &m_font[type];
-}
-*/
-// this function used for getting the sounds for the game
+
 FileManager& FileManager::instance()
 {
 	static FileManager instance;
 	return instance;
 }
-/*
-// this function used for getting screens, along the program
-sf::Texture* FileManager::getScreen(size_t screen)
-{
-	return &m_pScreeen[screen];
-}
-*/

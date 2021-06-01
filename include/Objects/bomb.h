@@ -7,7 +7,7 @@ public:
 
 	bomb(sf::Vector2f pos) : Objects(pos)
 	{
-		m_sprite.setTexture(*(FileManager::instance().getIconTexture(BOMB)));
+		m_sprite.setTexture(*(FileManager::instance().get_icon(BOMB)));
 		m_sprite.setPosition(pos);
 		auto rect = m_sprite.getGlobalBounds();
 		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),

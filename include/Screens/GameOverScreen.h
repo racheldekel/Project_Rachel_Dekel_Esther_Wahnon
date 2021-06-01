@@ -11,7 +11,7 @@ public:
 
 
 private:
-};m_sprite.setTexture(*(FileManager::instance().getIconTexture(MOUSE)));
+};m_sprite.setTexture(*(FileManager::instance().get_icon(MOUSE)));
 m_sprite.setPosition(pos);
 auto rect = m_sprite.getGlobalBounds();
 m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });

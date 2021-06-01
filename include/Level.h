@@ -39,12 +39,6 @@ public:
 	Objects* operator()(size_t row, size_t col);
 	void draw_static_figures(sf::RenderWindow& window);
 	void setBoardSize(int rows, int cols);
-	/*StaticObjects* getIcon(sf::Vector2f pos);
-
-	StaticObjects* operator()(size_t row, size_t col);
-
-	
-	vector <vector<std::unique_ptr<StaticObjects>>>& setBoard();*/
 	void read_level(int levelNumber);
 	int getCols() const;
 	int getRows()const;

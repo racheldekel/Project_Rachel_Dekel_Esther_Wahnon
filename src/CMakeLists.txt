@@ -8,4 +8,6 @@
 								"Screens/IntroductionScreen.cpp"
 								"Screens/GameScreen.cpp"
 								"Level"
-								"FileManager.cpp")
+								"FileManager.cpp"
+								"mouse.cpp"
+								"rope.cpp")

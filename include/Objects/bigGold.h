@@ -12,7 +12,7 @@ public:
 
 	bigGold(sf::Vector2f pos) : Objects(pos)
 	{
-		m_sprite.setTexture(*(FileManager::instance().getIconTexture(BIGGOLD)));
+		m_sprite.setTexture(*(FileManager::instance().get_icon(BIGGOLD)));
 		m_sprite.setPosition(pos);
 		auto rect = m_sprite.getGlobalBounds();
 		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),

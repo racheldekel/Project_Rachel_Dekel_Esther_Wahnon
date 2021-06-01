@@ -30,23 +30,15 @@ struct high_score {
 class FileManager
 {
 public:
-	sf::Texture* getIconTexture(size_t shape);
-	//sf::Texture* getLifeTexture();
-	//sf::Font* getFont(size_t type);
+	sf::Texture* get_icon(size_t shape);
+
 
 	static FileManager& instance();
-
-
-	//sf::Texture* getScreen(size_t screen);
 
 
 private:
 	FileManager();
 	sf::Texture m_pTexture[TEXTURES];
 
-	//sf::Texture m_lifeCount;
-	//sf::SoundBuffer m_playerSounds[NUM_OF_SOUNDS-2];
-	//sf::SoundBuffer m_gameSounds[NUM_OF_SOUNDS - 4];
 
-	//std::vector<high_score> m_listScore;
 };

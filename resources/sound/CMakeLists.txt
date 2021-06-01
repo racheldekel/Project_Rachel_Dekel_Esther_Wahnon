@@ -1,4 +1,4 @@
-﻿configure_file ("Background.wav" ${CMAKE_BINARY_DIR} COPYONLY)
+﻿configure_file ("Backgroundmusic.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("WinSound.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("MouseClickUnLegul.wav" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("MouseClickButton.wav" ${CMAKE_BINARY_DIR} COPYONLY)

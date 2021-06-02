@@ -34,7 +34,6 @@ rope::rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setOrigin({ rect.width / 2, 0 });
 	//m_sprite.setRotation(MIN_ANGLE);
 
-
 }
 //----------------------------------------------------------------------
 void rope::openRope(float timePass)

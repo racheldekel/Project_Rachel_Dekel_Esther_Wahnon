@@ -1,16 +1,25 @@
 #include "Screens/GoalScreen.h"
 #include <iostream>
 #include <stdexcept>
+
+#include <thread>
+
+const auto WAIT_TIME = sf::seconds(4);
+
 class ActionError {};
 int  GoalScreen::run(sf::RenderWindow& gold_miner)
 {
 
-	sf::Event Event;
-	bool Running = true;
+	//sf::Event Event;
+	//bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
 
+	//while (gold_miner.isOpen())
+	//{
+
+	//}
 	int menu = 0;
 
 	if (!Texture.loadFromFile("nextGoal.png"))
@@ -20,42 +29,19 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 	}
 	Sprite.setTexture(Texture);
 
+	gold_miner.clear();
+
+	gold_miner.draw(Sprite);
+
+	gold_miner.display();
+
+	sf::sleep(WAIT_TIME);
 
 
-	while (Running)
-	{
-		//Verifying events
-		while (gold_miner.pollEvent(Event))
-		{
-			try
-			{
-				const sf::Time freezeLength{ sf::seconds(2.f) };
-				sf::Clock freezeClock;
-				while (freezeClock.getElapsedTime() < freezeLength)
-				{
-					sf::Event event;
-					gold_miner.pollEvent(event);
-				}
-
-				return 4;
-			}
-			catch (ActionError& de)
-			{
-				std::cout << "Please click the mouse" << std::endl;
-
-			}
-
-		}
-
-		gold_miner.clear();
-
-		gold_miner.draw(Sprite);
-
-		gold_miner.display();
-	}
+	
 
 	//Never reaching this point normally, but just in case, exit the gold_minerlication
-	return (-1);
+	return (4);
 
 
 }

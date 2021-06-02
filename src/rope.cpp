@@ -1,6 +1,8 @@
 #include "Objects/rope.h"
 
 
+
+
 void rope::update_state()
 {
 
@@ -16,6 +18,22 @@ void rope::update_state()
 	{
 		rotateRope(timePass);
 	}
+
+}
+void rope::changeDirection()
+{
+	m_direction = m_direction == 1 ? -1 : 1;
+}
+rope::rope(sf::Vector2f pos) : Objects(pos)
+{
+	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
+	m_sprite.setPosition(pos);
+	auto rect = m_sprite.getGlobalBounds();
+	m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
+		((float)SIZE / rect.height)));
+	m_sprite.setOrigin({ rect.width / 2, 0 });
+	//m_sprite.setRotation(MIN_ANGLE);
+
 
 }
 //----------------------------------------------------------------------
@@ -46,11 +64,12 @@ void rope::draw(sf::RenderWindow& window)
 //-----------------------------------------------------------------------------------
 void rope ::rotateRope(float timePass)
 {
-	if (m_sprite.getRotation() >= MAX_ANGLE)
-		m_direction = RIGHT;
-	else if (m_sprite.getRotation() <= -MAX_ANGLE)
-		m_direction = LEFT;
+	if (m_sprite.getRotation() > MIN_ANGLE && m_sprite.getRotation() < MAX_ANGLE)
+	{
+		changeDirection();
+	}
 
-	//std::cout << m_sprite.getRotation()<<std:: endl;
-	m_sprite.setRotation(m_sprite.getRotation()+( 22.f* timePass *m_direction ));
+
+	m_sprite.rotate(22.f* timePass * m_direction );
 }
+

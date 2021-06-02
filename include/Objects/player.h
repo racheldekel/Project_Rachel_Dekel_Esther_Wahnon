@@ -7,7 +7,7 @@ public:
 
 	player(sf::Vector2f pos) : Objects(pos)
 	{
-		m_sprite.setTexture(*(FileManager::instance().get_icon(PLAYER)));
+		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
 		m_sprite.setPosition(pos);
 		auto rect = m_sprite.getGlobalBounds();
 		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),

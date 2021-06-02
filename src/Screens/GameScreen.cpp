@@ -12,13 +12,13 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 	sf::Font Font;
 
 	
-	/*
+	
 	if (!Texture.loadFromFile("background.png"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
-	*/
+
 
 	Sprite.setTexture(Texture);
 

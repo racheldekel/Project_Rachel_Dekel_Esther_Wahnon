@@ -8,7 +8,7 @@ public:
 	GoalScreen() {};
 	~GoalScreen() {};
 	virtual int run(sf::RenderWindow& gold_miner) ;
-	bool mouse_button_released(sf::Event event);
+
 
 
 private:

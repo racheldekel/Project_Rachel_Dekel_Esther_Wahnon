@@ -32,7 +32,6 @@ rope::rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
 		((float)SIZE / rect.height)));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
-	//m_sprite.setRotation(MIN_ANGLE);
 
 }
 //----------------------------------------------------------------------
@@ -49,7 +48,6 @@ void rope::openRope(float timePass)
 
 	m_sprite.setScale(scale);
 
-	std::cout << scale.y <<" "<<timePass<<" "<< LengthAddition << std::endl;
 
 }
 //-----------------------------------------------------------------------------------

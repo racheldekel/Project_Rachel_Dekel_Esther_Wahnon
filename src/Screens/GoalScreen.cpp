@@ -10,8 +10,6 @@ class ActionError {};
 int  GoalScreen::run(sf::RenderWindow& gold_miner)
 {
 
-	//sf::Event Event;
-	//bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
@@ -46,18 +44,3 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 
 }
 
-//-------------------------------------------------------
-bool  GoalScreen::mouse_button_released(sf::Event event)
-
-{
-
-	auto x = event.mouseButton.x;
-	auto y = event.mouseButton.y;
-	sf::Vector2i pos(x, y);
-
-	std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 264 && pos.x < 574) && (pos.y < 433 && pos.y > 367))
-		return true;
-
-	return false;
-}

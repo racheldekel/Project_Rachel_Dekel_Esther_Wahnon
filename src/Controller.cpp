@@ -3,7 +3,6 @@ class ActionError{};
 
 void Controller::startGame(sf::RenderWindow& gold_miner)
 {
-
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
@@ -13,21 +12,20 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 
 	m_level.read_level(m_levelNumber);
 	
-
 	while (gold_miner.isOpen())
 	{
-		
 		gold_miner.draw(s);
 
 		if (m_finish_level)
 		{
-
 			m_levelNumber++;
 
 			break;
 
 		}
 
+
+		/*
 		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
 		{
 			try
@@ -51,6 +49,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 
 			}
 		}
+		*/
 
 
 		
@@ -58,7 +57,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 		gold_miner.display();
 		
 
-		//gold_miner.clear();
+		gold_miner.clear();
 
 	}
 
@@ -75,14 +74,12 @@ bool Controller::levelFinished()
 {
 	return m_finish_level;
 }
-
 //--------------------------------------------------------------------------
 void Controller::mouse_button_released(sf::Event event)
 {
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x /SIZE, y/SIZE );
-
 	/*
 	if (m_level(pos.y, pos.x))
 	{
@@ -94,8 +91,6 @@ void Controller::mouse_button_released(sf::Event event)
 
 }
 
-
-//------------------------------------------------------
 //----------------------------------------------------------------------------------------------
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {

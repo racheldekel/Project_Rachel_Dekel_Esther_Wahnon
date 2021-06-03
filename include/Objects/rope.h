@@ -22,7 +22,7 @@ public:
 	void draw(sf::RenderWindow& window);
 	void update_state(const sf::Time& timePass = sf::Time());
 
-	
+	void changeState() { m_open = true; }
 //	sf::Sprite m_sprite;
 
 	private :

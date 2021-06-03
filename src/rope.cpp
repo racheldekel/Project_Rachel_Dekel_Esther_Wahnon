@@ -6,15 +6,13 @@ const auto SPEED = 0.5f;
 void Rope::update_state(const sf::Time& timePass)
 {
 
-	//float timePass = m_clock.restart().asSeconds();
-	//std::cout << timePass << std::endl;
 
 	if (m_open)
 		openRope(timePass);
+
 	else
-	{
 		rotateRope(timePass);
-	}
+	
 
 }
 void Rope::changeDirection()
@@ -37,14 +35,25 @@ void Rope::openRope(const sf::Time& time )
 {
 	// do the time  in float get parameter 
 
-	float LengthAddition = Rope ::lenghRope * time.asSeconds(); //* time.asSeconds();
+	int x, y;
 
+	sf::Vector2i pos;
 
+	
 	auto scale = m_sprite.getScale();
 
-	scale.y += LengthAddition;
+	std::cout << scale.x << " " << scale.y << std::endl;
+	if (scale.y < 2.7)
+	{
+		
+		float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
 
-	m_sprite.setScale(scale);
+		//auto scale = m_sprite.getScale();
+
+		scale.y += LengthAddition;
+
+		m_sprite.setScale(scale);
+	}
 
 
 }

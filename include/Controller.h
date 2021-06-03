@@ -28,7 +28,7 @@ public:
 	
 private:
 	Player m_player = Player{ {400.f, 30.f} };
-	Rope m_rope = Rope{ {400.f, 70.f} };
+	Rope m_rope = Rope{ {400.f, 65.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	sf::Vector2f m_position;

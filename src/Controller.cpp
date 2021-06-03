@@ -27,11 +27,16 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 		}
 
 
-		/*
+		
 		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
 		{
 			try
 			{
+				/*auto x = event.mouseButton.x;
+				auto y = event.mouseButton.y;
+				sf::Vector2i pos(x / SIZE, y /SIZE);*/
+
+				//std::cout << pos.x << " " << pos.y << std::endl;
 				switch (event.type)
 				{
 				case sf::Event::Closed:
@@ -51,7 +56,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 
 			}
 		}
-		*/
+		
 		drawAllObject(gold_miner);
 		m_player.draw(gold_miner);
 		m_rope.update_state(clock.getElapsedTime()*10.f);
@@ -81,18 +86,23 @@ bool Controller::levelFinished()
 //--------------------------------------------------------------------------
 void Controller::mouse_button_released(sf::Event event)
 {
+
+
+	
+	m_rope.changeState();
+	/*
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x /SIZE, y/SIZE );
-	/*
+	
 	if (m_level(pos.y, pos.x))
 	{
 
 		auto current = m_level(pos.y, pos.x);
 		
 
-	}*/
-
+	
+	*/
 }
 
 //----------------------------------------------------------------------------------------------

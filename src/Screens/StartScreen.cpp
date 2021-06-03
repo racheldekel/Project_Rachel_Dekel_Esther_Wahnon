@@ -38,7 +38,8 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
-						return 1;
+						// CAMBIAR AQUI DE VULETA A 1 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+						return 4;
 					
 					break;
 

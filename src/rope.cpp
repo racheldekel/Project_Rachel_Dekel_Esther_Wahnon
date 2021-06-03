@@ -43,19 +43,48 @@ void Rope::openRope(const sf::Time& time )
 	auto scale = m_sprite.getScale();
 
 	std::cout << scale.x << " " << scale.y << std::endl;
-	if (scale.y < 2.7)
+
+
+	if (scale.y < 2.80 &&  !closingRope)
 	{
 		
 		float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
 
-		//auto scale = m_sprite.getScale();
-
 		scale.y += LengthAddition;
 
 		m_sprite.setScale(scale);
+
+		if (scale.y > 2.7)
+			closingRope = true;
+		
 	}
 
 
+	 if (closingRope == true)
+	{
+		 closeRope(scale,time);
+	}
+
+
+
+
+	
+}
+//-------------------------------------------------------------------------------------------
+void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time)
+{
+	float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
+
+	scale.y -= LengthAddition;
+
+	m_sprite.setScale(scale);
+
+	if (scale.y < 0.65)
+	{
+		closingRope = false;
+		m_open = false;
+		return;
+	}
 }
 //-----------------------------------------------------------------------------------
 void Rope::draw(sf::RenderWindow& window)

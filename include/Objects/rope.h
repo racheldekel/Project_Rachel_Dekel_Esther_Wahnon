@@ -23,10 +23,12 @@ public:
 	void update_state(const sf::Time& timePass = sf::Time());
 
 	void changeState() { m_open = true; }
+	void closeRope(sf::Vector2f scale, const sf::Time& time);
 //	sf::Sprite m_sprite;
 
 	private :
 
+		bool  closingRope = false;
 		bool m_open = false; //true of up or down false if rotate
 		void changeDirection();
 		//if true it stays the same and we dont open it otherwise we dont change it and we open it 

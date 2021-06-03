@@ -11,6 +11,8 @@ using std::cout;
 using std::endl;
 using std::ifstream;
 
+const auto BOARDER = sf::Vector2f(10.f, 100.f);
+
 class FileError {};
 
 Level::Level(int levelNumber) :m_level(levelNumber)
@@ -30,7 +32,6 @@ void Level::read_level(int levelNumber)
 		if (!input.is_open())
 		{
 			throw FileError();
-
 		}
 	}
 	catch (FileError)
@@ -49,16 +50,15 @@ void Level::read_level(int levelNumber)
 	m_row = rows, m_col = cols;
 
 	m_board.resize(rows);
-	for (size_t i = 0; i < rows; i++)
-		m_board[i].resize(cols);
+	for (auto& cell : m_board)
+		cell.resize(cols);
 
 	for (size_t i = 0; i < rows; i++)
 	{
 		input.get();
 		for (size_t j = 0; j < cols; j++)
 		{
-			c = input.get();
-			addOnBoard(c, i, j);
+			addOnBoard(input.get(), i, j);
 		}
 	}
 
@@ -81,23 +81,24 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	
 	std::cout << c;
 	
-	auto pos = sf::Vector2f(j, i) * (float)SIZE;
-	pos.x += SIZE/ 2;
-	pos.y += SIZE / 2;
+	auto pos = sf::Vector2f(j, i) * (float)(SIZE);
+	/*pos.x += SIZE/ 2;
+	pos.y += SIZE / 2;*/
+	pos += BOARDER;
 	
-	if (c == '=')
-		std::cout << "alls good";
+	//if (c == '=')
+	//	std::cout << "alls good";
 
 	switch (c)
 	{
 
 
-	case '=': //אובייקט ההתחלה
-		m_board[i][j] = std::make_unique < player >(pos);
+	//case '=': //אובייקט ההתחלה
+	//	m_board[i][j] = std::make_unique <Player>(pos);
 
-		
+	//	
 
-		break;
+	//	break;
 
 
 	case '*': //  1 צינור -
@@ -120,7 +121,7 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 		break;
 
 	case '@': 
-		m_board[i][j] = std::make_unique < present >(pos);
+		m_board[i][j] = std::make_unique < Present >(pos);
 		break;
 	case '!':
 		m_board[i][j] = std::make_unique < smallRock>(pos);
@@ -129,11 +130,11 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 		m_board[i][j] = std::make_unique < bigRock>(pos);
 		break;
 
-	case '+':
-		m_board[i][j] = std::make_unique < rope>(pos);
-		break;
+	//case '+':
+	//	m_board[i][j] = std::make_unique < Rope>(pos);
+	//	break;
 	case '~':
-		m_board[i][j] = std::make_unique < mouse>(pos);
+		m_board[i][j] = std::make_unique < Mouse>(pos);
 		break;
 
 	

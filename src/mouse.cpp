@@ -1,7 +1,7 @@
-#include "Objects/mouse.h"
+#include "Objects/Mouse.h"
 
 
-void mouse:: move(sf::Vector2f boardSize)
+void Mouse::move(sf::Vector2f boardSize)
 {
 	/*
 	m_prev_pos = m_sprite.getPosition();

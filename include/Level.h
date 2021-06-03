@@ -9,13 +9,13 @@
 #include  "Objects/bone.h"
 #include "Objects/diamond.h"
 #include "Objects/bigGold.h"
-#include  "Objects/smallGold.h"
-#include "Objects/present.h"
+#include  "Objects/SmallGold.h"
+#include "Objects/Present.h"
 #include "Objects/bigRock.h"
 #include "Objects/smallRock.h"
-#include "Objects/rope.h"
-#include "Objects/player.h"
-#include "Objects/mouse.h"
+#include "Objects/Rope.h"
+#include "Objects/Player.h"
+#include "Objects/Mouse.h"
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -25,14 +25,13 @@
 using std::ifstream;
 using std::string;
 
-
+const auto SIZE = 60.f;
 class Level
 {
 
 public:
 
 	Level()= default;
-	const int SIZE = 60;
 	void addOnBoard(const char c, const size_t i, const size_t j);
 	Level(int levelNumber);
 

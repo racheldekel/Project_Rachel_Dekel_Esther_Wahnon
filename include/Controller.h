@@ -1,5 +1,5 @@
 #pragma once
-const int NUM_OF_LEVELS = 6;
+const auto NUM_OF_LEVELS = 6;
 
 #include <SFML\Audio.hpp>
 #include <SFML\Graphics.hpp>
@@ -17,9 +17,8 @@ using std::vector;
 class Controller
 {
 public:
-	const int SIZE = 60;
 	Controller() {};
-	~Controller() {};
+	~Controller() = default;
 	void startGame(sf::RenderWindow& gold_miner);
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
@@ -28,7 +27,8 @@ public:
 	//const vector<vector<std::unique_ptr<Objects>>>& board;
 	
 private:
-
+	Player m_player = Player{ {400.f, 30.f} };
+	Rope m_rope = Rope{ {400.f, 70.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	sf::Vector2f m_position;

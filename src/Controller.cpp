@@ -1,8 +1,11 @@
 #include "Controller.h"
 class ActionError{};
 
+//const auto SIZE = 60;
+
 void Controller::startGame(sf::RenderWindow& gold_miner)
 {
+	auto clock = sf::Clock();
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
@@ -21,7 +24,6 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 			m_levelNumber++;
 
 			break;
-
 		}
 
 
@@ -50,15 +52,17 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 			}
 		}
 		*/
-
-
-		
 		drawAllObject(gold_miner);
+		m_player.draw(gold_miner);
+		m_rope.update_state(clock.getElapsedTime()*10.f);
+		//m_rope.openRope(clock.getElapsedTime()*10.f);
+		//m_rope.rotateRope(clock.getElapsedTime());
+		m_rope.draw(gold_miner);
 		gold_miner.display();
 		
 
 		gold_miner.clear();
-
+		clock.restart();
 	}
 
 	return;

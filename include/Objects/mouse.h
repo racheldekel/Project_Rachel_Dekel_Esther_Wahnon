@@ -7,7 +7,7 @@
 #include <SFML/System.hpp>
 
 using namespace std;
-class mouse: public Objects
+class Mouse: public Objects
 {
 public:
 	
@@ -15,7 +15,7 @@ public:
 
 	
 
-	mouse(sf::Vector2f pos) : Objects(pos)
+	Mouse(sf::Vector2f pos) : Objects(pos)
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(MOUSE));
 		m_sprite.setPosition(pos);
@@ -24,7 +24,6 @@ public:
 			((float)SIZE / rect.height)));
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });;
 	}
-	~mouse() {};
 	void draw(sf::RenderWindow& window)
 	{
 		window.draw(m_sprite);
@@ -50,6 +49,6 @@ private:
 
 
 
-	Direction m_arr[];
+	//Direction m_arr[];
 
 };

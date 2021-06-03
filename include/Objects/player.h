@@ -1,11 +1,11 @@
 #pragma once
 #include "Objects.h"
 
-class player : public Objects
+class Player : public Objects
 {
 public:
 
-	player(sf::Vector2f pos) : Objects(pos)
+	Player(sf::Vector2f pos) : Objects(pos)
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
 		m_sprite.setPosition(pos);
@@ -14,7 +14,6 @@ public:
 			((float)SIZE / rect.height)));
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 	}
-	~player() {};
 	void draw(sf::RenderWindow& window)
 		{
 			window.draw(m_sprite);

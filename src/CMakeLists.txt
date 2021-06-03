@@ -9,5 +9,5 @@
 								"Screens/GameScreen.cpp"
 								"Level"
 								"FileManager.cpp"
-								"mouse.cpp"
-								"rope.cpp")
+								"Mouse.cpp"
+								"Rope.cpp")

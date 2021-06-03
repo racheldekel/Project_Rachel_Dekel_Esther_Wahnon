@@ -16,6 +16,7 @@
 void ManagerScreen ::main_run()
 {
 	sf::RenderWindow GoldMiner(sf::VideoMode(800, 450), "Gold Miner");
+	GoldMiner.setFramerateLimit(60);
 	int screen = 0;
 
 	

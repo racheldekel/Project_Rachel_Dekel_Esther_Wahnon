@@ -16,7 +16,7 @@ FileManager::FileManager()
 	m_pTexture[PRESENT].loadFromFile("present.png");
 	m_pTexture[BIGROCK].loadFromFile("bigRock.png");
 	m_pTexture[SMALLROCK].loadFromFile("smallRock.png");
-	m_pTexture[ROPE].loadFromFile("bomb.png"); 
+	m_pTexture[ROPE].loadFromFile("rope.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
 
 }

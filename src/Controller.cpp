@@ -7,7 +7,7 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
 
-	gold_miner.setFramerateLimit(60);
+	
 	m_finish_level = false;
 
 	m_level.read_level(m_levelNumber);

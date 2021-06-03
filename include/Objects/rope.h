@@ -27,7 +27,7 @@ public:
 	private :
 
 		sf::Clock m_clock;
-		bool m_open = true;
+		bool m_open = false;
 		void changeDirection();
 		//if true it stays the same and we dont open it otherwise we dont change it and we open it 
 		void update_state();

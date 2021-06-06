@@ -20,6 +20,7 @@ public:
 		}
 	
 
+	virtual int  get_value() const override { return 0; };
 	sf::Sprite m_sprite;
 
 

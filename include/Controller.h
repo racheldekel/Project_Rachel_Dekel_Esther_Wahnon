@@ -8,7 +8,7 @@ const auto NUM_OF_LEVELS = 6;
 #include "Level.h"
 #include <fstream>
 #include <sstream>
-
+#include "Objects/diamond.h"
 
 using std::vector;
 #include <iostream>
@@ -33,11 +33,14 @@ private:
 	Level m_level;
 	sf::Vector2f m_position;
 
+	
+
 //	bool m_endOfGame = false;
 
 	int m_levelNumber = 1;
-
-
+	int m_value=0;
+	diamond m_diamond = diamond{ {},{} };
+	smallGold m_smallGold = smallGold{ {}, {} };
 
 	
 };

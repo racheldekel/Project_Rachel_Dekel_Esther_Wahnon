@@ -90,6 +90,10 @@ void Controller::mouse_button_released(sf::Event event)
 
 	
 	m_rope.changeState();
+
+	
+	std::cout << "diamond value "<<m_diamond.get_value() << std::endl;
+	std::cout << "big gold value " << m_smallGold.get_value() << std::endl;
 	/*
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;

@@ -5,7 +5,7 @@ class smallRock: public Objects
 {
 public:
 
-	smallRock(sf::Vector2f pos) : Objects(pos)
+	smallRock(sf::Vector2f pos, int value) : Objects(pos, m_value)
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(SMALLROCK));
 		m_sprite.setPosition(pos);
@@ -13,7 +13,7 @@ public:
 		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
 			((float)SIZE / rect.height)));
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
-
+		m_value = m_smallRockValue;
 
 	}
 	~smallRock() {};
@@ -22,9 +22,13 @@ public:
 		window.draw(m_sprite);
 	}
 
-
+	int  get_value()const
+	{
+		return m_value;
+	}
+private:
 	sf::Sprite m_sprite;
-
+	int m_smallRockValue =15;
 
 
 };

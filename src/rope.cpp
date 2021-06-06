@@ -2,7 +2,7 @@
 
 
 const auto SPEED = 0.5f;
-
+//-----------------------------------------------------------
 void Rope::update_state(const sf::Time& timePass)
 {
 
@@ -27,14 +27,18 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
 		((float)SIZE / rect.height)));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
-	//m_sprite.setRotation(MIN_ANGLE);
+	
 
+}
+//------------------------------------------------------------
+int  Rope :: get_value() const
+{
+	return m_value;
 }
 //----------------------------------------------------------------------
 void Rope::openRope(const sf::Time& time )
 {
-	// do the time  in float get parameter 
-
+	
 	int x, y;
 
 	sf::Vector2i pos;
@@ -45,7 +49,8 @@ void Rope::openRope(const sf::Time& time )
 	std::cout << scale.x << " " << scale.y << std::endl;
 
 
-	if (scale.y < 2.80 &&  !closingRope)
+	// to open the rope 
+	if (scale.y < 2.80 &&  !m_closingRope && !m_isAttach)
 	{
 		
 		float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
@@ -55,25 +60,37 @@ void Rope::openRope(const sf::Time& time )
 		m_sprite.setScale(scale);
 
 		if (scale.y > 2.7)
-			closingRope = true;
+			m_closingRope = true;
+
+		// collision
+
+		//m_isAttach = true ;
 		
 	}
 
-
-	 if (closingRope == true)
+	// close the rope 
+	 if (m_closingRope )
 	{
-		 closeRope(scale,time);
+		 if (!m_isAttach) // in case that the rope closes w/o any objects 
+		 {
+			 float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
+			 closeRope(scale, time, LengthAddition);
+		 }
+
+		 else {
+			 // here we have to calculate according to each object that has caught
+			 float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
+			 closeRope(scale, time, LengthAddition);
+
+			 }
 	}
-
-
-
 
 	
 }
 //-------------------------------------------------------------------------------------------
-void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time)
+void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthAddition)
 {
-	float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
+	
 
 	scale.y -= LengthAddition;
 
@@ -81,12 +98,12 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time)
 
 	if (scale.y < 0.65)
 	{
-		closingRope = false;
+		m_closingRope = false;
 		m_open = false;
 		return;
 	}
 }
-//-----------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------
 void Rope::draw(sf::RenderWindow& window)
 {
 
@@ -95,7 +112,7 @@ void Rope::draw(sf::RenderWindow& window)
 	//window.clear();
 	window.draw(m_sprite);
 }
-//-----------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------
 void Rope::rotateRope(const sf::Time& DeltaTime)
 {
 	if (m_sprite.getRotation() > MIN_ANGLE && m_sprite.getRotation() < MAX_ANGLE)

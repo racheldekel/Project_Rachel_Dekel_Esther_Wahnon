@@ -102,39 +102,39 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 
 
 	case '*': //  1 צינור -
-		m_board[i][j] = std::make_unique < bomb >(pos);
+		m_board[i][j] = std::make_unique < bomb >(pos, 0);
 		break;
 
 	case '%': //  1 צינור -
-		m_board[i][j] = std::make_unique < bone >(pos);
+		m_board[i][j] = std::make_unique < bone >(pos, 5);
 		break;
 	case '$': //  1 צינור -
-		m_board[i][j] = std::make_unique < bigGold >(pos);
+		m_board[i][j] = std::make_unique < bigGold >(pos, 100);
 		break;
 
 	case '&': //  1 צינור -
-		m_board[i][j] = std::make_unique < smallGold >(pos);
+		m_board[i][j] = std::make_unique < smallGold >(pos, 50);
 		break;
 
 	case '^': 
-		m_board[i][j] = std::make_unique <diamond>(pos);
+		m_board[i][j] = std::make_unique <diamond>(pos, 100);
 		break;
 
 	case '@': 
-		m_board[i][j] = std::make_unique < Present >(pos);
+		m_board[i][j] = std::make_unique < Present >(pos, 100);
 		break;
 	case '!':
-		m_board[i][j] = std::make_unique < smallRock>(pos);
+		m_board[i][j] = std::make_unique < smallRock>(pos, 15);
 		break;
 	case '#':
-		m_board[i][j] = std::make_unique < bigRock>(pos);
+		m_board[i][j] = std::make_unique < bigRock>(pos, 30);
 		break;
 
 	//case '+':
 	//	m_board[i][j] = std::make_unique < Rope>(pos);
 	//	break;
 	case '~':
-		m_board[i][j] = std::make_unique < Mouse>(pos);
+		m_board[i][j] = std::make_unique < Mouse>(pos, 2);
 		break;
 
 	

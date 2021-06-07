@@ -19,6 +19,8 @@ FileManager::FileManager()
 	m_pTexture[ROPE].loadFromFile("rope.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
 
+	m_font[0].loadFromFile("gameFont.otf");
+
 }
 // this functions gets icon texture and return the shpe
 const sf::Texture& FileManager::get_icon(size_t shape) const
@@ -31,3 +33,9 @@ FileManager& FileManager::instance()
 	static FileManager instance;
 	return instance;
 }
+
+sf::Font* FileManager::getFont(size_t type)
+{
+	return &m_font[type];
+}
+

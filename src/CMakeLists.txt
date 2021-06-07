@@ -9,5 +9,6 @@
 								"Screens/GameScreen.cpp"
 								"Level"
 								"FileManager.cpp"
+								"Toolbar.cpp"
 								"Mouse.cpp"
 								"Rope.cpp")

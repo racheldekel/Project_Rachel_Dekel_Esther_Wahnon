@@ -8,6 +8,7 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 using std::ifstream;
 using std::string;
@@ -15,13 +16,13 @@ using std::string;
 using std::vector;
 
 
-
+const auto SIZE = 60;
 
 class Objects
 {
 public:
 
-	const int SIZE = 60;
+	
 	Objects(sf::Vector2f location, int value)
 	{
 		
@@ -44,8 +45,10 @@ public:
 	
 protected:
 	
+	sf::RectangleShape m_object;
 	sf::Sprite m_sprite;
 	int m_value = 0;
+
 
 
 private:

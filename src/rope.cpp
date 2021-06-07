@@ -35,18 +35,24 @@ int  Rope :: get_value() const
 {
 	return m_value;
 }
+//--------------------------------------------------------------
+sf:: Vector2f  Rope::get_position() const
+{
+	return m_sprite.getPosition();
+}
+
+
+
+//-------------------------------------
+const float& Rope::getRotation() const
+{
+	return m_sprite.getRotation();
+}
 //----------------------------------------------------------------------
 void Rope::openRope(const sf::Time& time )
 {
-	
-	int x, y;
 
-	sf::Vector2i pos;
-
-	
 	auto scale = m_sprite.getScale();
-
-	std::cout << scale.x << " " << scale.y << std::endl;
 
 
 	// to open the rope 
@@ -62,10 +68,7 @@ void Rope::openRope(const sf::Time& time )
 		if (scale.y > 2.7)
 			m_closingRope = true;
 
-		// collision
-
-		//m_isAttach = true ;
-		
+	
 	}
 
 	// close the rope 
@@ -87,6 +90,14 @@ void Rope::openRope(const sf::Time& time )
 
 	
 }
+//----------------------------------------------
+/*
+sf::FloatRect Rope::getGlobalBounds() 
+{
+	return m_sprite.getGlobalBounds();
+}
+*/
+
 //-------------------------------------------------------------------------------------------
 void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthAddition)
 {
@@ -122,7 +133,6 @@ void Rope::rotateRope(const sf::Time& DeltaTime)
 	//std::cout << m_direction << std::endl;
 	//std::cout << timePass << std::endl;
 	auto angle = /*DeltaTime.asSeconds() **/ m_direction * SPEED;
-	std::cout << angle << std::endl;
 	m_sprite.rotate(angle);
 }
 

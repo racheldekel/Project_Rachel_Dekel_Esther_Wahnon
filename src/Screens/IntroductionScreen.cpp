@@ -74,7 +74,6 @@ bool IntroductionScreen::mouse_button_released(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	std::cout << pos.x << " " << pos.y << std::endl;
 	if ((pos.x > 264 && pos.x < 574) && (pos.y < 433 && pos.y > 367))
 		return true;
 

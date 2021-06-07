@@ -26,17 +26,14 @@ void Controller::startGame(sf::RenderWindow& gold_miner)
 			break;
 		}
 
-
+		if (isAttach(gold_miner))
+			cout << "is working";
 		
 		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
 		{
 			try
 			{
-				/*auto x = event.mouseButton.x;
-				auto y = event.mouseButton.y;
-				sf::Vector2i pos(x / SIZE, y /SIZE);*/
-
-				//std::cout << pos.x << " " << pos.y << std::endl;
+				
 				switch (event.type)
 				{
 				case sf::Event::Closed:
@@ -83,30 +80,44 @@ bool Controller::levelFinished()
 {
 	return m_finish_level;
 }
+
 //--------------------------------------------------------------------------
 void Controller::mouse_button_released(sf::Event event)
 {
-
-
-	
 	m_rope.changeState();
 
 	
-	std::cout << "diamond value "<<m_diamond.get_value() << std::endl;
-	std::cout << "big gold value " << m_smallGold.get_value() << std::endl;
-	/*
+	// delete
+	
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x /SIZE, y/SIZE );
 	
 	if (m_level(pos.y, pos.x))
-	{
+		cout << " here object " << endl;
 
-		auto current = m_level(pos.y, pos.x);
+		
 		
 
 	
-	*/
+	
+}
+//----------------------------------------------------------------
+bool Controller::isAttach(sf::RenderWindow& window)
+{
+	//Rope{ {400.f, 65.f} };
+	auto current_location = sf::Vector2f{ 400.f,65.f };
+	auto direction = sf::Vector2f(cosf(m_rope.getRotation()) * SIZE, sinf(m_rope.getRotation()) * SIZE);
+	current_location += direction;
+	if (m_level(current_location.x, current_location.y) != nullptr)
+	{
+		cout << "works the object is found " << endl;
+		return true;
+	}
+	//cout << m_rope.getRotation()<< endl;
+	//cout << m_rope.get_position().y << " " << m_rope.get_position().x << endl;
+	cout << current_location.x << " " << current_location.y<<std:: endl;
+	return false;
 }
 
 //----------------------------------------------------------------------------------------------
@@ -114,6 +125,6 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {
 
 	m_level.draw_static_figures(gold_miner);
-	//m_toolbar.draw(m_window, getNumberClicks(), m_levelNumber, m_level.getBoardSize());
+	m_toolbar.draw(gold_miner,  m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
 }
 

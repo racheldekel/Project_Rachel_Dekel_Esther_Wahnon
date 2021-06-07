@@ -25,7 +25,7 @@
 using std::ifstream;
 using std::string;
 
-const auto SIZE = 60.f;
+//const auto SIZE = 60;
 class Level
 {
 
@@ -34,7 +34,7 @@ public:
 	Level()= default;
 	void addOnBoard(const char c, const size_t i, const size_t j);
 	Level(int levelNumber);
-
+	bool check_collision(const sf::FloatRect& rect);
 	Objects* operator()(size_t row, size_t col);
 	void draw_static_figures(sf::RenderWindow& window);
 	void setBoardSize(int rows, int cols);
@@ -42,11 +42,16 @@ public:
 	int getCols() const;
 	int getRows()const;
 
+
+protected :
+
+
 private:
 	int m_row = 0;
 	int m_col = 0;
 	int m_level = 0;
 	sf::Vector2f m_pos;
+	
 
 	std::vector <std::vector<std::unique_ptr<Objects>>> m_board;
 

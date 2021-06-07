@@ -23,11 +23,11 @@ public:
 
 
 	static FileManager& instance();
-
+	sf::Font* getFont(size_t type);
 
 private:
 	FileManager();
 	sf::Texture m_pTexture[TEXTURES];
-
+	sf::Font m_font[1];
 
 };

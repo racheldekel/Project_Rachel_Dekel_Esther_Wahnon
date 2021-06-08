@@ -14,7 +14,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 	
 	int menu = 0;
 
-	if (!Texture.loadFromFile("startScreen.png"))
+	if (!Texture.loadFromFile("startGame.jpeg"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
@@ -26,11 +26,13 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 	
 	while (Running)
 	{
+
 		//Verifying events
 		while (gold_miner.pollEvent(Event))
 		{
 			try
 			{
+				
 				switch (Event.type)
 				{
 				case sf::Event::Closed:
@@ -83,7 +85,7 @@ bool StartScreen::mouse_button_released(sf::Event event)
 	sf::Vector2i pos(x , y );
 
 	//std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 353 && pos.x < 466) && (pos.y < 338 && pos.y > 246))
+	if ((pos.x > 261 && pos.x < 544) && (pos.y < 432 && pos.y > 354))
 		return true;
 
 	return false;

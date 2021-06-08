@@ -28,8 +28,9 @@ public:
 		const float& getRotation() const;
 	int  get_value()const;
 	sf::Vector2f  get_position() const;
+	bool getRopeState();
 	private :
-
+		sf::Vector2f m_scale;
 		bool m_isAttach = false;
 		bool  m_closingRope = false;
 		bool m_open = false; //true of up or down false if rotate
@@ -38,7 +39,7 @@ public:
 		
 		sf::Clock m_clock;
 		int m_direction = RIGHT;
-		
+		bool m_rotate = true;
 		
 
 

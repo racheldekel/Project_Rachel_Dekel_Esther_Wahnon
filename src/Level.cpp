@@ -7,6 +7,8 @@
 #include <stdexcept>
 #include <string>
 
+const auto CORRIDOR = sf::Vector2f(100.f, 150.f);
+
 using std::cout;
 using std::endl;
 using std::ifstream;
@@ -102,22 +104,13 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	
 	
 	auto pos = sf::Vector2f(j, i) * (float)(SIZE);
-	pos.x += SIZE/ 2;
-	pos.y += SIZE / 2;
+	pos += CORRIDOR;
+	/*pos.x += SIZE/ 2;
+	pos.y += SIZE / 2;*/
 	
-	//if (c == '=')
-	//	std::cout << "alls good";
-
+	
 	switch (c)
 	{
-
-
-	//case '=': //אובייקט ההתחלה
-	//	m_board[i][j] = std::make_unique <Player>(pos);
-
-	//	
-
-	//	break;
 
 
 	case '*': //  1 צינור -

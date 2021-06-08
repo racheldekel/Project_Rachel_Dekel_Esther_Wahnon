@@ -47,7 +47,10 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 
 				}
 
-				m_controller.startGame(gold_miner);
+				auto number = m_controller.startGame(gold_miner);
+
+				if (number == EXIT)
+					return 0;
 
 				if (m_controller.getLevel() <= NUM_OF_LEVELS)
 				{

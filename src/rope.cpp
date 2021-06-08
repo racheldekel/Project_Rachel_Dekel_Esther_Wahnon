@@ -38,34 +38,39 @@ int  Rope :: get_value() const
 //--------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
 {
-	return m_sprite.getPosition();
+	return m_sprite.getPosition();//+ m_scale;
 }
-
-
 
 //-------------------------------------
 const float& Rope::getRotation() const
 {
 	return m_sprite.getRotation();
 }
+
+//---------------------------------------------------------------------
+bool Rope ::getRopeState()
+{
+	return m_rotate ;
+}
+
 //----------------------------------------------------------------------
 void Rope::openRope(const sf::Time& time )
 {
+	m_rotate = false;
 
-	auto scale = m_sprite.getScale();
-
+	m_scale = m_sprite.getScale();
 
 	// to open the rope 
-	if (scale.y < 2.80 &&  !m_closingRope && !m_isAttach)
+	if (m_scale.y < 2.80 &&  !m_closingRope && !m_isAttach)
 	{
 		
 		float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
 
-		scale.y += LengthAddition;
+		m_scale.y += LengthAddition;
 
-		m_sprite.setScale(scale);
+		m_sprite.setScale(m_scale);
 
-		if (scale.y > 2.7)
+		if (m_scale.y > 2.7)
 			m_closingRope = true;
 
 	
@@ -76,14 +81,14 @@ void Rope::openRope(const sf::Time& time )
 	{
 		 if (!m_isAttach) // in case that the rope closes w/o any objects 
 		 {
-			 float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
-			 closeRope(scale, time, LengthAddition);
+			 float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
+			 closeRope(m_scale, time, LengthAddition);
 		 }
 
 		 else {
 			 // here we have to calculate according to each object that has caught
 			 float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
-			 closeRope(scale, time, LengthAddition);
+			 closeRope(m_scale, time, LengthAddition);
 
 			 }
 	}
@@ -102,12 +107,12 @@ sf::FloatRect Rope::getGlobalBounds()
 void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthAddition)
 {
 	
+	m_rotate = false;
+	m_scale.y -= LengthAddition;
 
-	scale.y -= LengthAddition;
+	m_sprite.setScale(m_scale);
 
-	m_sprite.setScale(scale);
-
-	if (scale.y < 0.65)
+	if (m_scale.y < 0.65)
 	{
 		m_closingRope = false;
 		m_open = false;
@@ -126,6 +131,7 @@ void Rope::draw(sf::RenderWindow& window)
 //-------------------------------------------------------------------------------------------------
 void Rope::rotateRope(const sf::Time& DeltaTime)
 {
+	m_rotate = true;
 	if (m_sprite.getRotation() > MIN_ANGLE && m_sprite.getRotation() < MAX_ANGLE)
 	{
 		changeDirection();

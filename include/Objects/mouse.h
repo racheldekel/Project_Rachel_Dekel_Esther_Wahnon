@@ -24,6 +24,8 @@ public:
 			((float)SIZE / rect.height)));
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });;
 		m_value = m_mouseValue;
+
+		
 	}
 	void draw(sf::RenderWindow& window)
 	{
@@ -33,10 +35,28 @@ public:
 	{
 		return m_value;
 	}
+	sf:: Vector2f getPosition() {
+		return m_sprite.getPosition();
+	}
 
+	void setPosition(sf:: Vector2f pos) {
+		m_sprite.setPosition(pos.x + 10, pos.y + 10);
+
+	}
 
 	
+	void move(float passedTime)
+	{
 
+
+		float distance = 120.f * passedTime;
+
+		//std::cout << distance;
+		sf::Vector2f pos = m_sprite.getPosition();
+		m_sprite.setPosition(pos.x + 10, pos.y +10);
+		//m_sprite.move(distance, 0);
+	//m_pos = m_sprite.getPosition();
+	}
 
 protected:
 

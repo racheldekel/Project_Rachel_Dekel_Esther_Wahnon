@@ -17,15 +17,16 @@ public:
 	~Rope() = default;
 	
 
+	bool isOpen()const { return m_open; }
 	sf::FloatRect getGlobalBounds() const
 	{
-		return m_object.getGlobalBounds();
+		return m_sprite.getGlobalBounds();
 	}
 	void openRope(const sf::Time& timePass);
 	void rotateRope(const sf::Time& DeltaTime);
 	const double  lenghRope = 1;
 	void draw(sf::RenderWindow& window);
-	void update_state(const sf::Time& timePass = sf::Time());
+	
 	void changeState() { m_open = true; }
 	void closeRope(sf::Vector2f scale, const sf::Time& time, float LengthAddition);
 

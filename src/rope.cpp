@@ -3,19 +3,7 @@
 
 const auto SPEED = 0.5f;
 //-----------------------------------------------------------
-void Rope::update_state(const sf::Time& timePass)
-{
 
-
-	if (m_open)
-		openRope(timePass);
-
-	else
-		rotateRope(timePass);
-	
-
-	//update_end_rope();
-}
 //------------------------------------------------------------------------------
 void Rope :: update_end_rope()
 {
@@ -133,9 +121,6 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 void Rope::draw(sf::RenderWindow& window)
 {
 
-	update_state();
-
-	//window.clear();
 	window.draw(m_sprite);
 }
 //-------------------------------------------------------------------------------------------------

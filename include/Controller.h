@@ -20,12 +20,13 @@ public:
 	Controller() {};
 	~Controller() = default;
 	int startGame(sf::RenderWindow& gold_miner);
+	void update_state(const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
 	int mouse_button_released(sf::Event event);
 	int getLevel()const;
 	//const vector<vector<std::unique_ptr<Objects>>>& board;
-	bool isAttach(sf::RenderWindow& window);
+	bool isAttach();
 private:
 
 	int m_moneyCounter = 0;

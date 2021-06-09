@@ -48,7 +48,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 						if (!mouse_button_released(event))
 							return EXIT;
 
-						
 
 						break;
 					}
@@ -67,13 +66,14 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		
 		drawAllObject(gold_miner);
 		m_player.draw(gold_miner);
-		m_rope.update_state(clock.getElapsedTime()*10.f);
 
-		if (isAttach(gold_miner))
-			cout << "is working";
-		float passedTime = clock.restart().asSeconds();
-		//m_mouse.move(passedTime);
 
+
+
+		update_state(clock.getElapsedTime()*10.f);
+
+
+		auto passedTime = clock.restart().asSeconds();
 		sf::Vector2f pos = m_mouse.getPosition();
 		m_mouse.setPosition(pos);
 		m_rope.draw(gold_miner);
@@ -88,6 +88,24 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	}
 
 	//return 1;
+}
+//_------------------------------------------------------------------------------
+void Controller::update_state(const sf::Time& timePass)
+{
+
+
+	if (m_rope.isOpen())
+	{
+		m_rope.openRope(timePass);
+		isAttach();
+
+	}
+
+	else
+		m_rope.rotateRope(timePass);
+
+
+
 }
 //---------------------------------------------------------------------------
 int Controller::getLevel()const
@@ -139,20 +157,21 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 }
 
 //----------------------------------------------------------------
-bool Controller::isAttach(sf::RenderWindow& window)
+bool Controller::isAttach()
 {
+	auto floatrect = m_rope.getGlobalBounds();
 	for (auto row = 0; row < m_level.getRows(); ++row) 
 	{
 		for (auto col = 0; col < m_level.getCols(); ++col)
 		{
 			if (m_level(row, col) != nullptr)
 			{
-				if (m_level(row, col)->intersects(m_rope.getGlobalBounds()))
+				if (m_level(row, col)->intersects(floatrect))
 				{
 					cout << "found intersection with item at " << row << endl;
 				}
+				cout << floatrect.width << " " << floatrect.height << endl;
 			}
-
 		}
 	}
 

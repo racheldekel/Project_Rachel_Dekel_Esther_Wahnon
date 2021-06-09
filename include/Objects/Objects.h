@@ -16,7 +16,7 @@ using std::string;
 using std::vector;
 
 
-const auto SIZE = 60;
+const auto SIZE = 40;
 
 class Objects
 {
@@ -51,7 +51,7 @@ public:
 		return m_value;
 	};
 
-	bool intersects(const sf::FloatRect& rect)
+	bool is_intersected(const sf::FloatRect& rect)
 	{
 		auto objectLock = m_sprite.getGlobalBounds();
 		return rect.intersects(m_sprite.getGlobalBounds());

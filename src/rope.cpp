@@ -22,8 +22,8 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
 	m_sprite.setPosition(pos);
 	auto rect = m_sprite.getGlobalBounds();
-	m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
-		((float)SIZE / rect.height)));
+	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height),
+		((float)60 / rect.height)));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
 	
 

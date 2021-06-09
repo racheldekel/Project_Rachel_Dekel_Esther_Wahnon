@@ -25,9 +25,10 @@ public:
 	bool levelFinished();
 	bool mouse_button_released(sf::Event event);
 	int getLevel()const;
-	bool isAttach();
+	bool isAttach(int& row, int& col);
 private:
 
+	bool m_checked_object = true;
 	int m_moneyCounter = 0;
 	int m_goalLevel = 0;
 	int  m_time = 0;

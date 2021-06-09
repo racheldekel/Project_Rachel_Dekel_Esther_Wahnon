@@ -93,12 +93,31 @@ void Controller::update_state(const sf::Time& timePass)
 	if (m_rope.isOpen())
 	{
 		m_rope.openRope(timePass);
-		isAttach();
+
+		if (m_checked_object)
+		{
+			int row=0, col=0;
+			// if we found an object , theres no need to check for more objects 
+			if (isAttach(row, col))
+			{
+				m_rope.connectToObject(timePass);
+				m_rope.foundObject();
+				cout << "found intersection with item at " << row << " " << col << endl;
+				// so it wont enter another time
+				m_checked_object = false;
+			}
+		}
 
 	}
 
 	else
+	{
 		m_rope.rotateRope(timePass);
+
+		m_checked_object = true;
+
+	}
+		
 
 
 
@@ -139,7 +158,7 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 }
 
 //----------------------------------------------------------------
-bool Controller::isAttach()
+bool Controller::isAttach(int &final_row, int &final_col)
 {
 	auto floatrect = m_rope.get_objects_bounds();
 
@@ -151,8 +170,10 @@ bool Controller::isAttach()
 			{
 				if (m_level(row, col)->is_intersected(floatrect))
 				{
-					cout << "found intersection with item at " << row << " "<<col<< endl;
-					//return true;
+
+					final_row = row;
+					final_col = col;
+					return true;
 				}
 				//cout << floatrect.width << " " << floatrect.height << endl;
 			}

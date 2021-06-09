@@ -36,6 +36,9 @@ public:
 	Level(int levelNumber);
 	bool check_collision(const sf::FloatRect& rect);
 	Objects* operator()(size_t row, size_t col);
+	Objects& getObjectAt(size_t row, size_t col) {
+		return *m_board[row][col];
+	}
 	void draw_static_figures(sf::RenderWindow& window);
 	void setBoardSize(int rows, int cols);
 	void read_level(int levelNumber);

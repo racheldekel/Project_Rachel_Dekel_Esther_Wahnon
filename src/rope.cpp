@@ -14,7 +14,17 @@ void Rope::update_state(const sf::Time& timePass)
 		rotateRope(timePass);
 	
 
+	//update_end_rope();
 }
+//------------------------------------------------------------------------------
+void Rope :: update_end_rope()
+{
+
+	auto height = m_sprite.getLocalBounds().height * m_sprite.getScale().y;
+
+	auto new_y_pos = m_sprite.getPosition().y + height;
+}
+//------------------------------------------f------------------------------------
 void Rope::changeDirection()
 {
 	m_direction = (m_direction == 1) ? -1 : 1;

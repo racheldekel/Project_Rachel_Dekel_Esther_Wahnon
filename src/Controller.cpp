@@ -48,9 +48,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 						if (!mouse_button_released(event))
 							return EXIT;
 
-						if (isAttach(gold_miner))
-							cout << "is working";
-
+						
 
 						break;
 					}
@@ -70,6 +68,9 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		drawAllObject(gold_miner);
 		m_player.draw(gold_miner);
 		m_rope.update_state(clock.getElapsedTime()*10.f);
+
+		if (isAttach(gold_miner))
+			cout << "is working";
 		float passedTime = clock.restart().asSeconds();
 		//m_mouse.move(passedTime);
 
@@ -130,9 +131,34 @@ int Controller::mouse_button_released(sf::Event event)
 		
 	return 1;
 }
+void Controller::drawAllObject(sf::RenderWindow& gold_miner)
+{
+
+	m_level.draw_static_figures(gold_miner);
+	m_toolbar.draw(gold_miner, m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
+}
+
 //----------------------------------------------------------------
 bool Controller::isAttach(sf::RenderWindow& window)
 {
+	for (auto row = 0; row < m_level.getRows(); ++row) 
+	{
+		for (auto col = 0; col < m_level.getCols(); ++col)
+		{
+			if (m_level(row, col) != nullptr)
+			{
+				if (m_level(row, col)->intersects(m_rope.getGlobalBounds()))
+				{
+					cout << "found intersection with item at " << row << endl;
+				}
+			}
+
+		}
+	}
+
+		return false;
+	}
+	/*
 	//auto current_location=  {400.f, 65.f};
 	auto current_location = m_rope.get_position();
 
@@ -158,16 +184,10 @@ bool Controller::isAttach(sf::RenderWindow& window)
 	}
 	//cout << m_rope.getRotation()<< endl;
 	//cout << m_rope.get_position().y << " " << m_rope.get_position().x << endl;
+	*/
+	
+	
 
-
-	return false;
-}
 
 //----------------------------------------------------------------------------------------------
-void Controller::drawAllObject(sf::RenderWindow& gold_miner)
-{
-
-	m_level.draw_static_figures(gold_miner);
-	m_toolbar.draw(gold_miner,  m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
-}
 

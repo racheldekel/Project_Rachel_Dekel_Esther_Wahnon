@@ -16,19 +16,24 @@ public:
 	Rope(sf::Vector2f pos);
 	~Rope() = default;
 	
+
+	sf::FloatRect getGlobalBounds() const
+	{
+		return m_object.getGlobalBounds();
+	}
 	void openRope(const sf::Time& timePass);
 	void rotateRope(const sf::Time& DeltaTime);
 	const double  lenghRope = 1;
 	void draw(sf::RenderWindow& window);
 	void update_state(const sf::Time& timePass = sf::Time());
-	sf::FloatRect getGlobalBounds();
 	void changeState() { m_open = true; }
 	void closeRope(sf::Vector2f scale, const sf::Time& time, float LengthAddition);
-//	sf::Sprite m_sprite;
+
 		const float& getRotation() const;
 	int  get_value()const;
 	sf::Vector2f  get_position() const;
 	bool getRopeState();
+	void update_end_rope();
 	private :
 		sf::Vector2f m_scale;
 		bool m_isAttach = false;
@@ -41,6 +46,6 @@ public:
 		int m_direction = RIGHT;
 		bool m_rotate = true;
 		
-
+		sf::Sprite m_rope_end_sprite;
 
 };

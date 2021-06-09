@@ -41,6 +41,22 @@ public:
 	~Objects() = default;
 	virtual void draw(sf::RenderWindow& window) = 0;
 	virtual int get_value()const = 0;
+
+
+
+	bool intersects(const sf::FloatRect& rect)
+	{
+		return m_object.getGlobalBounds().intersects(rect);
+	}
+
+	/*
+	bool intersects(Objects* other) {
+		if (other == nullptr) {
+			return false;
+		}
+	//	std::cout << m_sprite.getGlobalBounds().height << std::endl;
+		return m_sprite.getGlobalBounds().intersects(other->m_sprite.getGlobalBounds());
+	}*/
 	
 	
 protected:

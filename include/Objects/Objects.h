@@ -22,32 +22,34 @@ class Objects
 {
 public:
 
+	Objects(sf::Vector2f location)
+	{
+		m_sprite.setPosition(location);
 	
-	Objects(sf::Vector2f location, int value)
+	}
+	Objects(const sf::Texture& texture, sf::Vector2f location, int value) : m_sprite(texture)
 	{
 		m_sprite.setPosition(location);
 		m_value = value;
 		auto rect = m_sprite.getGlobalBounds();
 		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
 			((float)SIZE / rect.height)));
-		//m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
+
+		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 	
 	}
 
-	Objects(sf::Vector2f location)
+	void draw(sf::RenderWindow& window) const
 	{
-
-		m_sprite.setPosition(location);
-		/*auto rect = m_sprite.getGlobalBounds();
-		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
-			((float)SIZE / rect.height)));
-		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
-		*/
+		window.draw(m_sprite);
 	}
+	
 	
 	~Objects() = default;
-	virtual void draw(sf::RenderWindow& window) = 0;
-	virtual int get_value()const = 0;
+	int get_value() const
+	{
+		return m_value;
+	};
 
 	bool intersects(const sf::FloatRect& rect)
 	{
@@ -57,19 +59,9 @@ public:
 
 
 
-	/*
-	bool intersects(Objects* other) {
-		if (other == nullptr) {
-			return false;
-		}
-	//	std::cout << m_sprite.getGlobalBounds().height << std::endl;
-		return m_sprite.getGlobalBounds().intersects(other->m_sprite.getGlobalBounds());
-	}*/
-	
 	
 protected:
 	
-	sf::RectangleShape m_object;
 	sf::Sprite m_sprite;
 	int m_value = 0;
 

@@ -4,26 +4,10 @@
 class Present : public Objects
 {
 public:
+	Present(sf::Vector2f pos) : Objects(FileManager::instance().get_icon(PRESENT), pos, 100) {	};
 
-	Present(sf::Vector2f pos, int value) : Objects(pos, m_value)
-	{
-		m_sprite.setTexture(FileManager::instance().get_icon(PRESENT));
-		m_sprite.setPosition(pos);
-		m_value = m_presentValue;
-
-	}
-	void draw(sf::RenderWindow& window)
-	{
-		window.draw(m_sprite);
-	}
-
-	int  get_value()const
-	{
-		return m_value;
-	}
+	
 private:
 
-	sf::Sprite m_sprite;
-int m_presentValue=100;
 
 };

@@ -29,10 +29,7 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 
 }
 //------------------------------------------------------------
-int  Rope :: get_value() const
-{
-	return m_value;
-}
+
 //--------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
 {

@@ -5,24 +5,18 @@ class Player : public Objects
 {
 public:
 
+
+
 	Player(sf::Vector2f pos) : Objects(pos)
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
-		m_sprite.setPosition(pos);
 		auto rect = m_sprite.getGlobalBounds();
-		
-		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
+		m_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height),
+			((float)SIZE / rect.height)));
+		m_sprite.setOrigin({ rect.width / 2, rect.height/ 2 });
+
+
 	}
-	void draw(sf::RenderWindow& window)
-		{
-			window.draw(m_sprite);
-		}
-	
-
-	virtual int  get_value() const override { return 0; };
-	sf::Sprite m_sprite;
-
-
 
 };
 

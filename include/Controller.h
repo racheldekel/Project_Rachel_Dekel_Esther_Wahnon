@@ -25,7 +25,6 @@ public:
 	bool levelFinished();
 	int mouse_button_released(sf::Event event);
 	int getLevel()const;
-	//const vector<vector<std::unique_ptr<Objects>>>& board;
 	bool isAttach();
 private:
 
@@ -39,15 +38,10 @@ private:
 	bool m_finish_level = true;
 	Level m_level;
 	sf::Vector2f m_position;
-	Mouse m_mouse = Mouse{ {},{} };
-
-
-//	bool m_endOfGame = false;
 
 	int m_levelNumber = 1;
 	int m_value=0;
-	diamond m_diamond = diamond{ {},{} };
-	smallGold m_smallGold = smallGold{ {}, {} };
+
 
 	
 };

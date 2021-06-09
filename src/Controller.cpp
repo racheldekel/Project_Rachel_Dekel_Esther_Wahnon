@@ -74,8 +74,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 
 		auto passedTime = clock.restart().asSeconds();
-		sf::Vector2f pos = m_mouse.getPosition();
-		m_mouse.setPosition(pos);
 		m_rope.draw(gold_miner);
 		gold_miner.display();
 		

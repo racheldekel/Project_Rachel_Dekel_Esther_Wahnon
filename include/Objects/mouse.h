@@ -10,27 +10,14 @@ using namespace std;
 class Mouse: public Objects
 {
 public:
+
+	Mouse(sf::Vector2f pos) : Objects(FileManager::instance().get_icon(MOUSE), pos, 2) {	};
 	
 	void move(sf::Vector2f boardSize);
 
 	
 
-	Mouse(sf::Vector2f pos,int  value) : Objects(pos, m_value)
-	{
-		m_sprite.setTexture(FileManager::instance().get_icon(MOUSE));
-		m_sprite.setPosition(pos);
-		m_value = m_mouseValue;
-
-		
-	}
-	void draw(sf::RenderWindow& window)
-	{
-		window.draw(m_sprite);
-	}
-	int  get_value() const
-	{
-		return m_value;
-	}
+	
 	sf:: Vector2f getPosition() {
 		return m_sprite.getPosition();
 	}

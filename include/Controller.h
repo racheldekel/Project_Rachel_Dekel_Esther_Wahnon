@@ -23,7 +23,7 @@ public:
 	void update_state(const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
-	int mouse_button_released(sf::Event event);
+	bool mouse_button_released(sf::Event event);
 	int getLevel()const;
 	bool isAttach();
 private:

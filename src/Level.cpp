@@ -65,27 +65,6 @@ void Level::read_level(int levelNumber)
 	}
 
 }
-
-
-//-------------------------------------------------------
-/*
-bool Level::check_collision(const sf::FloatRect& rect)
-{
-	for (auto row = 0; row < m_board.size(); row++)
-
-	{
-		for (auto col = 0; col < m_board[row].size(); col++)
-		{
-
-			if (m_board[row][col]->m_object.getGlobalBounds().intersects(rect))
-				return true;
-
-
-
-		}
-	}
-	return false;
-}*/
 //------------------------------------------------
 int Level::getRows() const
 {
@@ -145,10 +124,6 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	case '~':
 		m_board[i][j] = std::make_unique < Mouse>(pos);
 		break;
-
-	
-
-		
 
 
 	default:

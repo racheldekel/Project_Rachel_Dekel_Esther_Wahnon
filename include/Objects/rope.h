@@ -15,10 +15,10 @@ public:
 
 	Rope(sf::Vector2f pos);
 	~Rope() = default;
-	
+
 
 	bool isOpen()const { return m_open; }
-	sf::FloatRect getGlobalBounds() const
+	sf::FloatRect get_objects_bounds() const
 	{
 		return m_sprite.getGlobalBounds();
 	}

@@ -80,8 +80,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		gold_miner.clear();
 		clock.restart();
 
-		//m_rope.openRope(clock.getElapsedTime()*10.f);
-		//m_rope.rotateRope(clock.getElapsedTime());
 
 	}
 
@@ -118,38 +116,24 @@ bool Controller::levelFinished()
 }
 
 //--------------------------------------------------------------------------
-int Controller::mouse_button_released(sf::Event event)
+bool Controller::mouse_button_released(sf::Event event)
 {
 
 	auto x1 = event.mouseButton.x;
 	auto y1 = event.mouseButton.y;
 	sf::Vector2i pos1(x1, y1);
 
-	//cout << pos1.x << " " << pos1.y;
 	if ((pos1.x > 534 && pos1.x < 581) && (pos1.y < 46 && pos1.y > 17))
-		return EXIT;
+		return false;
 
 	m_rope.changeState();
 
 	
-	// delete
-	
-	auto x = event.mouseButton.x;
-	auto y = event.mouseButton.y;
-	sf::Vector2i pos(x /SIZE, y/SIZE );
-	
-	
-
-	//if (m_level(pos.y, pos.x))
-		//cout << " here object " << endl;
-
-		
-		
-	return 1;
+	return true;
 }
+//--------------------------------------------------------------------------------------------
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {
-
 	m_level.draw_static_figures(gold_miner);
 	m_toolbar.draw(gold_miner, m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
 }
@@ -157,18 +141,20 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 //----------------------------------------------------------------
 bool Controller::isAttach()
 {
-	auto floatrect = m_rope.getGlobalBounds();
+	auto floatrect = m_rope.get_objects_bounds();
+
 	for (auto row = 0; row < m_level.getRows(); ++row) 
 	{
 		for (auto col = 0; col < m_level.getCols(); ++col)
 		{
 			if (m_level(row, col) != nullptr)
 			{
-				if (m_level(row, col)->intersects(floatrect))
+				if (m_level(row, col)->is_intersected(floatrect))
 				{
-					cout << "found intersection with item at " << row << endl;
+					cout << "found intersection with item at " << row << " "<<col<< endl;
+					//return true;
 				}
-				cout << floatrect.width << " " << floatrect.height << endl;
+				//cout << floatrect.width << " " << floatrect.height << endl;
 			}
 		}
 	}
@@ -203,8 +189,5 @@ bool Controller::isAttach()
 	//cout << m_rope.get_position().y << " " << m_rope.get_position().x << endl;
 	*/
 	
-	
-
-
 //----------------------------------------------------------------------------------------------
 

@@ -49,8 +49,6 @@ void Rope::connectToObject(const sf::Time& time)
  {
 	m_scale = m_sprite.getScale();
 
-	
-
 		float LengthAddition = Rope::lenghRope *0.2; //* time.asSeconds();
 
 		m_scale.y += LengthAddition;
@@ -83,6 +81,7 @@ void Rope::openRope(const sf::Time& time )
 	// here we still have to work on changing according to the object 
 	 if (m_closingRope )
 	{
+		 
 		 if (!m_found_object) // in case that the rope closes w/o any objects 
 		 {
 			 float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
@@ -123,7 +122,6 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 //----------------------------------------------------------------------------------------------
 void Rope::draw(sf::RenderWindow& window)
 {
-
 	window.draw(m_sprite);
 }
 //-------------------------------------------------------------------------------------------------
@@ -135,9 +133,8 @@ void Rope::rotateRope(const sf::Time& DeltaTime)
 	{
 		changeDirection();
 	}
-	//std::cout << m_direction << std::endl;
-	//std::cout << timePass << std::endl;
-	auto angle = /*DeltaTime.asSeconds() **/ m_direction * SPEED;
+	
+	auto angle = /*DeltaTime.asSeconds() */ m_direction * SPEED;
 	m_sprite.rotate(angle);
 }
 

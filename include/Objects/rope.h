@@ -2,7 +2,6 @@
 #include "Objects.h"
 
 
-
 const auto MAX_ANGLE= 270.f;
 const auto MIN_ANGLE = 90.f;
 
@@ -18,6 +17,7 @@ public:
 	void foundObject();
 
 	bool isOpen()const { return m_open; }
+
 	sf::FloatRect get_objects_bounds() const
 	{
 		return m_sprite.getGlobalBounds();
@@ -31,7 +31,7 @@ public:
 	void changeState() { m_open = true; }
 	void closeRope(sf::Vector2f scale, const sf::Time& time, float LengthAddition);
 
-		const float& getRotation() const;
+	const float& getRotation() const;
 	
 	sf::Vector2f  get_position() const;
 	bool getRopeState();
@@ -43,9 +43,6 @@ public:
 		bool  m_closingRope = false;
 		bool m_open = false; //true of up or down false if rotate
 		void changeDirection();
-
-		//if true it stays the same and we dont open it otherwise we dont change it and we open it 
-		
 		sf::Clock m_clock;
 		int m_direction = RIGHT;
 		bool m_rotate = true;

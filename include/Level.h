@@ -44,7 +44,7 @@ public:
 	void read_level(int levelNumber);
 	int getCols() const;
 	int getRows()const;
-
+	
 
 protected :
 

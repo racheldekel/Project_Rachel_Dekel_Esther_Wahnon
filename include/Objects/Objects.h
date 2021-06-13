@@ -21,6 +21,7 @@ const auto SIZE = 40;
 class Objects
 {
 public:
+	void moveObject(int row, int col);
 
 	Objects(sf::Vector2f location)
 	{
@@ -56,7 +57,31 @@ public:
 		auto objectLock = m_sprite.getGlobalBounds();
 		return rect.intersects(m_sprite.getGlobalBounds());
 	}
+	bool moveObject()
+	{
+		auto pos = m_sprite.getPosition();
 
+
+		//std::cout << m_sprite.getPosition().y<<std:: endl;
+		
+		if (pos.y > 65)
+		{
+			pos.y -= 1;
+
+
+			m_sprite.move(0, -1);
+
+			return true;
+
+		}
+
+
+		else return false;
+
+	
+			
+
+	}
 
 
 	

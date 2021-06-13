@@ -68,7 +68,6 @@ void Level::read_level(int levelNumber)
 //------------------------------------------------
 int Level::getRows() const
 {
-
 	return m_row;
 }
 //-------------------------------------------
@@ -155,3 +154,4 @@ Objects* Level::operator()(size_t row, size_t col)
 		return nullptr;
 	return m_board[row][col].get();
 }
+//-----------------------------------------------------

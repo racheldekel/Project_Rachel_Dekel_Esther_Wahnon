@@ -28,6 +28,8 @@ public:
 	bool isAttach(int& row, int& col);
 private:
 
+
+	Mouse m_mouse{{} };
 	bool m_checked_object = true;
 	int m_moneyCounter = 0;
 	int m_goalLevel = 0;
@@ -40,9 +42,12 @@ private:
 	Level m_level;
 	sf::Vector2f m_position;
 
+	void  changeObjectState();
+	int m_row = 0;
+	int m_col = 0;
 	int m_levelNumber = 1;
 	int m_value=0;
-
+	bool m_getObject = false;
 
 	
 };

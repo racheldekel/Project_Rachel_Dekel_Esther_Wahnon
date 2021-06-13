@@ -68,15 +68,16 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		m_player.draw(gold_miner);
 
 
-
-
+		
 		update_state(clock.getElapsedTime()*10.f);
 
+		
 
+		m_mouse.move(15);
 		auto passedTime = clock.restart().asSeconds();
 		m_rope.draw(gold_miner);
 		gold_miner.display();
-		
+		m_mouse.move(passedTime);
 		gold_miner.clear();
 		clock.restart();
 
@@ -85,41 +86,61 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 	//return 1;
 }
-//_------------------------------------------------------------------------------
+//------------------------------------------------------------------------------
+
+
 void Controller::update_state(const sf::Time& timePass)
 {
-
-
-	if (m_rope.isOpen())
+	if (m_getObject)
 	{
-		m_rope.openRope(timePass);
 
-		if (m_checked_object)
+		
+		if (!m_level(m_row, m_col)->moveObject())
+			m_getObject = false;
+		
+			
+
+	}
+
+
+	else {
+
+		if (m_rope.isOpen())
 		{
-			int row=0, col=0;
-			// if we found an object , theres no need to check for more objects 
-			if (isAttach(row, col))
+			m_rope.openRope(timePass);
+
+			if (m_checked_object)
 			{
-				m_rope.connectToObject(timePass);
-				m_rope.foundObject();
-				cout << "found intersection with item at " << row << " " << col << endl;
-				// so it wont enter another time
-				m_checked_object = false;
+				int row = 0, col = 0;
+				// if we found an object , theres no need to check for more objects 
+				if (isAttach(row, col))
+				{
+					m_rope.connectToObject(timePass);
+					m_rope.foundObject();
+					cout << "found intersection with item at " << row << " " << col << endl;
+					// so it wont enter another time
+					m_checked_object = false;
+
+					m_row = row, m_col = col;
+					m_getObject = true;
+
+
+
+				}
 			}
+
 		}
 
+		else
+		{
+			m_rope.rotateRope(timePass);
+
+			m_checked_object = true;
+
+		}
+
+
 	}
-
-	else
-	{
-		m_rope.rotateRope(timePass);
-
-		m_checked_object = true;
-
-	}
-		
-
-
 
 }
 //---------------------------------------------------------------------------

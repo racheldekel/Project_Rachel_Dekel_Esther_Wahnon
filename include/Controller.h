@@ -33,7 +33,7 @@ private:
 	bool m_checked_object = true;
 	int m_moneyCounter = 0;
 	int m_goalLevel = 0;
-	int  m_time = 0;
+	int  m_time = 60;
 	Toolbar m_toolbar;
 	
 	Player m_player = Player{ {400.f, 30.f} };

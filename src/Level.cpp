@@ -83,9 +83,6 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	
 	auto pos = sf::Vector2f(j, i) * (float)(SIZE);
 	pos += CORRIDOR;
-	/*pos.x += SIZE/ 2;
-	pos.y += SIZE / 2;*/
-	
 	
 	switch (c)
 	{

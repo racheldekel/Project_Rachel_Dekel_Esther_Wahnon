@@ -64,7 +64,7 @@ void Rope::openRope(const sf::Time& time )
 	m_scale = m_sprite.getScale();
 
 	// to open the rope 
-	if (m_scale.y < 2.80 &&  !m_closingRope )
+	if (m_scale.y < 3 &&  !m_closingRope )
 	{
 		
 		float LengthAddition = Rope::lenghRope * time.asSeconds(); //* time.asSeconds();
@@ -73,7 +73,7 @@ void Rope::openRope(const sf::Time& time )
 
 		m_sprite.setScale(m_scale);
 
-		if (m_scale.y > 2.7 || m_found_object)
+		if (m_scale.y > 2.9 || m_found_object)
 			m_closingRope = true;
 
 	}

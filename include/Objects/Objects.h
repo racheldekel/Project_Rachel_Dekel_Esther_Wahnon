@@ -57,19 +57,15 @@ public:
 		auto objectLock = m_sprite.getGlobalBounds();
 		return rect.intersects(m_sprite.getGlobalBounds());
 	}
-	bool moveObject(const sf::Time& timePass)
+	bool moveObject(const sf::Time& timePass, sf:: Vector2f posRope, float angle)
 	{
 		auto pos = m_sprite.getPosition();
 
-
-		//std::cout << m_sprite.getPosition().y<<std:: endl;
-		
 		if (pos.y > 65)
 		{
 			pos.y -= 1;
 
-
-			m_sprite.move(0, -1);
+			m_sprite.move(cosf(angle*0.0125), -1);
 
 			return true;
 

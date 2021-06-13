@@ -1,7 +1,6 @@
 #include "Controller.h"
 class ActionError{};
 
-//const auto SIZE = 60;
 
 int Controller::startGame(sf::RenderWindow& gold_miner)
 {
@@ -9,7 +8,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
-
+	static sf::Clock AITimer;
+	static sf::Time AITime = sf::seconds(1.0f);
 	
 	m_finish_level = false;
 
@@ -21,14 +21,10 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	{
 		gold_miner.draw(s);
 
-		if (m_finish_level)
-		{
-			m_levelNumber++;
-
-			break;
+		if (AITimer.getElapsedTime().asSeconds() > AITime.asSeconds()) {
+			m_time--;
+			AITimer.restart();
 		}
-
-		
 		
 		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
 		{
@@ -71,15 +67,18 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		
 		update_state(clock.getElapsedTime()*10.f);
 
-		
-
-		m_mouse.move(15);
 		auto passedTime = clock.restart().asSeconds();
 		m_rope.draw(gold_miner);
 		gold_miner.display();
-		m_mouse.move(passedTime);
 		gold_miner.clear();
 		clock.restart();
+
+		if (m_finish_level)
+		{
+			m_levelNumber++;
+
+			break;
+		}
 
 
 	}
@@ -91,23 +90,24 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 void Controller::update_state(const sf::Time& timePass)
 {
+
+	//if we have found and object and we are taking it 
 	if (m_getObject)
 	{
 
-		
-		if (!m_level(m_row, m_col)->moveObject(timePass))
+		//bring it up and once is done the function moveOBJECT WILL RETURN false
+		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_rope.getRotation()))
 		{
+			
 			auto money =m_level(m_row, m_col)->get_value();
 
 			m_moneyCounter += money;
-			m_level.setBoard()[m_row][m_col] = nullptr;
+			m_level.set_Board()[m_row][m_col] = nullptr;
 			m_getObject = false;
 		}
 			
 
 	}
-
-
 
 
 		if (m_rope.isOpen())
@@ -128,11 +128,7 @@ void Controller::update_state(const sf::Time& timePass)
 
 					m_row = row, m_col = col;
 					m_getObject = true;
-					//m_level.getObjectAt(row, col);
-					//m_level(row, col)=nullptr;
-					//m_level.setBoard()[object->getPosition().y][object->getPosition().x] = nullptr;
-					//m_level.setBoard()[row][col] = nullptr;
-	
+					
 				}
 			}
 
@@ -144,10 +140,7 @@ void Controller::update_state(const sf::Time& timePass)
 
 			m_checked_object = true;
 
-		}
-
-
-	
+		}	
 
 }
 //---------------------------------------------------------------------------

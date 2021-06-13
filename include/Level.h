@@ -44,7 +44,7 @@ public:
 	void read_level(int levelNumber);
 	int getCols() const;
 	int getRows()const;
-	vector<vector<std::unique_ptr<Objects>>>&setBoard()
+	vector<vector<std::unique_ptr<Objects>>>&set_Board()
 	{
 		return m_board;
 	}

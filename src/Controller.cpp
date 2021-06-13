@@ -96,14 +96,16 @@ void Controller::update_state(const sf::Time& timePass)
 
 		
 		if (!m_level(m_row, m_col)->moveObject())
+		{
+			m_level.setBoard()[m_row][m_col] = nullptr;
 			m_getObject = false;
-		
+		}
 			
 
 	}
 
 
-	else {
+
 
 		if (m_rope.isOpen())
 		{
@@ -123,9 +125,11 @@ void Controller::update_state(const sf::Time& timePass)
 
 					m_row = row, m_col = col;
 					m_getObject = true;
-
-
-
+					//m_level.getObjectAt(row, col);
+					//m_level(row, col)=nullptr;
+					//m_level.setBoard()[object->getPosition().y][object->getPosition().x] = nullptr;
+					//m_level.setBoard()[row][col] = nullptr;
+	
 				}
 			}
 
@@ -140,7 +144,7 @@ void Controller::update_state(const sf::Time& timePass)
 		}
 
 
-	}
+	
 
 }
 //---------------------------------------------------------------------------
@@ -194,9 +198,11 @@ bool Controller::isAttach(int &final_row, int &final_col)
 
 					final_row = row;
 					final_col = col;
+				//	m_level.setBoard()[row][col] = nullptr;
 					return true;
 				}
 				//cout << floatrect.width << " " << floatrect.height << endl;
+			
 			}
 		}
 	}

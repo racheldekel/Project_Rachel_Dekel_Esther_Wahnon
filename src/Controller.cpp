@@ -95,8 +95,11 @@ void Controller::update_state(const sf::Time& timePass)
 	{
 
 		
-		if (!m_level(m_row, m_col)->moveObject())
+		if (!m_level(m_row, m_col)->moveObject(timePass))
 		{
+			auto money =m_level(m_row, m_col)->get_value();
+
+			m_moneyCounter += money;
 			m_level.setBoard()[m_row][m_col] = nullptr;
 			m_getObject = false;
 		}

@@ -57,7 +57,7 @@ public:
 		auto objectLock = m_sprite.getGlobalBounds();
 		return rect.intersects(m_sprite.getGlobalBounds());
 	}
-	bool moveObject()
+	bool moveObject(const sf::Time& timePass)
 	{
 		auto pos = m_sprite.getPosition();
 
@@ -76,7 +76,8 @@ public:
 		}
 
 
-		else return false;
+		else 
+			return false;
 
 	
 			

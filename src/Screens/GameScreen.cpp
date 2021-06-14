@@ -50,14 +50,14 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 				auto number = m_controller.startGame(gold_miner);
 
 				if (number == EXIT)
-					return 0;
+					return START_SCREEN;
 
 				if (number == TIME_OVER)
-					return 5;
+					return GAME_OVER_SCREEN;
 
 				if (m_controller.getLevel() <= NUM_OF_LEVELS)
 				{
-					return 3;
+					return GOAL_SCREEN;
 
 				}
 

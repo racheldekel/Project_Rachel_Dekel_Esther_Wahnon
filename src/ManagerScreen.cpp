@@ -22,6 +22,7 @@ void ManagerScreen ::main_run()
 	
 	std::vector<Screen*> Screens;
 
+
 	StartScreen s0;
 	Screens.push_back(&s0);
 

@@ -41,7 +41,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
 						// CAMBIAR AQUI DE VULETA A 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
-						return 1;
+						return MENU_SCREEN;
 					
 					break;
 
@@ -69,7 +69,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 		gold_miner.display();
 	}
 
-	//Never reaching this point normally, but just in case, exit the gold_minerlication
 	return (-1);
 	
 

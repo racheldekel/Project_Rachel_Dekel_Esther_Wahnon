@@ -26,8 +26,7 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 
 	while (Running)
 	{
-		//gold_miner.clear();
-		//Verifying events
+		
 		while (gold_miner.pollEvent(Event))
 		{
 			try
@@ -41,10 +40,10 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 
 				case sf::Event::MouseButtonReleased:
 					if (button_released_in_introduction(Event))
-						return 2;
+						return INTRODUCTION_SCREEN;
 
 					else if( button_released_start_game(Event))
-						return 3;
+						return GOAL_SCREEN;
 
 					break;
 

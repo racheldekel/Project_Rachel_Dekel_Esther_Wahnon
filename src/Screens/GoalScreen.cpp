@@ -14,10 +14,7 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-	//while (gold_miner.isOpen())
-	//{
 
-	//}
 	int menu = 0;
 
 	if (!Texture.loadFromFile("nextGoal.png"))
@@ -38,8 +35,7 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 
 	
 
-	//Never reaching this point normally, but just in case, exit the gold_minerlication
-	return (4);
+	return GAME_SCREEN;
 
 
 }

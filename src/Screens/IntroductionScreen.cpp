@@ -33,7 +33,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
-						return 1;
+						return MENU_SCREEN;
 
 					break;
 

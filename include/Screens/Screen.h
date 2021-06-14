@@ -1,5 +1,6 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+enum screens { START_SCREEN, MENU_SCREEN, INTRODUCTION_SCREEN, GOAL_SCREEN, GAME_SCREEN, GAME_OVER_SCREEN };
 class Screen
 {
     public:

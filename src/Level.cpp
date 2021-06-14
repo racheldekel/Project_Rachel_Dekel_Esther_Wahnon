@@ -119,6 +119,10 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 
 	case '~':
 		m_board[i][j] = std::make_unique < Mouse>(pos);
+
+		m_mouseLocation = sf::Vector2i(i, j);
+
+
 		break;
 
 
@@ -127,6 +131,13 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	}
 }
 //---------------------------------------------------------------------
+const sf::Vector2i& Level::mouseLocation()const
+{
+
+	return m_mouseLocation;
+}
+
+//_--------------------------------------------------------------------
 void Level::draw_static_figures(sf::RenderWindow& window)
 {
 	

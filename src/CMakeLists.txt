@@ -11,4 +11,5 @@
 								"FileManager.cpp"
 								"Toolbar.cpp"
 								"Mouse.cpp"
-								"Rope.cpp")
+								"Rope.cpp"
+								"Objects.cpp")

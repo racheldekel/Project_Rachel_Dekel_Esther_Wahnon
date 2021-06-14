@@ -16,7 +16,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	m_level.read_level(m_levelNumber);
 
 	
-	
 	while (gold_miner.isOpen())
 	{
 		gold_miner.draw(s);
@@ -28,15 +27,12 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		
 		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
 		{
-			try
+			switch (event.type)
 			{
-				
-				switch (event.type)
-				{
 				case sf::Event::Closed:
 					gold_miner.close();
 					break;
-				case sf::Event::MouseButtonReleased:
+				case (sf::Event::MouseButtonReleased):
 				{
 					if (m_rope.getRopeState())
 					{
@@ -47,24 +43,34 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 						break;
 					}
-					case sf::Event::KeyPressed:
-					throw ActionError();
-
 				}
-				}
-			}
-			catch (ActionError)
-			{
-				std::cout << "Please click the mouse" << std::endl;
+				case (sf::Event::KeyPressed):
+				{
+					if ((event.key.code == sf::Keyboard::Down))
+					{
+						if (m_rope.getRopeState())
+						{
 
+							if (!mouse_button_released(event))
+								return EXIT;
+
+
+							break;
+						}
+					}
+				}
 			}
 		}
 		
 		drawAllObject(gold_miner);
 		m_player.draw(gold_miner);
 
+		//moving the mouse while it has not been taken by the player 
 
-		
+		if( m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) != nullptr)
+			m_level(m_level.mouseLocation().x, m_level.mouseLocation().y)->moveMouse();
+
+
 		update_state(clock.getElapsedTime()*10.f);
 
 		auto passedTime = clock.restart().asSeconds();
@@ -83,7 +89,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 	}
 
-	//return 1;
+	
 }
 //------------------------------------------------------------------------------
 
@@ -99,6 +105,7 @@ void Controller::update_state(const sf::Time& timePass)
 		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_rope.getRotation()))
 		{
 			
+			// once we are done taking the object 
 			auto money =m_level(m_row, m_col)->get_value();
 
 			m_moneyCounter += money;
@@ -118,6 +125,7 @@ void Controller::update_state(const sf::Time& timePass)
 			{
 				int row = 0, col = 0;
 				// if we found an object , theres no need to check for more objects 
+				// the fucntion isAttact in case something is found would return the values found and put it in the row and col
 				if (isAttach(row, col))
 				{
 					m_rope.connectToObject(timePass);
@@ -134,6 +142,8 @@ void Controller::update_state(const sf::Time& timePass)
 
 		}
 
+
+		//in case the user has not press the botton the rope is just rotating the whole time
 		else
 		{
 			m_rope.rotateRope(timePass);
@@ -194,11 +204,8 @@ bool Controller::isAttach(int &final_row, int &final_col)
 
 					final_row = row;
 					final_col = col;
-				//	m_level.setBoard()[row][col] = nullptr;
 					return true;
 				}
-				//cout << floatrect.width << " " << floatrect.height << endl;
-			
 			}
 		}
 	}

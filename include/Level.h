@@ -48,7 +48,7 @@ public:
 	{
 		return m_board;
 	}
-	
+	const sf::Vector2i& mouseLocation()const;
 
 protected :
 
@@ -58,7 +58,7 @@ private:
 	int m_col = 0;
 	int m_level = 0;
 	sf::Vector2f m_pos;
-	
+	sf::Vector2i m_mouseLocation;
 
 	std::vector <std::vector<std::unique_ptr<Objects>>> m_board;
 

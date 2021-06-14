@@ -21,13 +21,7 @@ const auto SIZE = 40;
 class Objects
 {
 public:
-	void moveObject(int row, int col);
-
-	Objects(sf::Vector2f location)
-	{
-		m_sprite.setPosition(location);
 	
-	}
 	Objects(const sf::Texture& texture, sf::Vector2f location, int value) : m_sprite(texture)
 	{
 		m_sprite.setPosition(location);
@@ -37,51 +31,20 @@ public:
 			((float)SIZE / rect.height)));
 
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
-	
-	}
 
-	void draw(sf::RenderWindow& window) const
-	{
-		window.draw(m_sprite);
 	}
 	
-	
+	Objects(sf::Vector2f location)
+	{
+		m_sprite.setPosition(location);
+
+	}
 	~Objects() = default;
-	int get_value() const
-	{
-		return m_value;
-	};
-
-	bool is_intersected(const sf::FloatRect& rect)
-	{
-		auto objectLock = m_sprite.getGlobalBounds();
-		return rect.intersects(m_sprite.getGlobalBounds());
-	}
-	bool moveObject(const sf::Time& timePass, sf:: Vector2f posRope, float angle)
-	{
-		auto pos = m_sprite.getPosition();
-
-		if (pos.y > 65)
-		{
-			pos.y -= 1;
-
-			m_sprite.move(cosf(angle*0.0125), -1);
-
-			return true;
-
-		}
-
-
-		else 
-			return false;
-
-	
-			
-
-	}
-
-
-	
+	void draw(sf::RenderWindow& window) const;
+	void  moveMouse() ;
+	int get_value() const;
+	bool  moveObject(const sf::Time& timePass, sf::Vector2f posRope, float angle);
+	bool is_intersected(const sf::FloatRect& rect);
 protected:
 	
 	sf::Sprite m_sprite;
@@ -91,5 +54,5 @@ protected:
 
 private:
 	
-	
+	bool m_mouseMoveRight = true;
 };

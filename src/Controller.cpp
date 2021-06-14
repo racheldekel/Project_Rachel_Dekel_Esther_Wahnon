@@ -12,6 +12,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	static sf::Time AITime = sf::seconds(1.0f);
 	
 	m_finish_level = false;
+	m_goalLevel = m_goal[m_levelNumber];
 
 	m_level.read_level(m_levelNumber);
 
@@ -83,15 +84,26 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		if (m_time == 0)
 		{
 			m_time = 60;
-			return TIME_OVER;
+
+			if (m_moneyCounter < m_goalLevel)
+			{
+				
+				resetValues();
+				
+
+				return TIME_OVER;
+				
+
+			}
+
+			else
+				m_finish_level = true;
 
 		}
-			//m_finish_level = true;
-
+		
 		if (m_finish_level)
 		{
 			m_levelNumber++;
-			m_time = 60;
 			break;
 		}
 
@@ -101,7 +113,14 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	
 }
 //------------------------------------------------------------------------------
+void Controller::resetValues()
+{
 
+	m_level = 1;
+	m_levelNumber = 1;
+	m_moneyCounter = 0;
+}
+//-----------------------------------------------------------------------------
 
 void Controller::update_state(const sf::Time& timePass)
 {

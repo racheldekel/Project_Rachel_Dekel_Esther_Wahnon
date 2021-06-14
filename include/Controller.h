@@ -27,6 +27,7 @@ public:
 	bool mouse_button_released(sf::Event event);
 	int getLevel()const;
 	bool isAttach(int& row, int& col);
+	void resetValues();
 private:
 
 
@@ -49,6 +50,5 @@ private:
 	int m_levelNumber = 1;
 	int m_value=0;
 	bool m_getObject = false;
-
-	
+	int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
 };

@@ -6,6 +6,7 @@
 								"Screens/StartScreen.cpp"
 								"Screens/MenuScreen.cpp"
 								"Screens/IntroductionScreen.cpp"
+								"Screens/GameOverScreen"
 								"Screens/GameScreen.cpp"
 								"Level"
 								"FileManager.cpp"

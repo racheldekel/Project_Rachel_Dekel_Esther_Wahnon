@@ -1,6 +1,7 @@
 #pragma once
 const auto NUM_OF_LEVELS = 6;
 const auto EXIT = 0;
+const auto TIME_OVER = 1;
 #include <SFML\Audio.hpp>
 #include <SFML\Graphics.hpp>
 #include "FileManager.h"

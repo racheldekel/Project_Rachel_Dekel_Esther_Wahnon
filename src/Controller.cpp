@@ -81,7 +81,12 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		clock.restart();
 
 		if (m_time == 0)
-			m_finish_level = true;
+		{
+			m_time = 60;
+			return TIME_OVER;
+
+		}
+			//m_finish_level = true;
 
 		if (m_finish_level)
 		{

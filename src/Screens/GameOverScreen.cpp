@@ -1,32 +1,27 @@
-#include "Screens/GameScreen.h"
+#include "Screens/GameOverScreen.h"
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int GameScreen::run(sf::RenderWindow& gold_miner)
+int GameOverScreen::run(sf::RenderWindow& gold_miner)
 {
-
 	sf::Event Event;
 	bool Running = true;
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-	
-	
-	if (!Texture.loadFromFile("background.png"))
+	int menu = 0;
+	if (!Texture.loadFromFile("gameover.jpeg"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
 
-
 	Sprite.setTexture(Texture);
-
-
 
 	while (Running)
 	{
-		//Verifying events
+		
 		while (gold_miner.pollEvent(Event))
 		{
 			try
@@ -37,6 +32,8 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 					return -1;
 					break;
 				case sf::Event::MouseButtonReleased:
+					if (mouse_button_released(Event))
+						return 1;
 
 					break;
 
@@ -46,33 +43,15 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 					break;
 
 				}
-
-				auto number = m_controller.startGame(gold_miner);
-
-				if (number == EXIT)
-					return 0;
-
-				if (number == TIME_OVER)
-					return 5;
-
-				if (m_controller.getLevel() <= NUM_OF_LEVELS)
-				{
-					return 3;
-
-				}
-
-
-
-				
 			}
-			catch (ActionError)
+			catch (ActionError& de)
 			{
 				std::cout << "Please click the mouse" << std::endl;
 
 			}
 
 		}
-		
+
 		gold_miner.clear();
 
 		gold_miner.draw(Sprite);
@@ -87,3 +66,16 @@ int GameScreen::run(sf::RenderWindow& gold_miner)
 }
 
 //-------------------------------------------------------
+bool  GameOverScreen::mouse_button_released(sf::Event event)
+
+{
+
+	auto x = event.mouseButton.x;
+	auto y = event.mouseButton.y;
+	sf::Vector2i pos(x, y);
+
+	if ((pos.x > 264 && pos.x < 574) && (pos.y < 433 && pos.y > 367))
+		return true;
+
+	return false;
+}

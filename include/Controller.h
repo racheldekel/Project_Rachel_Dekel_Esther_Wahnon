@@ -50,5 +50,7 @@ private:
 	int m_levelNumber = 1;
 	int m_value=0;
 	bool m_getObject = false;
-	int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
+	float m_ropeAngle;
+	//int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
+	int m_goal[7] = { 0, 200, 300, 400, 1100, 1400, 1700 };
 };

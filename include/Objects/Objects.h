@@ -33,7 +33,19 @@ public:
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 
 	}
-	
+	//---------------------------------------------------------------------------
+
+	void setAngle(float angle)
+	{
+		m_angle = angle;
+	}
+	//----------------------------------------------------------------------------------------
+	float getAngle()const
+	{ 
+		return  m_angle;
+	}
+
+	//_-------------------------------------------------------------------
 	Objects(sf::Vector2f location)
 	{
 		m_sprite.setPosition(location);
@@ -54,5 +66,6 @@ protected:
 
 private:
 	
+	float m_angle;
 	bool m_mouseMoveRight = true;
 };

@@ -25,6 +25,8 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height),
 		((float)60 / rect.height)));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
+
+	//std::cout << "Rotation" << " " << m_sprite.getRotation() << std::endl;
 	
 
 }

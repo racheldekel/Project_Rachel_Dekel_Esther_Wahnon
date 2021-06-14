@@ -130,9 +130,9 @@ void Controller::update_state(const sf::Time& timePass)
 	{
 
 		//bring it up and once is done the function moveOBJECT WILL RETURN false
-		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_rope.getRotation()))
+		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
 		{
-			
+			cout << m_level(m_row, m_col)->getAngle() << endl;
 			// once we are done taking the object 
 			auto money =m_level(m_row, m_col)->get_value();
 
@@ -161,7 +161,7 @@ void Controller::update_state(const sf::Time& timePass)
 					cout << "found intersection with item at " << row << " " << col << endl;
 					// so it wont enter another time
 					m_checked_object = false;
-
+					m_level(row, col)->setAngle(m_ropeAngle);
 					m_row = row, m_col = col;
 					m_getObject = true;
 					
@@ -203,6 +203,8 @@ bool Controller::mouse_button_released(sf::Event event)
 
 	if ((pos1.x > 534 && pos1.x < 581) && (pos1.y < 46 && pos1.y > 17))
 		return false;
+
+	m_ropeAngle = m_rope.getRotation();
 
 	m_rope.changeState();
 

@@ -21,12 +21,11 @@ bool Objects:: is_intersected(const sf::FloatRect & rect)
 bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float angle)
 {
 	auto pos = m_sprite.getPosition();
-
-	if (pos.y > 65)
+	auto distance = sqrt(pow(pos.x - posRope.x, 2) + (pow(pos.y - posRope.y, 2)));
+	if (distance> 100)
 	{
-		pos.y -= 1;
 
-		m_sprite.move(cosf(angle * 0.0125), -1);
+		m_sprite.move((posRope.x-pos.x )* timePass.asSeconds(), (posRope.y- pos.y)*timePass.asSeconds());
 
 		return true;
 

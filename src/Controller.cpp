@@ -242,33 +242,7 @@ bool Controller::isAttach(int &final_row, int &final_col)
 
 		return false;
 	}
-	/*
-	//auto current_location=  {400.f, 65.f};
-	auto current_location = m_rope.get_position();
-
-
-	auto direction = sf::Vector2f(cos(m_rope.getRotation()) * SIZE, sin(m_rope.getRotation()) * SIZE);
-
-	while (current_location.y < 400.f && current_location.y >= 0 &&  current_location.x <700.f
-		&& current_location.x>= 0)
-	{
-		current_location += (direction);
-		//check the x y
-
-		//cout << int(current_location.y / SIZE) << " " << int(current_location.x / SIZE) << endl;
-		if (m_level(int((current_location.y / SIZE)), int((current_location.x / SIZE))) != nullptr)
-		{
-			
-			cout << int((current_location.y / SIZE)) << " " << int((current_location.x / SIZE)) << endl;
-			cout << "works the object is found " << endl;
-			return true;
-		}
-
-			//cout << current_location.x << " " << current_location.y<<std:: endl;
-	}
-	//cout << m_rope.getRotation()<< endl;
-	//cout << m_rope.get_position().y << " " << m_rope.get_position().x << endl;
-	*/
+	
 	
 //----------------------------------------------------------------------------------------------
 

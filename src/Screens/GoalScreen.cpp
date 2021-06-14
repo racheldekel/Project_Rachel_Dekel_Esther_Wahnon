@@ -4,7 +4,7 @@
 
 #include <thread>
 
-const auto WAIT_TIME = sf::seconds(4);
+const auto WAIT_TIME = sf::seconds(2);
 
 class ActionError {};
 int  GoalScreen::run(sf::RenderWindow& gold_miner)

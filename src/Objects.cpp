@@ -22,7 +22,7 @@ bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float
 {
 	auto pos = m_sprite.getPosition();
 	auto distance = sqrt(pow(pos.x - posRope.x, 2) + (pow(pos.y - posRope.y, 2)));
-	if (distance> 100)
+	if (distance> 80)
 	{
 
 		m_sprite.move((posRope.x-pos.x )* timePass.asSeconds(), (posRope.y- pos.y)*timePass.asSeconds());

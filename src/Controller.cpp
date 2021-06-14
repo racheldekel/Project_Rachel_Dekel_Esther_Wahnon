@@ -20,7 +20,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	{
 		gold_miner.draw(s);
 
-		if (AITimer.getElapsedTime().asSeconds() > AITime.asSeconds()) {
+		if (AITimer.getElapsedTime().asSeconds() > AITime.asSeconds()) 
+		{
 			m_time--;
 			AITimer.restart();
 		}
@@ -79,10 +80,13 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		gold_miner.clear();
 		clock.restart();
 
+		if (m_time == 0)
+			m_finish_level = true;
+
 		if (m_finish_level)
 		{
 			m_levelNumber++;
-
+			m_time = 60;
 			break;
 		}
 

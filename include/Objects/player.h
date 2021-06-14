@@ -17,14 +17,13 @@ public:
 
 
 	}
-
+	void playerStand()
+	{
+		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
+	}
+	void playerGrab()
+	{
+		m_sprite.setTexture(FileManager::instance().get_icon(PLAYERGRAB));
+	}
 };
 
-/*Objects(sf::Vector2f location)
-	{
-		m_sprite.setPosition(location);
-	}
-
-	~Objects() = default;
-	virtual void draw(sf::RenderWindow& window) = 0;
-	*/

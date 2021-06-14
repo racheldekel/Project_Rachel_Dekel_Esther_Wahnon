@@ -148,7 +148,7 @@ void Controller::update_state(const sf::Time& timePass)
 		if (m_rope.isOpen())
 		{
 			m_rope.openRope(timePass);
-
+			m_player.playerGrab();
 			if (m_checked_object)
 			{
 				int row = 0, col = 0;
@@ -175,7 +175,7 @@ void Controller::update_state(const sf::Time& timePass)
 		else
 		{
 			m_rope.rotateRope(timePass);
-
+			m_player.playerStand();
 			m_checked_object = true;
 
 		}	

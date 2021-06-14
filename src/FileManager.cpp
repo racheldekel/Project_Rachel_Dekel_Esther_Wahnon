@@ -8,6 +8,7 @@ FileManager::FileManager()
 													"present.png" , "bigRock.png" , "smallRock.png", "mouse.png" };*/
 
 	m_pTexture[PLAYER].loadFromFile("playerStand.png");
+	m_pTexture[PLAYERGRAB].loadFromFile("playerGrab.png");
 	m_pTexture[BOMB].loadFromFile("bomb.png");
 	m_pTexture[BONE].loadFromFile("bone.png");
 	m_pTexture[BIGGOLD].loadFromFile("bigGold.png");

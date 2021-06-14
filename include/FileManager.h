@@ -8,12 +8,12 @@
 
 
 enum Object_t : size_t
-{ PLAYER, BOMB, BONE, BIGGOLD, SMALLGOLD, DIAMOND, PRESENT, SMALLROCK, BIGROCK,ROPE, MOUSE };
+{ PLAYER, PLAYERGRAB, BOMB, BONE, BIGGOLD, SMALLGOLD, DIAMOND, PRESENT, SMALLROCK, BIGROCK,ROPE, MOUSE };
 using std::ifstream;
 using std::string;
 
 
-const auto TEXTURES = 11;
+const auto TEXTURES = 12;
 
 
 class FileManager

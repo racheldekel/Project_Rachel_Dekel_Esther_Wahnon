@@ -10,7 +10,7 @@ public:
 	GameScreen() {};
 	~GameScreen() {};
 	
-	virtual int run(sf::RenderWindow& gold_miner);
+	virtual int run(sf::RenderWindow& gold_miner, int& level);
 
 
 private:

@@ -43,12 +43,12 @@ void ManagerScreen ::main_run()
 	Screens.push_back(&s5);
 	create_screens(Screens);
 	
+	int level = 0;
 
 
-	
 	while (screen != -1)
 	{
-		screen = Screens[screen]->run(GoldMiner);
+		screen = Screens[screen]->run(GoldMiner, level);
 	
 	}
 }

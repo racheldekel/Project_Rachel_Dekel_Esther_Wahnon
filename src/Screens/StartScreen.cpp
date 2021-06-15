@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int StartScreen ::run(sf::RenderWindow& gold_miner)
+int StartScreen ::run(sf::RenderWindow& gold_miner, int& level)
 {
 	
 	sf::Event Event;
@@ -26,7 +26,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 	
 	while (Running)
 	{
-
+		level = 0;
 		//Verifying events
 		while (gold_miner.pollEvent(Event))
 		{
@@ -40,7 +40,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner)
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
-						// CAMBIAR AQUI DE VULETA A 4 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1
+						
 						return MENU_SCREEN;
 					
 					break;

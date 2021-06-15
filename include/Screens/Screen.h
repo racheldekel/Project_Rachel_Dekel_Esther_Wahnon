@@ -4,13 +4,15 @@ enum screens { START_SCREEN, MENU_SCREEN, INTRODUCTION_SCREEN, GOAL_SCREEN, GAME
 class Screen
 {
     public:
-
+        
         Screen() {};
         ~Screen() {};
-        virtual int run(sf::RenderWindow& gold_miner) = 0 ;
+        virtual int run(sf::RenderWindow& gold_miner, int& level) = 0 ;
 
 
-    private :
+    protected:
+              int m_i = 0;
+  
 
      
        

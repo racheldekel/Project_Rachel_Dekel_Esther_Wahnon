@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int MenuScreen::run(sf::RenderWindow& gold_miner)
+int MenuScreen::run(sf::RenderWindow& gold_miner, int& level)
 {
 
 	sf::Event Event;
@@ -42,9 +42,11 @@ int MenuScreen::run(sf::RenderWindow& gold_miner)
 					if (button_released_in_introduction(Event))
 						return INTRODUCTION_SCREEN;
 
-					else if( button_released_start_game(Event))
+					else if (button_released_start_game(Event))
+					{
+				
 						return GOAL_SCREEN;
-
+					}
 					break;
 
 				case sf::Event::KeyPressed:

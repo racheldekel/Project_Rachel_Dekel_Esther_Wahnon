@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int IntroductionScreen::run(sf::RenderWindow& gold_miner)
+int IntroductionScreen::run(sf::RenderWindow& gold_miner, int& level)
 {
 	sf::Event Event;
 	bool Running = true;
@@ -10,7 +10,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner)
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-	int menu = 0;
+
 	if (!Texture.loadFromFile("instructions.png"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;

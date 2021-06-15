@@ -7,15 +7,13 @@
 const auto WAIT_TIME = sf::seconds(3);
 
 class ActionError {};
-int  GoalScreen::run(sf::RenderWindow& gold_miner)
+int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 {
 
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-
-	int menu = 0;
 
 	if (!Texture.loadFromFile("nextGoal.png"))
 	{
@@ -28,10 +26,9 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner)
 	gold_miner.clear();
 	sf::Font font;
 	font.loadFromFile("gameFont.otf");
-
-	auto number  = m_goalScreen[i];
+	auto number  = m_goalScreen[level];
+	 level++;
 	sf::Text text(std::to_string(number), font);
-	i++;
 	text.setCharacterSize(40);
 	text.setStyle(sf::Text::Bold);
 	text.setPosition(380, 230);

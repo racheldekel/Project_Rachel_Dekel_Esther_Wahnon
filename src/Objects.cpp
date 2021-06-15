@@ -14,18 +14,17 @@ int Objects:: get_value() const
 //_-------------------------------------------------------------------------------------
 bool Objects:: is_intersected(const sf::FloatRect & rect)
 {
-	auto objectLock = m_sprite.getGlobalBounds();
 	return rect.intersects(m_sprite.getGlobalBounds());
 }
 //--------------------------------------------------------------------------------------------------
 bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float angle)
 {
-	auto pos = m_sprite.getPosition();
-	auto distance = sqrt(pow(pos.x - posRope.x, 2) + (pow(pos.y - posRope.y, 2)));
+	auto& pos = m_sprite.getPosition();
+	auto distance = hypotf(pos.x - posRope.x, pos.y - posRope.y);
+	/*auto distance = sqrt(pow(pos.x - posRope.x, 2) + (pow(pos.y - posRope.y, 2)));*/
 	if (distance> 80)
 	{
-
-		m_sprite.move((posRope.x-pos.x )* timePass.asSeconds(), (posRope.y- pos.y)*timePass.asSeconds());
+		m_sprite.move(sf::Vector2f(posRope.x - pos.x, posRope.y - pos.y)* timePass.asSeconds() * 3.f);
 
 		return true;
 
@@ -37,7 +36,6 @@ bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float
 
 
 }
-
 //---------------------------------------------------------------------------------------------
 void Objects:: moveMouse() 
 {

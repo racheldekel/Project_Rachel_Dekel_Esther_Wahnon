@@ -69,7 +69,7 @@ void Rope::openRope(const sf::Time& time )
 	if (m_scale.y < 3 &&  !m_closingRope )
 	{
 		
-		float LengthAddition = Rope::lenghRope * time.asSeconds()*1.7; //* time.asSeconds();
+		float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
 
 		m_scale.y += LengthAddition;
 
@@ -92,7 +92,7 @@ void Rope::openRope(const sf::Time& time )
 
 		 else {
 			 // here we have to calculate according to each object that has caught
-			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 1.5; //* time.asSeconds();
+			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 5.f; //* time.asSeconds();
 			 closeRope(m_scale, time, LengthAddition);
 
 			 }
@@ -114,7 +114,7 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 
 	m_sprite.setScale(m_scale);
 
-	if (m_scale.y < 0.65)
+	if (m_scale.y < 0.55)
 	{
 		m_closingRope = false;
 		m_open = false;

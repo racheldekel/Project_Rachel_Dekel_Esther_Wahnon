@@ -40,7 +40,10 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 					{
 
 						if (!mouse_button_released(event))
+						{
+							resetValues();
 							return EXIT;
+						}
 
 
 						break;
@@ -69,14 +72,22 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 		//moving the mouse while it has not been taken by the player 
 
-		if( m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) != nullptr)
+		if( m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) != nullptr && m_mouseMoving)
 			m_level(m_level.mouseLocation().x, m_level.mouseLocation().y)->moveMouse();
 
 
-		update_state(clock.getElapsedTime()*10.f);
+		update_state(gold_miner, clock.getElapsedTime() * 10.f);
 
 		auto passedTime = clock.restart().asSeconds();
 		m_rope.draw(gold_miner);
+
+		if (m_drawMoney)
+		{
+			
+			gold_miner.draw(m_text);
+
+		}
+
 		gold_miner.display();
 		gold_miner.clear();
 		clock.restart();
@@ -90,7 +101,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 				
 				resetValues();
 				
-
 				return TIME_OVER;
 				
 
@@ -104,6 +114,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		if (m_finish_level)
 		{
 			m_levelNumber++;
+			m_mouseMoving = true;
 			break;
 		}
 
@@ -119,51 +130,63 @@ void Controller::resetValues()
 	m_level = 1;
 	m_levelNumber = 1;
 	m_moneyCounter = 0;
+	m_mouseMoving = true;
 }
 //-----------------------------------------------------------------------------
 
-void Controller::update_state(const sf::Time& timePass)
+void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& timePass)
 {
 
 	//if we have found and object and we are taking it 
 	if (m_getObject)
 	{
-
+		
 		//bring it up and once is done the function moveOBJECT WILL RETURN false
 		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
 		{
-			cout << m_level(m_row, m_col)->getAngle() << endl;
-			// once we are done taking the object 
-			auto money =m_level(m_row, m_col)->get_value();
 
-			m_moneyCounter += money;
+			// once we are done taking the object 
+			m_money =m_level(m_row, m_col)->get_value();
+			m_drawMoney = true;
+			drawMoney(gold_miner);
+			m_moneyCounter +=m_money;
+			
 			m_level.set_Board()[m_row][m_col] = nullptr;
 			m_getObject = false;
+			
+			
 		}
 			
 
 	}
 
-
 		if (m_rope.isOpen())
 		{
+			m_drawMoney = false;
 			m_rope.openRope(timePass);
+
 			m_player.playerGrab();
+			
 			if (m_checked_object)
 			{
 				int row = 0, col = 0;
 				// if we found an object , theres no need to check for more objects 
 				// the fucntion isAttact in case something is found would return the values found and put it in the row and col
+
+
+					
 				if (isAttach(row, col))
 				{
+					
+					
 					m_rope.connectToObject(timePass);
-					m_rope.foundObject();
-					cout << "found intersection with item at " << row << " " << col << endl;
-					// so it wont enter another time
-					m_checked_object = false;
-					m_level(row, col)->setAngle(m_ropeAngle);
-					m_row = row, m_col = col;
-					m_getObject = true;
+						m_rope.foundObject();
+						cout << "found intersection with item at " << row << " " << col << endl;
+						// so it wont enter another time
+						m_checked_object = false;
+						m_level(row, col)->setAngle(m_ropeAngle);
+						m_row = row, m_col = col;
+						m_getObject = true;
 					
 				}
 			}
@@ -180,6 +203,18 @@ void Controller::update_state(const sf::Time& timePass)
 
 		}	
 
+}
+//---------------------------------------------------------------------------
+void Controller:: drawMoney(sf::RenderWindow& gold_miner)
+{
+	auto represent = sf::seconds(5.f);
+	m_text.setString(std::to_string(m_money)+"$");
+	m_text.setCharacterSize(35);
+	m_text.setStyle(sf::Text::Bold);
+	m_text.setPosition(210, 10);
+	m_text.setFillColor(sf::Color:: Yellow);
+
+	
 }
 //---------------------------------------------------------------------------
 int Controller::getLevel()const
@@ -231,6 +266,9 @@ bool Controller::isAttach(int &final_row, int &final_col)
 			{
 				if (m_level(row, col)->is_intersected(floatrect))
 				{
+					
+					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
+						m_mouseMoving = false;
 
 					final_row = row;
 					final_col = col;

@@ -20,8 +20,9 @@ class Controller
 public:
 	Controller() {};
 	~Controller() = default;
+	void drawMoney(sf::RenderWindow& gold_miner);
 	int startGame(sf::RenderWindow& gold_miner);
-	void update_state(const sf::Time& timePass = sf::Time());
+	void update_state(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
 	bool mouse_button_released(sf::Event event);
@@ -30,20 +31,21 @@ public:
 	void resetValues();
 private:
 
-
+	bool m_drawMoney = false;
+	int m_money = 0;
+	sf::Text m_text = sf::Text({}, *FileManager::instance().getFont(0));
 	Mouse m_mouse{{} };
 	bool m_checked_object = true;
 	int m_moneyCounter = 0;
 	int m_goalLevel = 0;
 	int  m_time = 60;
 	Toolbar m_toolbar;
-	
 	Player m_player = Player{ {400.f, 30.f} };
 	Rope m_rope = Rope{ {400.f, 65.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	sf::Vector2f m_position;
-
+	bool m_mouseMoving= true;
 	void  changeObjectState();
 	int m_row = 0;
 	int m_col = 0;
@@ -51,6 +53,6 @@ private:
 	int m_value=0;
 	bool m_getObject = false;
 	float m_ropeAngle;
-	//int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
-	int m_goal[7] = { 0, 200, 300, 400, 1100, 1400, 1700 };
+	int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
+	
 };

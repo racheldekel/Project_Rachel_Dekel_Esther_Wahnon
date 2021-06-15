@@ -40,8 +40,8 @@ private:
 	int m_goalLevel = 0;
 	int  m_time = 60;
 	Toolbar m_toolbar;
-	Player m_player = Player{ {400.f, 30.f} };
-	Rope m_rope = Rope{ {400.f, 65.f} };
+	Player m_player = Player{ {600.f, 50.f} };
+	Rope m_rope = Rope{ {595.f, 93.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	sf::Vector2f m_position;

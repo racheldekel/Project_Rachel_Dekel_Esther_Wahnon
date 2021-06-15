@@ -21,6 +21,8 @@ int MenuScreen::run(sf::RenderWindow& gold_miner, int& level)
 		std::cerr << "Error loading file" << std::endl;
 		return (-1);
 	}
+
+	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
 	
 
@@ -91,7 +93,7 @@ bool MenuScreen ::button_released_in_introduction(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	
-	if ((pos.x > 60 && pos.x < 320) && (pos.y < 380 && pos.y > 320))
+	if ((pos.x > 90 && pos.x < 480) && (pos.y < 570 && pos.y > 480))
 		return true;
 
 	return false;
@@ -105,7 +107,7 @@ bool MenuScreen::button_released_start_game(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	
-	if ((pos.x > 80 && pos.x < 300) && (pos.y < 200 && pos.y > 18))
+	if ((pos.x > 120 && pos.x < 450) && (pos.y < 300 && pos.y > 27))
 		return true;
 
 	return false;

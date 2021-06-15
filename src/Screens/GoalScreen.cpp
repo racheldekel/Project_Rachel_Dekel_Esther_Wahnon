@@ -20,6 +20,7 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
+	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
 
 	
@@ -29,9 +30,9 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 	auto number  = m_goalScreen[level];
 	 level++;
 	sf::Text text(std::to_string(number), font);
-	text.setCharacterSize(40);
+	text.setCharacterSize(60);
 	text.setStyle(sf::Text::Bold);
-	text.setPosition(380, 230);
+	text.setPosition(570, 345);
 	text.setFillColor(sf::Color ::Yellow);
 	gold_miner.draw(Sprite);
 	gold_miner.draw(text);

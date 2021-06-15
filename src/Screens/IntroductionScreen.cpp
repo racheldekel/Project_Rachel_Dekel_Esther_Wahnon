@@ -17,6 +17,7 @@ int IntroductionScreen::run(sf::RenderWindow& gold_miner, int& level)
 		return (-1);
 	}
 
+	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
 
 	while (Running)
@@ -74,7 +75,7 @@ bool IntroductionScreen::mouse_button_released(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	if ((pos.x > 264 && pos.x < 574) && (pos.y < 433 && pos.y > 367))
+	if ((pos.x > 396 && pos.x < 861) && (pos.y < 650 && pos.y > 550))
 		return true;
 
 	return false;

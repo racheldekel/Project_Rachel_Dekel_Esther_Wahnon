@@ -1,6 +1,7 @@
 #include "Screens/StartScreen.h"
 #include <iostream>
 #include <stdexcept>
+
 class ActionError {};
 int StartScreen ::run(sf::RenderWindow& gold_miner, int& level)
 {
@@ -19,6 +20,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level)
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
+	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
 	
 
@@ -81,10 +83,10 @@ bool StartScreen::mouse_button_released(sf::Event event)
 
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
-	sf::Vector2i pos(x , y );
+	sf::Vector2i pos(x, y);
 
 	//std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 261 && pos.x < 544) && (pos.y < 432 && pos.y > 354))
+	if ((pos.x > 392 && pos.x < 816) && (pos.y < 648 && pos.y > 531))
 		return true;
 
 	return false;

@@ -19,8 +19,8 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
 		return (-1);
 	}
 
-
 	Sprite.setTexture(Texture);
+	Sprite.scale(1.5f, 1.5f);
 
 
 

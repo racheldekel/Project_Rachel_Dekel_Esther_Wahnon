@@ -44,9 +44,10 @@ void Objects:: moveMouse()
 
 	if (m_mouseMoveRight)
 	{
+		m_sprite.setScale(-1, 1);
 		m_sprite.move(1, 0);
 
-		if (pos.x > 699)
+		if (pos.x > 1048)
 			m_mouseMoveRight = false;
 
 
@@ -54,11 +55,15 @@ void Objects:: moveMouse()
 	}
 	else
 	{
+		m_sprite.setScale(1, 1);
 		m_sprite.move(-1, 0);
 
-
-		if (pos.x < 102)
+		
+		if (pos.x < 153)
+		{
+			
 			m_mouseMoveRight = true;
+		}
 	}
 
 }

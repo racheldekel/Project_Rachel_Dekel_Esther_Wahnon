@@ -8,6 +8,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
+	s.scale(1.5f, 1.5f);
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
 	
@@ -82,11 +83,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		m_rope.draw(gold_miner);
 
 		if (m_drawMoney)
-		{
-			
 			gold_miner.draw(m_text);
 
-		}
 
 		gold_miner.display();
 		gold_miner.clear();
@@ -207,11 +205,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 //---------------------------------------------------------------------------
 void Controller:: drawMoney(sf::RenderWindow& gold_miner)
 {
-	auto represent = sf::seconds(5.f);
+	
 	m_text.setString(std::to_string(m_money)+"$");
-	m_text.setCharacterSize(35);
+	m_text.setCharacterSize(52.5);
 	m_text.setStyle(sf::Text::Bold);
-	m_text.setPosition(210, 10);
+	m_text.setPosition(315, 15);
 	m_text.setFillColor(sf::Color:: Yellow);
 
 	
@@ -236,7 +234,7 @@ bool Controller::mouse_button_released(sf::Event event)
 	auto y1 = event.mouseButton.y;
 	sf::Vector2i pos1(x1, y1);
 
-	if ((pos1.x > 534 && pos1.x < 581) && (pos1.y < 46 && pos1.y > 17))
+	if ((pos1.x > 801 && pos1.x < 872) && (pos1.y < 69 && pos1.y > 26))
 		return false;
 
 	m_ropeAngle = m_rope.getRotation();

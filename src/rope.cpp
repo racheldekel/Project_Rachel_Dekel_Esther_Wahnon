@@ -22,8 +22,8 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
 	m_sprite.setPosition(pos);
 	auto rect = m_sprite.getGlobalBounds();
-	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height),
-		((float)60 / rect.height)));
+	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.5,
+		((float)60 / rect.height)*1.5));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
 
 	//std::cout << "Rotation" << " " << m_sprite.getRotation() << std::endl;
@@ -66,7 +66,7 @@ void Rope::openRope(const sf::Time& time )
 	m_scale = m_sprite.getScale();
 
 	// to open the rope 
-	if (m_scale.y < 3 &&  !m_closingRope )
+	if (m_scale.y < 4.5 &&  !m_closingRope )
 	{
 		
 		float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
@@ -75,7 +75,7 @@ void Rope::openRope(const sf::Time& time )
 
 		m_sprite.setScale(m_scale);
 
-		if (m_scale.y > 2.9 || m_found_object)
+		if (m_scale.y > 4.35|| m_found_object)
 			m_closingRope = true;
 
 	}
@@ -114,7 +114,7 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 
 	m_sprite.setScale(m_scale);
 
-	if (m_scale.y < 0.55)
+	if (m_scale.y < 0.825)
 	{
 		m_closingRope = false;
 		m_open = false;

@@ -16,7 +16,7 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level )
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
-
+	Sprite.scale(1.5f, 1.5f);
 	Sprite.setTexture(Texture);
 
 	while (Running)
@@ -76,7 +76,7 @@ bool  GameOverScreen::mouse_button_released(sf::Event event)
 
 	//std:: cout << pos.x << " " << pos.y << std::endl;
 
-	if ((pos.x > 415 && pos.x < 627) && (pos.y < 425 && pos.y > 360))
+	if ((pos.x > 415*1.5 && pos.x < 627*1.5) && (pos.y < 425*1.5 && pos.y > 360*1.5))
 		return true;
 
 	return false;

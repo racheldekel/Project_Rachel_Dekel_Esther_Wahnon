@@ -4,11 +4,11 @@ class ActionError{};
 
 int Controller::startGame(sf::RenderWindow& gold_miner)
 {
-	auto clock = sf::Clock();
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
 	s.scale(1.5f, 1.5f);
+	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
 	

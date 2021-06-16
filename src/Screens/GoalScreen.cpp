@@ -39,11 +39,6 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 
 	gold_miner.display();
 	sf::sleep(WAIT_TIME);
-	
-	
-
-
-	
 
 	return GAME_SCREEN;
 

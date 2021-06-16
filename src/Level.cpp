@@ -7,8 +7,8 @@
 #include <stdexcept>
 #include <string>
 
-//const auto CORRIDOR = sf::Vector2f(150.f, 225.f);
-const auto CORRIDOR = sf::Vector2f(350.f, 300.f);
+const auto CORRIDOR = sf::Vector2f(150.f, 225.f);
+//const auto CORRIDOR = sf::Vector2f(350.f, 300.f);
 
 using std::cout;
 using std::endl;
@@ -29,8 +29,8 @@ void Level::read_level(int levelNumber)
 	ifstream input;
 	try
 	{
-		//string file = std::to_string(levelNumber) + ".txt";
-		string file = "1.txt";
+		string file = std::to_string(levelNumber) + ".txt";
+		//string file = "1.txt";
 		input.open(file);
 		if (!input.is_open())
 		{

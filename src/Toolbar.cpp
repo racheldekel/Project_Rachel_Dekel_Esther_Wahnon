@@ -8,7 +8,6 @@ Toolbar::Toolbar()
 	m_ToolbarStatus2.setFont(m_font);
 	m_ToolbarStatus3.setFont(m_font);
 	m_ToolbarStatus4.setFont(m_font);
-
 }
 
 void Toolbar::draw(sf::RenderWindow& window, int level,int money, int goal, int time)

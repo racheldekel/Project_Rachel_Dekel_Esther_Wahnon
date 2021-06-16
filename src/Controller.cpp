@@ -92,8 +92,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 		if (m_time == 0)
 		{
-			m_time = 60;
-
 			if (m_moneyCounter < m_goalLevel)
 			{
 				
@@ -109,8 +107,14 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 		}
 		
-		if (m_finish_level)
+
+
+
+
+		if (m_finish_level || checkIfBoardEmty())
+
 		{
+			m_time = 60;
 			m_levelNumber++;
 			m_mouseMoving = true;
 			break;
@@ -123,7 +127,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
-
+	m_time = 60;
 	m_level = 1;
 	m_levelNumber = 1;
 	m_moneyCounter = 0;
@@ -283,4 +287,19 @@ bool Controller::isAttach(int &final_row, int &final_col)
 	
 	
 //----------------------------------------------------------------------------------------------
+bool Controller:: checkIfBoardEmty()
+{
 
+	for (auto row = 0; row < m_level.getRows(); ++row)
+	{
+		for (auto col = 0; col < m_level.getCols(); ++col)
+		{
+			if (m_level(row, col) != nullptr)
+			{
+				return false;
+			}
+		}
+	}
+
+	return true;
+}

@@ -29,6 +29,7 @@ public:
 	int getLevel()const;
 	bool isAttach(int& row, int& col);
 	void resetValues();
+	bool checkIfBoardEmty();
 private:
 	struct Explosion
 	{

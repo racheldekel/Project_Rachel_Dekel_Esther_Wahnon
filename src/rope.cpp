@@ -1,9 +1,5 @@
 #include "Objects/rope.h"
-
-
 const auto SPEED = 0.5f;
-//-----------------------------------------------------------
-
 //------------------------------------------------------------------------------
 void Rope :: update_end_rope()
 {
@@ -26,14 +22,11 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 		((float)60 / rect.height)*1.5));
 	m_sprite.setOrigin({ rect.width / 2, 0 });
 
-	//std::cout << "Rotation" << " " << m_sprite.getRotation() << std::endl;
-	
-
 }
 //------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
 {
-	return m_sprite.getPosition();//+ m_scale;
+	return m_sprite.getPosition();
 }
 
 //----------------------------------------------------------
@@ -51,7 +44,7 @@ void Rope::connectToObject(const sf::Time& time)
  {
 	m_scale = m_sprite.getScale();
 
-		float LengthAddition = Rope::lenghRope *0.2; //* time.asSeconds();
+		float LengthAddition = Rope::lenghRope *0.2; 
 
 		m_scale.y += LengthAddition;
 
@@ -69,7 +62,7 @@ void Rope::openRope(const sf::Time& time )
 	if (m_scale.y < 4.5 &&  !m_closingRope )
 	{
 		
-		float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
+		float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f;
 
 		m_scale.y += LengthAddition;
 
@@ -80,25 +73,23 @@ void Rope::openRope(const sf::Time& time )
 
 	}
 
-	// here we still have to work on changing according to the object 
 	 if (m_closingRope )
 	{
 		 
 		 if (!m_found_object) // in case that the rope closes w/o any objects 
 		 {
-			 float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; //* time.asSeconds();
+			 float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; 
 			 closeRope(m_scale, time, LengthAddition);
 		 }
 
 		 else {
 			 // here we have to calculate according to each object that has caught
-			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 5.f; //* time.asSeconds();
+			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.3f; //* time.asSeconds();
 			 closeRope(m_scale, time, LengthAddition);
 
 			 }
 	}
 
-	
 }
 //----------------------------------------------
 void Rope:: foundObject()
@@ -136,7 +127,7 @@ void Rope::rotateRope(const sf::Time& DeltaTime)
 		changeDirection();
 	}
 	
-	auto angle = /*DeltaTime.asSeconds() */ m_direction * SPEED;
+	auto angle = m_direction * SPEED;
 	m_sprite.rotate(angle);
 }
 

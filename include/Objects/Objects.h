@@ -56,7 +56,7 @@ public:
 	void  moveMouse() ;
 	int get_value() const;
 	bool  moveObject(const sf::Time& timePass, sf::Vector2f posRope, float angle);
-	bool is_intersected(const sf::FloatRect& rect);
+	bool is_intersected( sf::FloatRect& rect);
 protected:
 	
 	sf::Sprite m_sprite;

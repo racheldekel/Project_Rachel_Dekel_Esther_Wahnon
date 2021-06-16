@@ -94,12 +94,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		{
 			if (m_moneyCounter < m_goalLevel)
 			{
-				
 				resetValues();
-				
-				return TIME_OVER;
-				
-
+					return TIME_OVER;
 			}
 
 			else
@@ -107,19 +103,15 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 		}
 		
-
-
-
-
 		if (m_finish_level || checkIfBoardEmty())
 
 		{
 			m_time = 60;
 			m_levelNumber++;
 			m_mouseMoving = true;
+			m_drawMoney = false;
 			break;
 		}
-
 
 	}
 
@@ -132,119 +124,101 @@ void Controller::resetValues()
 	m_levelNumber = 1;
 	m_moneyCounter = 0;
 	m_mouseMoving = true;
+	m_drawMoney = false;
 }
-//-----------------------------------------------------------------------------
-
+//----------------------------------------------------------------------------------------------------
 void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& timePass)
 {
-
 	//if we have found and object and we are taking it 
-	if (m_getObject)
-	{
-		
-		//bring it up and once is done the function moveOBJECT WILL RETURN false
-		if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
-		{
-
-			// once we are done taking the object 
-			m_money =m_level(m_row, m_col)->get_value();
-			m_drawMoney = true;
-			drawMoney(gold_miner);
-			if (m_level(m_row, m_col)->get_value() == 0)
+			if (m_getObject)
 			{
-				m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
-			}
-			m_moneyCounter +=m_money;
-			m_level.set_Board()[m_row][m_col] = nullptr;
-			m_getObject = false;
-			
-			
-		}
-			
-
-	}
-
-		if (m_rope.isOpen())
-		{
-			m_drawMoney = false;
-			m_rope.openRope(timePass);
-
-			m_player.playerGrab();
-			
-			if (m_checked_object)
-			{
-				int row = 0, col = 0;
-				// if we found an object , theres no need to check for more objects 
-				// the fucntion isAttact in case something is found would return the values found and put it in the row and col
-					
-				if (isAttach(row, col))
-				{	
-					m_rope.connectToObject(timePass);
-						m_rope.foundObject();
-						cout << "found intersection with item at " << row << " " << col << endl;
-						// so it wont enter another time
-						m_checked_object = false;
-						m_level(row, col)->setAngle(m_ropeAngle);
-						m_row = row, m_col = col;
-						m_getObject = true;
-					
+				//bring it up and once is done the function moveOBJECT WILL RETURN false
+				if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+				{
+					// once we are done taking the object 
+					m_money =m_level(m_row, m_col)->get_value();
+					m_drawMoney = true;
+					drawMoney(gold_miner);
+					if (m_level(m_row, m_col)->get_value() == 0)
+					{
+						m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
+					}
+					m_moneyCounter +=m_money;
+					m_level.set_Board()[m_row][m_col] = nullptr;
+					m_getObject = false;			
 				}
 			}
 
-		}
-		//in case the user has not press the botton the rope is just rotating the whole time
-		else
-		{
-			m_rope.rotateRope(timePass);
-			m_player.playerStand();
-			m_checked_object = true;
+			if (m_rope.isOpen())
+			{
+				m_drawMoney = false;
+				m_rope.openRope(timePass);
 
-		}	
+				m_player.playerGrab();
+			
+				if (m_checked_object)
+				{
+					int row = 0, col = 0;
+					// if we found an object , theres no need to check for more objects 
+					// the fucntion isAttact in case something is found would return the values found and put it in the row and col
+					
+					if (isAttach(row, col))
+					{	
+						m_rope.connectToObject(timePass);
+							m_rope.foundObject();
+							cout << "found intersection with item at " << row << " " << col << endl;
+							// so it wont enter another time
+							m_checked_object = false;
+							m_level(row, col)->setAngle(m_ropeAngle);
+							m_row = row, m_col = col;
+							m_getObject = true;
+					
+					}
+				}
+
+			}
+			//in case the user has not press the botton the rope is just rotating the whole time
+			else
+			{
+				m_rope.rotateRope(timePass);
+				m_player.playerStand();
+				m_checked_object = true;
+			}	
 
 }
 //---------------------------------------------------------------------------
 void Controller:: drawMoney(sf::RenderWindow& gold_miner)
 {
-	
 	m_text.setString(std::to_string(m_money)+"$");
 	m_text.setCharacterSize(52.5);
 	m_text.setStyle(sf::Text::Bold);
 	m_text.setPosition(315, 15);
 	m_text.setFillColor(sf::Color:: Black);
-
-	
 }
 //---------------------------------------------------------------------------
 int Controller::getLevel()const
 {
 	return m_levelNumber;
-
 }
 //--------------------------------------------------------
 bool Controller::levelFinished()
 {
 	return m_finish_level;
 }
-
 //--------------------------------------------------------------------------
 bool Controller::mouse_button_released(sf::Event event)
 {
-
 	auto x1 = event.mouseButton.x;
 	auto y1 = event.mouseButton.y;
 	sf::Vector2i pos1(x1, y1);
 
-
-	cout << pos1.x << " " << pos1.y << std::endl;
 	if ((pos1.x > 1070 && pos1.x < 1133) && (pos1.y < 82 && pos1.y > 26))
 		return false;
 
 	m_ropeAngle = m_rope.getRotation();
-
 	m_rope.changeState();
 
-	
-	return true;
+		return true;
 }
 //--------------------------------------------------------------------------------------------
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
@@ -256,7 +230,6 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 	}
 	m_toolbar.draw(gold_miner, m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
 }
-
 //----------------------------------------------------------------
 bool Controller::isAttach(int &final_row, int &final_col)
 {
@@ -283,9 +256,7 @@ bool Controller::isAttach(int &final_row, int &final_col)
 	}
 
 		return false;
-	}
-	
-	
+}
 //----------------------------------------------------------------------------------------------
 bool Controller:: checkIfBoardEmty()
 {
@@ -303,3 +274,4 @@ bool Controller:: checkIfBoardEmty()
 
 	return true;
 }
+//-----------------------------------------------------------------------------------------------------

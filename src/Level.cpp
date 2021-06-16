@@ -7,13 +7,14 @@
 #include <stdexcept>
 #include <string>
 
-const auto CORRIDOR = sf::Vector2f(100.f, 150.f);
+//const auto CORRIDOR = sf::Vector2f(150.f, 225.f);
+const auto CORRIDOR = sf::Vector2f(350.f, 300.f);
 
 using std::cout;
 using std::endl;
 using std::ifstream;
 
-const auto BOARDER = sf::Vector2f(10.f, 100.f);
+const auto BOARDER = sf::Vector2f(15.f, 150.f);
 
 class FileError {};
 

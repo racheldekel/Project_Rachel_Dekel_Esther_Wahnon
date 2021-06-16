@@ -119,7 +119,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 
 	}
 
-	
 }
 //------------------------------------------------------------------------------
 void Controller::resetValues()
@@ -170,13 +169,9 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				int row = 0, col = 0;
 				// if we found an object , theres no need to check for more objects 
 				// the fucntion isAttact in case something is found would return the values found and put it in the row and col
-
-
 					
 				if (isAttach(row, col))
-				{
-					
-					
+				{	
 					m_rope.connectToObject(timePass);
 						m_rope.foundObject();
 						cout << "found intersection with item at " << row << " " << col << endl;
@@ -190,8 +185,6 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 			}
 
 		}
-
-
 		//in case the user has not press the botton the rope is just rotating the whole time
 		else
 		{

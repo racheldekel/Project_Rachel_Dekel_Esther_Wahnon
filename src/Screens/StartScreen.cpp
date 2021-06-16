@@ -15,12 +15,12 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level)
 	
 	int menu = 0;
 
-	if (!Texture.loadFromFile("startGame.jpeg"))
+	if (!Texture.loadFromFile("startGame.jpg"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
-	Sprite.scale(1.5, 1.5);
+	//Sprite.scale(1.5, 1.52);
 	Sprite.setTexture(Texture);
 	
 
@@ -85,8 +85,8 @@ bool StartScreen::mouse_button_released(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	//std::cout << pos.x << " " << pos.y << std::endl;
-	if ((pos.x > 392 && pos.x < 816) && (pos.y < 648 && pos.y > 531))
+	std::cout << pos.x << " " << pos.y << std::endl;
+	if ((pos.x > 409 && pos.x < 814) && (pos.y < 647 && pos.y > 535))
 		return true;
 
 	return false;

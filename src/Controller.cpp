@@ -5,7 +5,7 @@ class ActionError{};
 int Controller::startGame(sf::RenderWindow& gold_miner)
 {
 	auto t = sf::Texture();
-	t.loadFromFile("background.jpg");
+	t.loadFromFile("background.png");
 	sf::Sprite s(t);
 	//s.scale(1.6f, 1.1f);
 	auto clock = sf::Clock();
@@ -206,7 +206,7 @@ void Controller:: drawMoney(sf::RenderWindow& gold_miner)
 	m_text.setCharacterSize(52.5);
 	m_text.setStyle(sf::Text::Bold);
 	m_text.setPosition(315, 15);
-	m_text.setFillColor(sf::Color:: Yellow);
+	m_text.setFillColor(sf::Color:: Black);
 
 	
 }
@@ -230,7 +230,9 @@ bool Controller::mouse_button_released(sf::Event event)
 	auto y1 = event.mouseButton.y;
 	sf::Vector2i pos1(x1, y1);
 
-	if ((pos1.x > 801 && pos1.x < 872) && (pos1.y < 69 && pos1.y > 26))
+
+	cout << pos1.x << " " << pos1.y << std::endl;
+	if ((pos1.x > 1070 && pos1.x < 1133) && (pos1.y < 82 && pos1.y > 26))
 		return false;
 
 	m_ropeAngle = m_rope.getRotation();

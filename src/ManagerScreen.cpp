@@ -15,7 +15,7 @@
 
 void ManagerScreen ::main_run()
 {
-	sf::RenderWindow GoldMiner({1200, 800}, "Gold Miner By Rachel Dekel and Esther Wahnon");
+	sf::RenderWindow GoldMiner({1200, 680}, "Gold Miner By Rachel Dekel and Esther Wahnon");
 	GoldMiner.setFramerateLimit(60);
 	int screen = 0;
 

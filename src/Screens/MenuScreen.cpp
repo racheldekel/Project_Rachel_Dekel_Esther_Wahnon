@@ -16,13 +16,13 @@ int MenuScreen::run(sf::RenderWindow& gold_miner, int& level)
 	sf::Text Menu3;
 	int menu = 0;
 
-	if (!Texture.loadFromFile("menu_final.jpg"))
+	if (!Texture.loadFromFile("menu.jpg"))
 	{
 		std::cerr << "Error loading file" << std::endl;
 		return (-1);
 	}
 
-	Sprite.scale(1.5, 1.5);
+	//Sprite.scale( 1, 1);
 	Sprite.setTexture(Texture);
 	
 
@@ -92,8 +92,8 @@ bool MenuScreen ::button_released_in_introduction(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	
-	if ((pos.x > 90 && pos.x < 480) && (pos.y < 570 && pos.y > 480))
+	std::cout << pos.x << " " << pos.y << std::endl;
+	if ((pos.x > 106 && pos.x < 540) && (pos.y < 367 && pos.y > 276))
 		return true;
 
 	return false;
@@ -107,7 +107,7 @@ bool MenuScreen::button_released_start_game(sf::Event event)
 	sf::Vector2i pos(x, y);
 
 	
-	if ((pos.x > 120 && pos.x < 450) && (pos.y < 300 && pos.y > 27))
+	if ((pos.x > 696 && pos.x < 868) && (pos.y < 252 && pos.y > 90))
 		return true;
 
 	return false;

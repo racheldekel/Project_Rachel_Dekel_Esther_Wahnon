@@ -19,7 +19,7 @@ FileManager::FileManager()
 	m_pTexture[SMALLROCK].loadFromFile("smallRock.png");
 	m_pTexture[ROPE].loadFromFile("rope.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
-
+	m_pTexture[EXPLOSION].loadFromFile("explosion.png");
 	m_font[0].loadFromFile("gameFont.otf");
 
 }

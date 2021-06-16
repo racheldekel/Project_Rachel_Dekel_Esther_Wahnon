@@ -30,6 +30,36 @@ public:
 	bool isAttach(int& row, int& col);
 	void resetValues();
 private:
+	struct Explosion
+	{
+		Explosion()
+		{
+			m_explosion_sprite.scale(0.25f, 0.25f);
+		}
+		void setLocation(const sf::Vector2f& location)
+		{
+
+			m_explode = true;
+			m_explosion_sprite.setPosition(location);
+		}
+		void draw(sf::RenderWindow& gold_miner)
+		{
+			m_explosion_sprite.setTextureRect(sf::IntRect(256 * currentState % 8, 248 * currentState / 6, 256, 248)); //rows
+			//m_explosion.setTextureRect(sf::IntRect(256 * currentState % 8, 248 * currentState / 6, 256, 248)); //works cols
+			gold_miner.draw(m_explosion_sprite);
+			currentState++;
+			if (currentState == 32)
+			{
+				currentState = 0;
+				m_explode = false;
+			}
+		}
+
+		bool m_explode = false;
+		/*sf::Vector2f explodeLocation = sf::Vector2f();*/
+		sf::Sprite m_explosion_sprite = sf::Sprite(FileManager::instance().get_icon(12), sf::IntRect(0, 0, 256, 248));
+		size_t currentState = 0;
+	};
 
 	bool m_drawMoney = false;
 	int m_money = 0;
@@ -44,8 +74,9 @@ private:
 	Rope m_rope = Rope{ {595.f, 93.f} };
 	bool m_finish_level = true;
 	Level m_level;
-	sf::Vector2f m_position;
 	bool m_mouseMoving= true;
+	sf::Vector2f m_position;
+	Explosion m_explosion;
 	void  changeObjectState();
 	int m_row = 0;
 	int m_col = 0;

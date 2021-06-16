@@ -146,8 +146,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 			m_money =m_level(m_row, m_col)->get_value();
 			m_drawMoney = true;
 			drawMoney(gold_miner);
+			if (m_level(m_row, m_col)->get_value() == 0)
+			{
+				m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
+			}
 			m_moneyCounter +=m_money;
-			
 			m_level.set_Board()[m_row][m_col] = nullptr;
 			m_getObject = false;
 			
@@ -241,6 +244,10 @@ bool Controller::mouse_button_released(sf::Event event)
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {
 	m_level.draw_static_figures(gold_miner);
+	if (m_explosion.m_explode)
+	{
+		m_explosion.draw(gold_miner);
+	}
 	m_toolbar.draw(gold_miner, m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
 }
 

@@ -16,7 +16,7 @@ using std::string;
 using std::vector;
 
 
-const auto SIZE = 40;
+const auto SIZE = 40.f;
 
 class Objects
 {

@@ -11,7 +11,11 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
-	
+	//sf::Music music;
+	//if (!music.openFromFile("backgroundmusic.wav"))
+	//	std::cout << "ERROR" << std::endl;
+	//music.play();
+	//music.setLoop(true);
 	m_finish_level = false;
 	m_goalLevel = m_goal[m_levelNumber];
 

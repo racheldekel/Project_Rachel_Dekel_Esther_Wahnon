@@ -11,8 +11,8 @@ public:
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
 		auto rect = m_sprite.getGlobalBounds();
-		m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.5,
-			((float)60 / rect.height)*1.5));
+		m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.8,
+			((float)60 / rect.height)*1.8));
 		m_sprite.setOrigin({ rect.width / 2, rect.height/ 2 });
 
 

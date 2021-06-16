@@ -1,4 +1,4 @@
-﻿configure_file ("background.png" ${CMAKE_BINARY_DIR} COPYONLY)
+﻿configure_file ("background.jpg" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bigGold.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bigRock.png" ${CMAKE_BINARY_DIR} COPYONLY)
 configure_file ("bone.png" ${CMAKE_BINARY_DIR} COPYONLY)

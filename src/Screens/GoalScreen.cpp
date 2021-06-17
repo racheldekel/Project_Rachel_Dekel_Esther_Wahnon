@@ -9,7 +9,7 @@ const auto WAIT_TIME = sf::seconds(3);
 class ActionError {};
 int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 {
-
+	m_nextLevelSound.setBuffer(FileManager::instance().getSound(FINISHLEVEL_s));
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
@@ -22,6 +22,7 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
 	}
 	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
+	m_nextLevelSound.play();
 
 	
 	gold_miner.clear();

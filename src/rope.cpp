@@ -55,7 +55,8 @@ void Rope::connectToObject(const sf::Time& time)
 void Rope::openRope(const sf::Time& time )
 {
 	m_rotate = false;
-
+	m_ropeSound.setBuffer(FileManager::instance().getSound(ROPE_s));
+	m_pullingSound.setBuffer(FileManager::instance().getSound(PULLING_s));
 	m_scale = m_sprite.getScale();
 
 	// to open the rope 
@@ -67,7 +68,7 @@ void Rope::openRope(const sf::Time& time )
 		m_scale.y += LengthAddition;
 
 		m_sprite.setScale(m_scale);
-
+		m_ropeSound.play();
 		if (m_scale.y > 4.35|| m_found_object)
 			m_closingRope = true;
 
@@ -86,7 +87,7 @@ void Rope::openRope(const sf::Time& time )
 			 // here we have to calculate according to each object that has caught
 			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.3f; //* time.asSeconds();
 			 closeRope(m_scale, time, LengthAddition);
-
+			 m_pullingSound.play();
 			 }
 	}
 

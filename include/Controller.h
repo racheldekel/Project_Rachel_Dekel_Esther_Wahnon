@@ -98,5 +98,6 @@ private:
 	float m_ropeAngle;
 	int value;
 	int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
-	
+	sf::Sound m_moneySound;
+	sf::Sound m_explosionSound;
 };

@@ -20,7 +20,17 @@ FileManager::FileManager()
 	m_pTexture[ROPE].loadFromFile("rope.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
 	m_pTexture[EXPLOSION].loadFromFile("explosion.png");
+	//fonts
 	m_font[0].loadFromFile("gameFont.otf");
+	//sounds 
+	m_sound[CATCH_s].loadFromFile("catch.wav");
+	m_sound[EXPLOSION_s].loadFromFile("explosion.wav");
+	m_sound[FINISHLEVEL_s].loadFromFile("finish_level.wav");
+	m_sound[GETMONEY_s].loadFromFile("getmoney.wav");
+	m_sound[PRESENT_s].loadFromFile("present.wav");
+	m_sound[PULLING_s].loadFromFile("pulling.wav");
+	m_sound[ROPE_s].loadFromFile("rope.wav");
+		//enum Sound_t :size_t { CATCH, EXPLOSION , FINISHLEVEL, GETMONEY, PRESENT, PULLING,ROPE };
 
 }
 // this functions gets icon texture and return the shpe
@@ -40,3 +50,7 @@ sf::Font* FileManager::getFont(size_t type)
 	return &m_font[type];
 }
 
+sf::SoundBuffer& FileManager::getSound(size_t type)
+{
+	return m_sound[type];
+}

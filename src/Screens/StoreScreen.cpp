@@ -22,7 +22,7 @@ int StoreScreen::run(sf::RenderWindow& gold_miner, int& level)
 
 	auto num = rand() % 2;
 
-		if (num==0)
+		//if (num==0)
 		m_contol.startStore(gold_miner);
 
 		return GOAL_SCREEN;

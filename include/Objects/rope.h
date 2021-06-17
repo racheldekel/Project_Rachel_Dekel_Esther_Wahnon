@@ -37,9 +37,10 @@ public:
 	bool getRopeState();
 	void update_end_rope();
 	private :
-		sf::Vector2f m_scale;
 
-	
+		sf::Vector2f m_scale;
+		sf::Sound m_ropeSound;
+		sf::Sound m_pullingSound;
 		bool  m_closingRope = false;
 		bool m_open = false; //true of up or down false if rotate
 		void changeDirection();

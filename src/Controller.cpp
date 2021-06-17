@@ -7,18 +7,14 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
-	//s.scale(1.6f, 1.1f);
+
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
-	//sf::Music music;
-	//if (!music.openFromFile("backgroundmusic.wav"))
-	//	std::cout << "ERROR" << std::endl;
-	//music.play();
-	//music.setLoop(true);
-	m_finish_level = false;
+	m_moneySound.setBuffer(FileManager::instance().getSound(GETMONEY_s));
+	m_explosionSound.setBuffer(FileManager::instance().getSound(EXPLOSION_s));
 	m_goalLevel = m_goal[m_levelNumber];
-
+	m_finish_level = false;
 	m_level.read_level(m_levelNumber);
 
 	
@@ -144,9 +140,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 					m_money =m_level(m_row, m_col)->get_value();
 					m_drawMoney = true;
 					drawMoney(gold_miner);
+					m_moneySound.play();
 					if (m_level(m_row, m_col)->get_value() == 0)
 					{
 						m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
+						m_explosionSound.play();
 					}
 					m_moneyCounter +=m_money;
 					m_level.set_Board()[m_row][m_col] = nullptr;

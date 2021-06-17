@@ -30,6 +30,7 @@ public:
 	bool isAttach(int& row, int& col);
 	void resetValues();
 	bool checkIfBoardEmty();
+	void  startStore(sf::RenderWindow& gold_miner);
 private:
 	struct Explosion
 	{
@@ -73,6 +74,9 @@ private:
 	Toolbar m_toolbar;
 	Player m_player = Player{ {600.f, 66.f} };
 	Rope m_rope = Rope{ {596.f, 117.f} };
+	Present m_present{ {300.f, 300.f} };
+
+	bomb m_bomb{ {320.f , 300.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	bool m_mouseMoving= true;

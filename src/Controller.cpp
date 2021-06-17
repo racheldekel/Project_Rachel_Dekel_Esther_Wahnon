@@ -279,3 +279,45 @@ bool Controller:: checkIfBoardEmty()
 	return true;
 }
 //-----------------------------------------------------------------------------------------------------
+void  Controller ::startStore(sf::RenderWindow& gold_miner)
+{
+
+	auto t= sf::Texture();
+	t.loadFromFile("store.jpg");
+	sf::Sprite s(t);
+	
+
+	while (gold_miner.isOpen())
+	{
+		gold_miner.draw(s);
+
+		
+		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
+		{
+			switch (event.type)
+			{
+				case sf::Event::Closed:
+					gold_miner.close();
+					break;
+				case (sf::Event::MouseButtonReleased):
+				{
+
+					;
+					break;
+				}
+			
+			}
+		}
+
+		
+		m_present.draw(gold_miner);
+
+
+		m_rope.draw(gold_miner);
+		m_bomb.draw(gold_miner);
+
+
+		gold_miner.display();
+		gold_miner.clear();
+	
+}

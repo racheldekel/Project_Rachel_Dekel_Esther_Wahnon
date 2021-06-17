@@ -4,6 +4,7 @@
 #include "Screens/MenuScreen.h"
 #include "Screens/IntroductionScreen.h"
 #include "Screens/GameOverScreen.h"
+#include "Screens/StoreScreen.h"
 #include "Screens/GoalScreen.h"
 
 #include <iostream>
@@ -42,6 +43,10 @@ void ManagerScreen ::main_run()
 	GameOverScreen s5;
 	Screens.push_back(&s5);
 	create_screens(Screens);
+
+	StoreScreen s6;
+	Screens.push_back(&s6);
+	create_screens(Screens);
 	
 	int level = 0;
 
@@ -56,7 +61,7 @@ void ManagerScreen ::main_run()
 //------------------------------------------------------------------------
 void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
 {
-	// start,  menu , introducction , goal , game , gameover
+	// start,  menu , introducction , goal , game , gameover, store
 	
 
 

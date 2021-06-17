@@ -44,6 +44,12 @@ public:
 	{ 
 		return  m_angle;
 	}
+	//----------------------------------------------------------------------------------------
+	sf::Vector2f getPosition() 
+	{
+
+		return m_sprite.getPosition();
+	}
 
 	//_-------------------------------------------------------------------
 	Objects(sf::Vector2f location)
@@ -57,6 +63,7 @@ public:
 	int get_value() const;
 	bool  moveObject(const sf::Time& timePass, sf::Vector2f posRope, float angle);
 	bool is_intersected( sf::FloatRect& rect);
+	void MakeBigger();
 protected:
 	
 	sf::Sprite m_sprite;

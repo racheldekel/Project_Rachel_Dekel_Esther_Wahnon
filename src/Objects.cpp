@@ -52,3 +52,11 @@ void Objects:: moveMouse()
 	}
 
 }
+//----------------------------------------------------------------------------
+void Objects::MakeBigger()
+{
+
+	m_sprite.setScale(1.75, 1.75);
+
+
+}

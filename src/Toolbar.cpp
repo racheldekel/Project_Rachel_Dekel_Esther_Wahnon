@@ -51,3 +51,20 @@ void Toolbar::draw(sf::RenderWindow& window, int level,int money, int goal, int 
 	window.draw(m_ToolbarStatus4);
 
 }
+//---------------------------------------------------------------------------------------------------------------
+void Toolbar::draw_money(sf::RenderWindow& window,  int money)
+{
+
+	
+	std::string moneys = "AMOUNT OF MONEY " + std::to_string(money);
+
+
+	m_ToolbarStatus.setPosition(30, 15);
+	m_ToolbarStatus.setString(moneys);
+	m_ToolbarStatus.setColor(sf::Color::Black);
+	m_ToolbarStatus.setCharacterSize(35);
+	m_ToolbarStatus.getOutlineThickness( );
+	window.draw(m_ToolbarStatus);
+
+}
+

@@ -1,7 +1,9 @@
 #include "Screens/StoreScreen.h"
 #include <iostream>
 #include <stdexcept>
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 class ActionError {};
 int StoreScreen::run(sf::RenderWindow& gold_miner, int& level)
 {
@@ -15,16 +17,17 @@ int StoreScreen::run(sf::RenderWindow& gold_miner, int& level)
 	int menu = 0;
 
 
-	while (Running)
-	{
+	srand(time(NULL));
 
+
+	auto num = rand() % 2;
+
+		if (num==0)
 		m_contol.startStore(gold_miner);
 
+		return GOAL_SCREEN;
 
-		return;
-		//aqui tenemos que poner que devuelva un valor o que se vaya al sigueinte parte del programa o que haga return cuando acabe
-
-	}
+	
 
 	return (-1);
 }

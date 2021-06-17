@@ -25,6 +25,7 @@ public:
 	void update_state(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
+	void saveValue(int & money);
 	bool mouse_button_released(sf::Event event);
 	int getLevel()const;
 	bool isAttach(int& row, int& col);
@@ -74,9 +75,15 @@ private:
 	Toolbar m_toolbar;
 	Player m_player = Player{ {600.f, 66.f} };
 	Rope m_rope = Rope{ {596.f, 117.f} };
-	Present m_present{ {300.f, 300.f} };
 
-	bomb m_bomb{ {320.f , 300.f} };
+
+	Present m_present{ {420.f, 365.f} };
+	diamond m_diamond{ {610.f , 365.f} };
+	bigGold m_bigGold{ {830.f, 365.f} };
+	bool m_presentDisplay = true;
+	bool m_diamondDisplay = true;
+	bool m_bigGoldDisplay = true;
+
 	bool m_finish_level = true;
 	Level m_level;
 	bool m_mouseMoving= true;
@@ -89,6 +96,7 @@ private:
 	int m_value=0;
 	bool m_getObject = false;
 	float m_ropeAngle;
+	int value;
 	int m_goal[7] = {0, 300, 500, 800, 1100, 1400, 1700 };
 	
 };

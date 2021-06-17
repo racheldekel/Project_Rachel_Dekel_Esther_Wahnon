@@ -34,14 +34,11 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
 
 				if (m_controller.getLevel() <= NUM_OF_LEVELS)
 				{
-					return GOAL_SCREEN;
+					return STORE_SCREEN;
+					
 
 				}
 
-
-
-				
-			
 
 		}
 		

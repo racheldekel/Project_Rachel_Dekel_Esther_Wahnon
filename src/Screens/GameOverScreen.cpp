@@ -33,8 +33,11 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 					break;
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
+					{
+						level = 0;
 						return MENU_SCREEN;
 
+					}
 					break;
 
 				case sf::Event::KeyPressed:

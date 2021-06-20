@@ -73,8 +73,8 @@ private:
 	int m_goalLevel = 0;
 	int  m_time = 60;
 	Toolbar m_toolbar;
-	Player m_player = Player{ {600.f, 66.f} };
-	Rope m_rope = Rope{ {596.f, 117.f} };
+	Player m_player = Player{ {600.f, 90.f} };
+	Rope m_rope = Rope{ {579.f, 118.f} };
 
 
 

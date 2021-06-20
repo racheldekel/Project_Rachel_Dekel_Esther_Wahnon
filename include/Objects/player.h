@@ -25,5 +25,9 @@ public:
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(PLAYERGRAB));
 	}
+	void setScale(int x, int y)
+	{
+		m_sprite.setScale(x, y);
+	}
 };
 

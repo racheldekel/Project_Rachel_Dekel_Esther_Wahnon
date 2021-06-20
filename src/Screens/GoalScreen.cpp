@@ -15,7 +15,6 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-	std::cout << level;
 	if (!Texture.loadFromFile("nextGoal.png"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;

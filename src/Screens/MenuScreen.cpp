@@ -91,7 +91,7 @@ bool MenuScreen ::button_released_in_introduction(sf::Event event)
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
 
-	std::cout << pos.x << " " << pos.y << std::endl;
+
 	if ((pos.x > 106 && pos.x < 540) && (pos.y < 367 && pos.y > 276))
 		return true;
 

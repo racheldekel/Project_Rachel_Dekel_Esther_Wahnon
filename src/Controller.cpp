@@ -163,7 +163,8 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				m_rope.openRope(timePass);
 
 				m_player.playerGrab();
-			
+
+				
 				if (m_checked_object)
 				{
 					int row = 0, col = 0;
@@ -174,7 +175,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 					{	
 						m_rope.connectToObject(timePass);
 							m_rope.foundObject();
-							cout << "found intersection with item at " << row << " " << col << endl;
+							//cout << "found intersection with item at " << row << " " << col << endl;
 							// so it wont enter another time
 							m_checked_object = false;
 							m_level(row, col)->setAngle(m_ropeAngle);

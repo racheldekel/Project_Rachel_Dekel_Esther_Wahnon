@@ -21,7 +21,7 @@ public:
 	Controller() {};
 	~Controller() = default;
 	void drawMoney(sf::RenderWindow& gold_miner);
-	int startGame(sf::RenderWindow& gold_miner);
+	int startGame(sf::RenderWindow& gold_miner, int& totalMoney);
 	void update_state(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
@@ -31,7 +31,7 @@ public:
 	bool isAttach(int& row, int& col);
 	void resetValues();
 	bool checkIfBoardEmty();
-	void  startStore(sf::RenderWindow& gold_miner);
+
 private:
 	struct Explosion
 	{
@@ -77,12 +77,6 @@ private:
 	Rope m_rope = Rope{ {596.f, 117.f} };
 
 
-	Present m_present{ {420.f, 365.f} };
-	diamond m_diamond{ {610.f , 365.f} };
-	bigGold m_bigGold{ {830.f, 365.f} };
-	bool m_presentDisplay = true;
-	bool m_diamondDisplay = true;
-	bool m_bigGoldDisplay = true;
 
 	bool m_finish_level = true;
 	Level m_level;

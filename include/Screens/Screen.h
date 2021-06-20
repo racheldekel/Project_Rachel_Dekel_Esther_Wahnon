@@ -7,7 +7,7 @@ class Screen
         
         Screen() {};
         ~Screen() {};
-        virtual int run(sf::RenderWindow& gold_miner, int& level) = 0 ;
+        virtual int run(sf::RenderWindow& gold_miner, int& level, int& totalMoney) = 0 ;
 
     protected:
               int m_i = 0;

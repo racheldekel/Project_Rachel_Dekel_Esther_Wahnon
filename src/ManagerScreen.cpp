@@ -49,11 +49,11 @@ void ManagerScreen ::main_run()
 	create_screens(Screens);
 	
 	int level = 0;
-
+	int totalMoney = 0;
 
 	while (screen != -1)
 	{
-		screen = Screens[screen]->run(GoldMiner, level);
+		screen = Screens[screen]->run(GoldMiner, level, totalMoney);
 	
 	}
 }

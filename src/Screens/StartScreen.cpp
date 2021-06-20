@@ -3,7 +3,7 @@
 #include <stdexcept>
 
 class ActionError {};
-int StartScreen ::run(sf::RenderWindow& gold_miner, int& level)
+int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 	
 	sf::Event Event;

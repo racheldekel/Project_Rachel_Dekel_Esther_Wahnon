@@ -8,7 +8,7 @@ public:
 	MenuScreen() {};
 	~MenuScreen() {};
 	
-	virtual int run(sf::RenderWindow& gold_miner, int& level) ;
+	virtual int run(sf::RenderWindow& gold_miner, int& level, int& totalMoney) ;
 
 	bool button_released_in_introduction(sf::Event event);
 

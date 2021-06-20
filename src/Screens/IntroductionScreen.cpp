@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int IntroductionScreen::run(sf::RenderWindow& gold_miner, int& level)
+int IntroductionScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 	sf::Event Event;
 	bool Running = true;

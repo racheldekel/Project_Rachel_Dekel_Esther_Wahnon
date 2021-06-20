@@ -7,14 +7,15 @@
 const auto WAIT_TIME = sf::seconds(3);
 
 class ActionError {};
-int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level)
+int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
+
 	m_nextLevelSound.setBuffer(FileManager::instance().getSound(FINISHLEVEL_s));
 	sf::Texture Texture;
 	sf::Sprite Sprite;
 	sf::Font Font;
 
-
+	std::cout << level;
 	if (!Texture.loadFromFile("nextGoal.png"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;

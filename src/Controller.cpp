@@ -2,8 +2,10 @@
 class ActionError{};
 
 
-int Controller::startGame(sf::RenderWindow& gold_miner)
+int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 {
+
+	m_moneyCounter = totalMoney;
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
@@ -94,6 +96,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		{
 			if (m_moneyCounter < m_goalLevel)
 			{
+				totalMoney = 0;
 				resetValues();
 					return TIME_OVER;
 			}
@@ -106,6 +109,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 		if (m_finish_level || checkIfBoardEmty())
 
 		{
+			totalMoney = m_moneyCounter;
 			saveValue(m_moneyCounter);
 			m_time = 60;
 			m_levelNumber++;
@@ -120,6 +124,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner)
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
+
 	m_time = 60;
 	m_level = 1;
 	m_levelNumber = 1;
@@ -175,6 +180,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 							m_level(row, col)->setAngle(m_ropeAngle);
 							m_row = row, m_col = col;
 							m_getObject = true;
+							
 					
 					}
 				}
@@ -282,84 +288,4 @@ bool Controller:: checkIfBoardEmty()
 	}
 
 	return true;
-}
-//-----------------------------------------------------------------------------------------------------
-void  Controller ::startStore(sf::RenderWindow& gold_miner)
-{
-	cout << "level" << m_levelNumber << endl;
-
-	auto t= sf::Texture();
-	t.loadFromFile("store.jpg");
-	sf::Sprite s(t);
-	
-	while (gold_miner.isOpen())
-	{
-		gold_miner.draw(s);
-
-
-		for (auto event = sf::Event(); gold_miner.pollEvent(event);)
-		{
-			switch (event.type)
-			{
-				case sf::Event::Closed:
-					gold_miner.close();
-					break;
-				case (sf::Event::MouseButtonReleased):
-				{
-					auto x = event.mouseButton.x;
-					auto y = event.mouseButton.y;
-					sf::Vector2f pos(x, y);
-						
-					if ((pos.x > 966 && pos.x < 1160) && (pos.y < 416 && pos.y > 300))
-						return;
-					
-					//present
-					if ((pos.x > 370 && pos.x < 469) && (pos.y < 402 && pos.y > 325))
-					{
-						m_presentDisplay = false;
-					}
-					//diamond
-					if ((pos.x > 560 && pos.x < 660) && (pos.y < 400 && pos.y > 326))
-					{
-						m_diamondDisplay = false;
-					}
-					//gold rock
-					if ((pos.x > 785 && pos.x < 880) && (pos.y < 388 && pos.y > 326))
-					{
-						m_bigGoldDisplay = false;
-					}
-				}
-			}
-		}
-		
-		if (m_presentDisplay)
-		{
-			m_present.draw(gold_miner);
-			m_present.MakeBigger();
-		}
-		if (m_diamondDisplay)
-		{
-			m_diamond.draw(gold_miner);
-			m_diamond.MakeBigger();
-		}
-		if (m_bigGoldDisplay)
-		{
-			m_bigGold.draw(gold_miner);
-			m_bigGold.MakeBigger();
-		}
-
-
-		if (!m_bigGoldDisplay && !m_diamondDisplay && !m_presentDisplay)
-			return;
-
-
-		
-	//	m_toolbar.draw_money(gold_miner, value);
-		//cout << m_money << " " << m_moneyCounter << endl;
-
-		
-		gold_miner.display();
-		gold_miner.clear();
-	}
-	
 }

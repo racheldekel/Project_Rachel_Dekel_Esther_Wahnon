@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 class ActionError {};
-int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
+int GameScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 
 	sf::Event Event;
@@ -17,10 +17,11 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
 		//Verifying events
 		while (1)
 		{
-				auto number = m_controller.startGame(gold_miner);
+				auto number = m_controller.startGame(gold_miner, totalMoney);
 
 				if (number == EXIT)
 				{
+					totalMoney = 0;
 					level= 0;
 					return START_SCREEN;
 					
@@ -28,6 +29,7 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
 
 				if (number == TIME_OVER)
 				{
+					totalMoney = 0;
 					level = 0;
 					return GAME_OVER_SCREEN;
 				}
@@ -39,6 +41,8 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level)
 
 				}
 
+				else 
+					return GAME_OVER_SCREEN;
 
 		}
 		

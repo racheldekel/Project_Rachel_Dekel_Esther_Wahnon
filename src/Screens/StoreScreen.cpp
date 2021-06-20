@@ -18,7 +18,7 @@ int StoreScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 
 
 	
-		if ((level % 2) -1 ==0)
+		if ((level % 2) !=0)
 			startStore(gold_miner, totalMoney);
 
 		return GOAL_SCREEN;

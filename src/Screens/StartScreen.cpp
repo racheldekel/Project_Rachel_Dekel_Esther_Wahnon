@@ -23,8 +23,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 	//Sprite.scale(1.5, 1.52);
 	Sprite.setTexture(Texture);
 	
-
-
 	
 	while (Running)
 	{

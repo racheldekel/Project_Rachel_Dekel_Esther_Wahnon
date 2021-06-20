@@ -2,6 +2,7 @@
 #include "Screen.h"
 #include <SFML/Graphics.hpp>
 #include "Controller.h"
+#include "ManagerScreen.h"
 
 class GameOverScreen : public Screen
 {
@@ -14,5 +15,8 @@ public:
 	bool  mouse_button_released(sf::Event event);
 
 private:
+	ManagerScreen s;
+
+	
 	Controller m_controller;
 };

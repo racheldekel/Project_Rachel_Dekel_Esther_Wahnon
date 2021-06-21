@@ -128,7 +128,6 @@ void Rope::draw(sf::RenderWindow& window)
 
 	m_rect.setFillColor(sf::Color :: Magenta);
 	m_rect.setSize(sf ::Vector2f (10, 10) );
-	m_rect.getInverseTransform();
 	m_rect.rotate(angle);
 	
 	window.draw(m_rect);

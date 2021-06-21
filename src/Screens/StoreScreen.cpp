@@ -53,7 +53,10 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 				sf::Vector2f pos(x, y);
 
 				if ((pos.x > 966 && pos.x < 1160) && (pos.y < 416 && pos.y > 300))
+				{
+					m_bigGoldDisplay = true, m_diamondDisplay = true, m_presentDisplay = true;
 					return;
+				}
 
 				//present
 				if ((pos.x > 370 && pos.x < 469) && (pos.y < 402 && pos.y > 325))
@@ -116,7 +119,10 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 
 
 		if (!m_bigGoldDisplay && !m_diamondDisplay && !m_presentDisplay)
+		{
+			m_bigGoldDisplay = true, m_diamondDisplay = true, m_presentDisplay = true;
 			return;
+		}
 		
 
 

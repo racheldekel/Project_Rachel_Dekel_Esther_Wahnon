@@ -60,9 +60,11 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 						{
 
 							if (!mouse_button_released(event))
+							{
+								resetValues();
 								return EXIT;
 
-
+							}
 							break;
 						}
 					}
@@ -154,9 +156,22 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 					m_moneySound.play();
 					m_moneyCounter +=m_money;
 					m_level.set_Board()[m_row][m_col] = nullptr;
-					m_getObject = false;			
+					m_getObject = false;	
+				}
+
+				if (m_level.CheckIfBomb(m_row, m_col))
+				{
+					m_getObject = false;
+					m_level.set_Board()[(int)m_row+3][m_col] = nullptr;
+					m_level.set_Board()[(int)m_row-3][m_col] = nullptr;
+					m_level.set_Board()[m_row][(int)m_col+3] = nullptr;
+					m_level.set_Board()[m_row][(int)m_col-3] = nullptr;
+					m_level.set_Board()[m_row][m_col] = nullptr;
+
 				}
 			}
+
+			//m_drawMoney = false;
 
 			if (m_rope.isOpen())
 			{
@@ -176,14 +191,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 
 						if (m_level.CheckIfBomb(row, col))
 						{
+							
 							m_explosion.setLocation(sf::Vector2f(col, row)*SIZE );
 							m_explosionSound.play();
 
-							
-							m_level.set_Board()[row-2][col] = nullptr;
-							m_level.set_Board()[row + 2][col] = nullptr;
-							m_level.set_Board()[row ][col-2] = nullptr;
-							m_level.set_Board()[row][col +2] = nullptr;
+						
 						}
 
 						m_rope.connectToObject(timePass);
@@ -193,6 +205,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 							m_level(row, col)->setAngle(m_ropeAngle);
 							m_row = row, m_col = col;
 							m_getObject = true;
+
 					}
 				}
 
@@ -298,3 +311,4 @@ bool Controller:: checkIfBoardEmty()
 
 	return true;
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------

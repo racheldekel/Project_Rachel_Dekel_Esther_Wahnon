@@ -147,18 +147,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				//bring it up and once is done the function moveOBJECT WILL RETURN false
 				if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
 				{
-
-					
 					// once we are done taking the object 
 					m_money =m_level(m_row, m_col)->get_value();
 					m_drawMoney = true;
 					drawMoney(gold_miner);
 					m_moneySound.play();
-					/*if (m_level(m_row, m_col)->get_value() == 0)
-					{
-						m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
-						m_explosionSound.play();
-					}*/
 					m_moneyCounter +=m_money;
 					m_level.set_Board()[m_row][m_col] = nullptr;
 					m_getObject = false;			
@@ -171,7 +164,6 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				m_rope.openRope(timePass);
 
 				m_player.playerGrab();
-
 				
 				if (m_checked_object)
 				{
@@ -196,14 +188,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 
 						m_rope.connectToObject(timePass);
 							m_rope.foundObject();
-							//cout << "found intersection with item at " << row << " " << col << endl;
 							// so it wont enter another time
 							m_checked_object = false;
 							m_level(row, col)->setAngle(m_ropeAngle);
 							m_row = row, m_col = col;
 							m_getObject = true;
-							
-					
 					}
 				}
 
@@ -215,7 +204,6 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				m_player.playerStand();
 				m_checked_object = true;
 			}	
-
 }
 //---------------------------------------------------------------------------
 void Controller:: drawMoney(sf::RenderWindow& gold_miner)
@@ -230,7 +218,6 @@ void Controller:: drawMoney(sf::RenderWindow& gold_miner)
 void Controller::saveValue(int &money)
 {
 	value = money;
-	
 }
 //-----------------------------------------------------------------------------
 int Controller::getLevel()const

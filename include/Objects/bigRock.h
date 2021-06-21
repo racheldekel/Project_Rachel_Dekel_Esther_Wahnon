@@ -2,7 +2,7 @@
 #include "Objects.h"
 
 
-class bigRock: public Objects
+class bigRock : public Objects
 {
 public:
 
@@ -13,7 +13,5 @@ public:
 
 private:
 	sf::Sprite m_sprite;
-
-	int m_bigRockValue=30;
 
 };

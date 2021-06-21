@@ -12,8 +12,6 @@ int Objects:: get_value() const
 //_-------------------------------------------------------------------------------------
 bool Objects:: is_intersected( sf::FloatRect & rect)
 {
-	//std::cout << rect.left << " " << rect.height << " " << rect.top << " " << rect.width << std::endl;
-	//rect.left - 3;
 	return rect.intersects(m_sprite.getGlobalBounds());
 }
 //--------------------------------------------------------------------------------------------------
@@ -50,14 +48,10 @@ void Objects:: moveMouse()
 		if (pos.x < 153)
 			m_mouseMoveRight = true;
 	}
-
 }
 //----------------------------------------------------------------------------
 void Objects::MakeBigger()
 {
-
 	m_sprite.setScale(1.75, 1.75);
-
-
 }
-//------------------------------------------------------------
+//------------------------------------------------------------------------------

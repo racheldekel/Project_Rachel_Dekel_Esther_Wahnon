@@ -21,8 +21,6 @@ class FileManager
 {
 public:
 	const sf::Texture& get_icon(size_t shape) const;
-	//const sf::SoundBuffer& getSound(const int& ofSound)const;
-
 	static FileManager& instance();
 	sf::Font* getFont(size_t type);
 	sf::SoundBuffer& getSound(size_t type);

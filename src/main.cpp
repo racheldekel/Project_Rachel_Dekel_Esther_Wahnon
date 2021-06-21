@@ -7,6 +7,6 @@ int main()
 
     s.main_run();
 
-
+    return EXIT_SUCCESS;
    
 }

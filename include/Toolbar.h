@@ -9,7 +9,6 @@ public:
 	~Toolbar() {};
 	void draw(sf::RenderWindow& window, int level, int money, int goal, int time);
 
-	void draw_money(sf::RenderWindow& window, int money);
 
 private:
 

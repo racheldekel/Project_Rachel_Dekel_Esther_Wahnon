@@ -8,8 +8,6 @@
 #include <string>
 
 const auto CORRIDOR = sf::Vector2f(150.f, 225.f);
-//const auto CORRIDOR = sf::Vector2f(350.f, 300.f);
-
 using std::cout;
 using std::endl;
 using std::ifstream;
@@ -45,13 +43,9 @@ void Level::read_level(int levelNumber)
 		exit(EXIT_FAILURE);
 	}
 
-
 	int rows, cols;
 	char c;
 	input >> rows >> cols;
-
-
-
 	m_row = rows, m_col = cols;
 
 	m_board.resize(rows);
@@ -76,7 +70,6 @@ int Level::getRows() const
 //-------------------------------------------
 int Level::getCols() const
 {
-
 	return m_col;
 }
 //--------------------------------------------------
@@ -137,21 +130,15 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 //---------------------------------------------------------------------
 const sf::Vector2i& Level::mouseLocation()const
 {
-
 	return m_mouseLocation;
 }
-
 //_--------------------------------------------------------------------
 void Level::draw_static_figures(sf::RenderWindow& window)
 {
-	
 	for (const auto& row : m_board)
-
 	{
-
 		for (const auto& col : row)
 		{
-
 			if (col != nullptr)
 				col->draw(window);
 		}
@@ -182,9 +169,7 @@ Objects* Level::operator()(size_t row, size_t col)
 void Level::makeAllValuesFalse()
 {
 	for (auto row=0 ; row <getRows() ; row++)
-
 	{
-
 		for (auto col = 0; col < getCols(); col++)
 		{
 
@@ -193,4 +178,3 @@ void Level::makeAllValuesFalse()
 
 	}
 }
-//-------------------------------------------------

@@ -3,10 +3,6 @@
 FileManager::FileManager()
 {
 
-
-	/*std::array <std::string, TEXTURES> file_names = { "playerStand.png" , "bomb.png","bone.png" , "bigGold.png" ,"smallGold.png", "diamond.png",
-													"present.png" , "bigRock.png" , "smallRock.png", "mouse.png" };*/
-
 	m_pTexture[PLAYER].loadFromFile("playerStand.png");
 	m_pTexture[PLAYERGRAB].loadFromFile("playerGrab.png");
 	m_pTexture[BOMB].loadFromFile("bomb.png");
@@ -30,7 +26,6 @@ FileManager::FileManager()
 	m_sound[PRESENT_s].loadFromFile("present.wav");
 	m_sound[PULLING_s].loadFromFile("pulling.wav");
 	m_sound[ROPE_s].loadFromFile("rope.wav");
-		//enum Sound_t :size_t { CATCH, EXPLOSION , FINISHLEVEL, GETMONEY, PRESENT, PULLING,ROPE };
 
 }
 // this functions gets icon texture and return the shpe

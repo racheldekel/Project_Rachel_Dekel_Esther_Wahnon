@@ -7,41 +7,19 @@
 #include <SFML/System.hpp>
 
 using namespace std;
-class Mouse: public Objects
+class Mouse : public Objects
 {
-	public:
+public:
 
-		Mouse(sf::Vector2f pos) : Objects(FileManager::instance().get_icon(MOUSE), pos, 2) {	};
-	
+	Mouse(sf::Vector2f pos) : Objects(FileManager::instance().get_icon(MOUSE), pos, 2) {	};
 
-	
-		sf:: Vector2f getPosition() 
-		{
-			return m_sprite.getPosition();
-		}
+	sf::Vector2f getPosition();
+	void setPosition(sf::Vector2f pos);
+	void move(float passedTime);
 
-		void setPosition(sf:: Vector2f pos) {
-			m_sprite.setPosition(pos.x + 1, pos.y + 1);
+private:
 
-		}
-
-	
-		void move(float passedTime)
-		{
-
-
-			float distance = 120.f * passedTime;
-
-			sf::Vector2f pos = m_sprite.getPosition();
-			m_sprite.setPosition(pos*distance);
-	
-		}
-
-	private:
-
-		sf::Vector2f m_prev_pos;
-		int m_mouseValue=2;
-
-
+	sf::Vector2f m_prev_pos;
+	int m_mouseValue = 2;
 
 };

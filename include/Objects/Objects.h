@@ -31,32 +31,14 @@ public:
 			((float)SIZE / rect.height*1.5)));
 
 		m_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
-
 	}
 	//---------------------------------------------------------------------------
-
-	void setAngle(float angle)
-	{
-		m_angle = angle;
-	}
+	void setAngle(float angle){m_angle = angle;}
 	//----------------------------------------------------------------------------------------
-	float getAngle()const
-	{ 
-		return  m_angle;
-	}
+	float getAngle()const{ return  m_angle;}
 	//----------------------------------------------------------------------------------------
-	sf::Vector2f getPosition() 
-	{
-
-		return m_sprite.getPosition();
-	}
-
-	//_-------------------------------------------------------------------
-	Objects(sf::Vector2f location)
-	{
-		m_sprite.setPosition(location);
-
-	}
+	sf::Vector2f getPosition(){ return m_sprite.getPosition();}
+	Objects(sf::Vector2f location){m_sprite.setPosition(location);}
 	~Objects() = default;
 	void draw(sf::RenderWindow& window) const;
 	void  moveMouse() ;
@@ -68,9 +50,6 @@ protected:
 	
 	sf::Sprite m_sprite;
 	int m_value = 0;
-
-
-
 private:
 	
 	float m_angle;

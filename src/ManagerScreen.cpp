@@ -6,13 +6,9 @@
 #include "Screens/GameOverScreen.h"
 #include "Screens/StoreScreen.h"
 #include "Screens/GoalScreen.h"
-
 #include <iostream>
 #include <SFML/Graphics.hpp>
-
 #include "ManagerScreen.h"
-
-
 
 void ManagerScreen ::main_run()
 {
@@ -42,28 +38,17 @@ void ManagerScreen ::main_run()
 
 	GameOverScreen s5;
 	Screens.push_back(&s5);
-	create_screens(Screens);
 
 	StoreScreen s6;
 	Screens.push_back(&s6);
-	create_screens(Screens);
-	
-	int level = 0;
-	int totalMoney = 0;
 
+	int level , totalMoney ;
+	level = totalMoney = 0;
+	
 	while (screen != -1)
 	{
 		screen = Screens[screen]->run(GoldMiner, level, totalMoney);
 	
 	}
 }
-
 //------------------------------------------------------------------------
-void  ManagerScreen::create_screens(std::vector<Screen*> Screens)
-{
-	// start,  menu , introducction , goal , game , gameover, store
-	
-
-
-	
-}

@@ -90,20 +90,20 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 	{
 
 
-	case '*': //  1 צינור -
+	case '*': 
 		m_board[i][j] = std::make_unique < bomb >(pos);
 
 		m_bombBoard[i][j] = true;
 		break;
 
-	case '%': //  1 צינור -
+	case '%': 
 		m_board[i][j] = std::make_unique < bone >(pos);
 		break;
-	case '$': //  1 צינור -
+	case '$': 
 		m_board[i][j] = std::make_unique < bigGold >(pos);
 		break;
 
-	case '&': //  1 צינור -
+	case '&': 
 		m_board[i][j] = std::make_unique < smallGold >(pos);
 		break;
 
@@ -171,7 +171,7 @@ bool Level::CheckIfBomb(size_t row, size_t col)
 	return false;
 }
 //-----------------------------------------------------------------
-//------------------------------------
+
 Objects* Level::operator()(size_t row, size_t col)
 {
 	if (row >= m_board.size() || col >= m_board.begin()->size())

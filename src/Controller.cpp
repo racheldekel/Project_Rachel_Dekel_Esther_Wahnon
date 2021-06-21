@@ -116,6 +116,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 			m_levelNumber++;
 			m_mouseMoving = true;
 			m_drawMoney = false;
+			gold_miner.clear();
 			break;
 		}
 

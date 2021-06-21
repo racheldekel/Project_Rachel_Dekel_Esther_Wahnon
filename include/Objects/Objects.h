@@ -43,9 +43,12 @@ public:
 	void draw(sf::RenderWindow& window) const;
 	void  moveMouse() ;
 	int get_value() const;
-	bool  moveObject(const sf::Time& timePass, sf::Vector2f posRope, float angle);
+	bool  moveObject(const sf::Time& timePass, sf::Vector2f sRope, float angle);
 	bool is_intersected( sf::FloatRect& rect);
 	void MakeBigger();
+	virtual sf::FloatRect getCollisionBounds() { return m_sprite.getGlobalBounds(); };
+
+
 protected:
 	
 	sf::Sprite m_sprite;

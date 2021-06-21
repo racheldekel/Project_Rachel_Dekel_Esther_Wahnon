@@ -20,7 +20,8 @@ public:
 
 	sf::FloatRect get_objects_bounds() const
 	{
-		return m_sprite.getGlobalBounds();
+
+		return m_rect.getGlobalBounds();
 	}
 	void openRope(const sf::Time& timePass);
 	void rotateRope(const sf::Time& DeltaTime);
@@ -36,6 +37,8 @@ public:
 	sf::Vector2f  get_position() const;
 	bool getRopeState();
 	void update_end_rope();
+	sf::RectangleShape getRect() { return m_rect; }
+
 	private :
 
 		sf::Vector2f m_scale;
@@ -48,7 +51,7 @@ public:
 		int m_direction = RIGHT;
 		bool m_rotate = true;
 		bool m_found_object = false;
-		
+		sf::RectangleShape m_rect;
 		sf::Sprite m_rope_end_sprite;
 
 };

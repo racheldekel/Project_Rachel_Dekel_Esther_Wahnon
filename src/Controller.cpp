@@ -145,20 +145,21 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 			if (m_getObject)
 			{
 				
-
-				//bring it up and once is done the function moveOBJECT WILL RETURN false
-				if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+				if (m_level.set_Board()[m_row][m_col] != nullptr)
 				{
-					// once we are done taking the object 
-					m_money =m_level(m_row, m_col)->get_value();
-					m_drawMoney = true;
-					drawMoney(gold_miner);
-					m_moneySound.play();
-					m_moneyCounter +=m_money;
-					m_level.set_Board()[m_row][m_col] = nullptr;
-					m_getObject = false;	
+					//bring it up and once is done the function moveOBJECT WILL RETURN false
+					if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+					{
+						// once we are done taking the object 
+						m_money = m_level(m_row, m_col)->get_value();
+						m_drawMoney = true;
+						drawMoney(gold_miner);
+						m_moneySound.play();
+						m_moneyCounter += m_money;
+						m_level.set_Board()[m_row][m_col] = nullptr;
+						m_getObject = false;
+					}
 				}
-
 				if (m_level.CheckIfBomb(m_row, m_col))
 				{
 					m_getObject = false;
@@ -280,12 +281,11 @@ bool Controller::isAttach(int &final_row, int &final_col)
 			{
 				if (m_level(row, col)->is_intersected(floatrect))
 				{
-					
-					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
-						m_mouseMoving = false;
-
 					final_row = row;
 					final_col = col;
+
+					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
+						m_mouseMoving = false;
 					return true;
 				}
 			}

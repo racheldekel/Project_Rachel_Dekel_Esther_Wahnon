@@ -6,6 +6,7 @@ void Rope :: update_end_rope()
 	auto height = m_sprite.getLocalBounds().height * m_sprite.getScale().y;
 	auto new_y_pos = m_sprite.getPosition().y + height;
 }
+
 //-----------------------------------------------------------------------------
 void Rope::changeDirection()
 {
@@ -19,7 +20,7 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	auto rect = m_sprite.getGlobalBounds();
 	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.5,
 		((float)60 / rect.height)*1.5));
-	m_sprite.setOrigin({ rect.width / 2, 0 });
+	//m_sprite.setOrigin({ 0, 0 });
 }
 //------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
@@ -109,8 +110,31 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 //----------------------------------------------------------------------------------------------
 void Rope::draw(sf::RenderWindow& window)
 {
+
+	auto rect = m_sprite.getGlobalBounds();
+	auto pos = m_sprite.getPosition();
+	auto angle2 = m_sprite.getRotation();
+	auto angle = m_direction * SPEED;
+
+
+	std::cout << angle2<<std::endl;
+
+	if (angle2>=0 && angle2 <90)
+
+		m_rect.setPosition( rect.left, m_sprite.getPosition().y + rect.height);
+	else
+
+		m_rect.setPosition( rect.width+ rect.left, m_sprite.getPosition().y + rect.height);
+
+	m_rect.setFillColor(sf::Color :: Magenta);
+	m_rect.setSize(sf ::Vector2f (10, 10) );
+	m_rect.getInverseTransform();
+	m_rect.rotate(angle);
+	
+	window.draw(m_rect);
 	window.draw(m_sprite);
 }
+
 //-------------------------------------------------------------------------------------------------
 void Rope::rotateRope(const sf::Time& DeltaTime)
 {

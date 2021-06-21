@@ -12,7 +12,7 @@ int Objects:: get_value() const
 //_-------------------------------------------------------------------------------------
 bool Objects:: is_intersected( sf::FloatRect & rect)
 {
-	return rect.intersects(m_sprite.getGlobalBounds());
+	return rect.intersects((m_sprite.getGlobalBounds()));
 }
 //--------------------------------------------------------------------------------------------------
 bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float angle)

@@ -5,6 +5,7 @@ class ActionError {};
 int GameScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 
+
 	sf::Event Event;
 	bool Running = true;
 	sf::Texture Texture;
@@ -17,7 +18,7 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 		//Verifying events
 		while (1)
 		{
-				auto number = m_controller.startGame(gold_miner, totalMoney);
+				auto number = m_controller.startGame(gold_miner, totalMoney, level );
 
 				if (number == EXIT)
 				{

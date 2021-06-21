@@ -2,9 +2,12 @@
 class ActionError{};
 
 
-int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
+int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level)
 {
 
+	if (level == 1)
+		resetValues();
+	m_levelNumber = level;
 	m_moneyCounter = totalMoney;
 	auto t = sf::Texture();
 	t.loadFromFile("background.png");
@@ -62,6 +65,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 							if (!mouse_button_released(event))
 							{
 								resetValues();
+								m_level.set_Board().clear();
 								return EXIT;
 
 							}
@@ -100,6 +104,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 			{
 				totalMoney = 0;
 				resetValues();
+				m_level.set_Board().clear();
 					return TIME_OVER;
 			}
 
@@ -129,7 +134,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
-	m_level.set_Board().clear();
+	
 	m_level.makeAllValuesFalse();
 	m_time = 60;
 	m_level = 1;

@@ -109,6 +109,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 		if (m_finish_level || checkIfBoardEmty())
 
 		{
+			m_level.set_Board().clear();
 			m_level.makeAllValuesFalse();
 			totalMoney = m_moneyCounter;
 			saveValue(m_moneyCounter);
@@ -126,6 +127,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
+	m_level.set_Board().clear();
 	m_level.makeAllValuesFalse();
 	m_time = 60;
 	m_level = 1;

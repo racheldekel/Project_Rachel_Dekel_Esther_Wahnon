@@ -30,7 +30,7 @@ class Level
 {
 
 public:
-
+	bool CheckIfBomb(size_t row, size_t col);
 	Level()= default;
 	void addOnBoard(const char c, const size_t i, const size_t j);
 	Level(int levelNumber);
@@ -49,7 +49,7 @@ public:
 		return m_board;
 	}
 	const sf::Vector2i& mouseLocation()const;
-
+	void setNewArray();
 protected :
 
 
@@ -61,6 +61,7 @@ private:
 	sf::Vector2i m_mouseLocation;
 
 	std::vector <std::vector<std::unique_ptr<Objects>>> m_board;
+	bool m_bombBoard[10][25] = { false };
 
 
 

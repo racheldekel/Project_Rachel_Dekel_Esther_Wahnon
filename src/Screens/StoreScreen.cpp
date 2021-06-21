@@ -60,6 +60,7 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 				{
 					if (totalMoney > 30)
 					{
+						totalMoney -= 30;
 						srand(time(NULL));
 						auto num = rand() % 2;
 
@@ -74,8 +75,10 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 				//diamond
 				if ((pos.x > 560 && pos.x < 660) && (pos.y < 400 && pos.y > 326))
 				{
+					
 					if (totalMoney > 50)
 					{
+						totalMoney -= 50;
 						totalMoney += 100;
 						m_diamondDisplay = false;
 					}
@@ -83,6 +86,7 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 				//gold rock
 				if ((pos.x > 785 && pos.x < 880) && (pos.y < 388 && pos.y > 326))
 				{
+					totalMoney -= 40;
 
 					if (totalMoney > 40)
 					{

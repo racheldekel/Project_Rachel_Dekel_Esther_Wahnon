@@ -81,7 +81,6 @@ int Level::getCols() const
 void Level::addOnBoard(const char c,const size_t i,const size_t j)	
 {
 	
-	
 	auto pos = sf::Vector2f(j, i) * (float)(SIZE);
 	pos += CORRIDOR;
 	
@@ -91,6 +90,8 @@ void Level::addOnBoard(const char c,const size_t i,const size_t j)
 
 	case '*': //  1 צינור -
 		m_board[i][j] = std::make_unique < bomb >(pos);
+
+		m_bombBoard[i][j] = true;
 		break;
 
 	case '%': //  1 צינור -
@@ -156,6 +157,18 @@ void Level::draw_static_figures(sf::RenderWindow& window)
 	}
 	
 }
+//--------------------------------------------------------------------------------
+bool Level::CheckIfBomb(size_t row, size_t col)
+{
+
+	if (m_bombBoard[row][col] == true)
+	{
+		return true;
+	}
+
+	return false;
+}
+//-----------------------------------------------------------------
 //------------------------------------
 Objects* Level::operator()(size_t row, size_t col)
 {

@@ -138,9 +138,13 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 	//if we have found and object and we are taking it 
 			if (m_getObject)
 			{
+				
+
 				//bring it up and once is done the function moveOBJECT WILL RETURN false
 				if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
 				{
+
+					
 					// once we are done taking the object 
 					m_money =m_level(m_row, m_col)->get_value();
 					m_drawMoney = true;
@@ -173,6 +177,12 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 					
 					if (isAttach(row, col))
 					{	
+
+						if (m_level.CheckIfBomb(row, col))
+						{
+							cout << "here bomb" << endl;
+						}
+
 						m_rope.connectToObject(timePass);
 							m_rope.foundObject();
 							//cout << "found intersection with item at " << row << " " << col << endl;

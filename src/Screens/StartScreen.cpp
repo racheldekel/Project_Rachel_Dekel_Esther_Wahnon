@@ -60,7 +60,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 			
 		}
 		
-		
 
 		gold_miner.clear();
 		

@@ -109,6 +109,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 		if (m_finish_level || checkIfBoardEmty())
 
 		{
+			m_level.makeAllValuesFalse();
 			totalMoney = m_moneyCounter;
 			saveValue(m_moneyCounter);
 			m_time = 60;
@@ -124,7 +125,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
-
+	m_level.makeAllValuesFalse();
 	m_time = 60;
 	m_level = 1;
 	m_levelNumber = 1;
@@ -150,11 +151,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 					m_drawMoney = true;
 					drawMoney(gold_miner);
 					m_moneySound.play();
-					if (m_level(m_row, m_col)->get_value() == 0)
+					/*if (m_level(m_row, m_col)->get_value() == 0)
 					{
 						m_explosion.setLocation(sf::Vector2f(m_col, m_row) * SIZE);
 						m_explosionSound.play();
-					}
+					}*/
 					m_moneyCounter +=m_money;
 					m_level.set_Board()[m_row][m_col] = nullptr;
 					m_getObject = false;			
@@ -180,7 +181,14 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 
 						if (m_level.CheckIfBomb(row, col))
 						{
-							cout << "here bomb" << endl;
+							m_explosion.setLocation(sf::Vector2f(col, row)*SIZE );
+							m_explosionSound.play();
+
+							
+							m_level.set_Board()[row-2][col] = nullptr;
+							m_level.set_Board()[row + 2][col] = nullptr;
+							m_level.set_Board()[row ][col-2] = nullptr;
+							m_level.set_Board()[row][col +2] = nullptr;
 						}
 
 						m_rope.connectToObject(timePass);

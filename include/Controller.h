@@ -44,6 +44,10 @@ private:
 
 			m_explode = true;
 			m_explosion_sprite.setPosition(location);
+			auto rect = m_explosion_sprite.getGlobalBounds();
+			m_explosion_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height * 1.5),
+				((float)SIZE / rect.height * 1.5)));
+			m_explosion_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 		}
 		void draw(sf::RenderWindow& gold_miner)
 		{

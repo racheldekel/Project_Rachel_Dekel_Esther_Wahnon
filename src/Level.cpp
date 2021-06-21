@@ -29,6 +29,8 @@ void Level::read_level(int levelNumber)
 	ifstream input;
 	try
 	{
+
+		std::cout << levelNumber << std::endl;
 		string file = std::to_string(levelNumber) + ".txt";
 		//string file = "1.txt";
 		input.open(file);
@@ -177,3 +179,18 @@ Objects* Level::operator()(size_t row, size_t col)
 	return m_board[row][col].get();
 }
 //-----------------------------------------------------
+void Level::makeAllValuesFalse()
+{
+	for (auto row=0 ; row <getRows() ; row++)
+
+	{
+
+		for (auto col = 0; col < getCols(); col++)
+		{
+
+			m_bombBoard[row][col] = false;
+		}
+
+	}
+}
+//-------------------------------------------------

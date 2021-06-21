@@ -50,6 +50,7 @@ public:
 	}
 	const sf::Vector2i& mouseLocation()const;
 	void setNewArray();
+	void makeAllValuesFalse();
 protected :
 
 

@@ -6,7 +6,6 @@ void Rope :: update_end_rope()
 	auto height = m_sprite.getLocalBounds().height * m_sprite.getScale().y;
 	auto new_y_pos = m_sprite.getPosition().y + height;
 }
-
 //-----------------------------------------------------------------------------
 void Rope::changeDirection()
 {
@@ -20,7 +19,7 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	auto rect = m_sprite.getGlobalBounds();
 	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.5,
 		((float)60 / rect.height)*1.5));
-	//m_sprite.setOrigin({ 0, 0 });
+	m_rect.setSize(sf::Vector2f(0.5, 0.5));
 }
 //------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
@@ -72,14 +71,15 @@ void Rope::openRope(const sf::Time& time )
 	 {
 		 if (!m_found_object) // in case that the rope closes w/o any objects 
 		 {
-			 float LengthAddition = Rope::lenghRope * time.asSeconds()*5.f; 
+			 float LengthAddition = Rope::lenghRope * time.asSeconds()*6.f; 
 			 closeRope(m_scale, time, LengthAddition);
 		 }
 
 		 else 
 		 {
+			
 			 // here we have to calculate according to each object that has caught
-			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.3f; //* time.asSeconds();
+			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.4f; //* time.asSeconds();
 			 closeRope(m_scale, time, LengthAddition);
 			 m_pullingSound.play();
 		 }
@@ -110,27 +110,20 @@ void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthA
 //----------------------------------------------------------------------------------------------
 void Rope::draw(sf::RenderWindow& window)
 {
-
 	auto rect = m_sprite.getGlobalBounds();
 	auto pos = m_sprite.getPosition();
 	auto angle2 = m_sprite.getRotation();
 	auto angle = m_direction * SPEED;
 
 
-	std::cout << angle2<<std::endl;
+			if (angle2 >= 0 && angle2 < 90)
 
-	if (angle2>=0 && angle2 <90)
+					m_rect.setPosition(rect.left +10, m_sprite.getPosition().y + rect.height-15 );
+				else
 
-		m_rect.setPosition( rect.left, m_sprite.getPosition().y + rect.height);
-	else
+					m_rect.setPosition((rect.width + rect.left)-15 , m_sprite.getPosition().y + rect.height -15);
 
-		m_rect.setPosition( rect.width+ rect.left, m_sprite.getPosition().y + rect.height);
-
-	m_rect.setFillColor(sf::Color :: Magenta);
-	m_rect.setSize(sf ::Vector2f (10, 10) );
 	m_rect.rotate(angle);
-	
-	window.draw(m_rect);
 	window.draw(m_sprite);
 }
 

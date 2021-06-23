@@ -77,7 +77,7 @@ private:
 	int  m_time = 60;
 	Toolbar m_toolbar;
 	Player m_player = Player{ {600.f, 90.f} };
-	Rope m_rope = Rope{ {579.f, 118.f} };
+	Rope m_rope = Rope{ {578.f, 118.f} };
 	bool m_finish_level = true;
 	Level m_level;
 	bool m_mouseMoving= true;

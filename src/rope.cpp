@@ -17,9 +17,10 @@ Rope::Rope(sf::Vector2f pos) : Objects(pos)
 	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
 	m_sprite.setPosition(pos);
 	auto rect = m_sprite.getGlobalBounds();
-	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height)*1.5,
-		((float)60 / rect.height)*1.5));
-	m_rect.setSize(sf::Vector2f(0.5, 0.5));
+	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height) * 1.5,
+		((float)60 / rect.height) * 1.5));
+
+	m_sprite.setOrigin({ rect.width / 2, 0 });
 }
 //------------------------------------------------------------
 sf:: Vector2f  Rope::get_position() const
@@ -64,7 +65,6 @@ void Rope::openRope(const sf::Time& time )
 		m_ropeSound.play();
 			if (m_scale.y > 4.35|| m_found_object)
 				m_closingRope = true;
-
 	}
 
 	 if (m_closingRope )
@@ -84,7 +84,6 @@ void Rope::openRope(const sf::Time& time )
 			 m_pullingSound.play();
 		 }
 	 }
-
 }
 //--------------------------------------------------------------------------------------------------
 void Rope:: foundObject()
@@ -94,7 +93,6 @@ void Rope:: foundObject()
 //-------------------------------------------------------------------------------------------
 void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthAddition)
 {
-	
 	m_rotate = false;
 	m_scale.y -= LengthAddition;
 
@@ -114,7 +112,7 @@ void Rope::draw(sf::RenderWindow& window)
 	auto pos = m_sprite.getPosition();
 	auto angle2 = m_sprite.getRotation();
 	auto angle = m_direction * SPEED;
-
+	m_rect.setSize(sf::Vector2f(0.5, 0.5));
 
 			if (angle2 >= 0 && angle2 < 90)
 

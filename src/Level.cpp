@@ -30,7 +30,6 @@ void Level::read_level(int levelNumber)
 
 		std::cout << levelNumber << std::endl;
 		string file = std::to_string(levelNumber) + ".txt";
-		//string file = "1.txt";
 		input.open(file);
 		if (!input.is_open())
 		{
@@ -73,7 +72,7 @@ int Level::getCols() const
 	return m_col;
 }
 //--------------------------------------------------
-void Level::addOnBoard(const char c,const size_t i,const size_t j)	
+void Level::addOnBoard(char c,size_t i,size_t j)	
 {
 	
 	auto pos = sf::Vector2f(j, i) * (float)(SIZE);

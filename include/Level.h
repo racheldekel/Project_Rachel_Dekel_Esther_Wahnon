@@ -32,9 +32,8 @@ class Level
 public:
 	bool CheckIfBomb(size_t row, size_t col);
 	Level()= default;
-	void addOnBoard(const char c, const size_t i, const size_t j);
+	void addOnBoard(char c, size_t i, size_t j);
 	Level(int levelNumber);
-	bool check_collision(const sf::FloatRect& rect);
 	Objects* operator()(size_t row, size_t col);
 	Objects& getObjectAt(size_t row, size_t col) {
 		return *m_board[row][col];

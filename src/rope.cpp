@@ -114,12 +114,10 @@ void Rope::draw(sf::RenderWindow& window)
 	auto angle = m_direction * SPEED;
 	m_rect.setSize(sf::Vector2f(0.5, 0.5));
 
-			if (angle2 >= 0 && angle2 < 90)
-
-					m_rect.setPosition(rect.left +10, m_sprite.getPosition().y + rect.height-15 );
+		if (angle2 >= 0 && angle2 < 90)
+			m_rect.setPosition(rect.left +10, m_sprite.getPosition().y + rect.height-15 );
 				else
-
-					m_rect.setPosition((rect.width + rect.left)-15 , m_sprite.getPosition().y + rect.height -15);
+			m_rect.setPosition((rect.width + rect.left)-15 , m_sprite.getPosition().y + rect.height -15);
 
 	m_rect.rotate(angle);
 	window.draw(m_sprite);

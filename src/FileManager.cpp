@@ -17,6 +17,7 @@ FileManager::FileManager()
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
 	m_pTexture[EXPLOSION].loadFromFile("explosion.png");
 	//fonts
+
 	m_font[0].loadFromFile("gameFont.otf");
 	//sounds 
 	m_sound[CATCH_s].loadFromFile("catch.wav");

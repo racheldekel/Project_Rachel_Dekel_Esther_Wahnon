@@ -167,12 +167,20 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				}
 				if (m_level.CheckIfBomb(m_row, m_col))
 				{
+					auto number=0;
 					m_getObject = false;
-					m_level.set_Board()[(int)m_row+3][m_col] = nullptr;
-					m_level.set_Board()[(int)m_row-3][m_col] = nullptr;
-					m_level.set_Board()[m_row][(int)m_col+3] = nullptr;
-					m_level.set_Board()[m_row][(int)m_col-3] = nullptr;
-					m_level.set_Board()[m_row][m_col] = nullptr;
+
+					number = m_row - 3 <= 0 || m_col - 3 <= 0 ? 1 : 3;
+
+
+					for (int row = m_row- number; row < m_row +number; row++)
+					{
+						for (int col = m_col- number; col < m_col + number; col++)
+						{
+							m_level.set_Board()[row ][col] = nullptr;
+							
+						}
+					}
 
 				}
 			}

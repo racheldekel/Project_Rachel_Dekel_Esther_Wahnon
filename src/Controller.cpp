@@ -9,9 +9,9 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 		resetValues();
 	m_levelNumber = level;
 	m_moneyCounter = totalMoney;
-	auto t = sf::Texture();
+	/*auto t = sf::Texture();
 	t.loadFromFile("background.png");
-	sf::Sprite s(t);
+	sf::Sprite s(t);*/
 
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
@@ -25,7 +25,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 	
 	while (gold_miner.isOpen())
 	{
-		gold_miner.draw(s);
+		gold_miner.draw(m_background);
 
 		if (AITimer.getElapsedTime().asSeconds() > AITime.asSeconds()) 
 		{
@@ -317,3 +317,33 @@ bool Controller:: checkIfBoardEmty()
 	return true;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
+
+Controller::Explosion::Explosion()
+{
+		m_explosion_sprite.scale(0.25f, 0.25f);
+	auto rect = m_explosion_sprite.getGlobalBounds();
+	m_explosion_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height * 1.5),
+		((float)SIZE / rect.height * 1.5)));
+}
+
+void Controller::Explosion::setLocation(const sf::Vector2f& location)
+{
+		m_explode = true;
+		m_explosion_sprite.setPosition(location);
+		
+		//m_explosion_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
+}
+
+void Controller::Explosion::draw(sf::RenderWindow& gold_miner)
+{
+	{
+		m_explosion_sprite.setTextureRect(sf::IntRect(256 * currentState % 8, 248 * currentState / 6, 256, 248)); //rows
+		gold_miner.draw(m_explosion_sprite);
+		currentState++;
+		if (currentState == 32)
+		{
+			currentState = 0;
+			m_explode = false;
+		}
+	}
+}

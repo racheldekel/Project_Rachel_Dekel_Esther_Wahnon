@@ -1,16 +1,18 @@
 #include "Controller.h"
 class ActionError{};
-class FileError {};
 
 
-int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
+int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level)
 {
-	try {
-		m_moneyCounter = totalMoney;
-		auto t = sf::Texture();
-		if (!t.loadFromFile("background.png"))
-			throw FileError();
-		sf::Sprite s(t);
+
+	if (level == 1)
+		resetValues();
+	m_levelNumber = level;
+	m_moneyCounter = totalMoney;
+	auto t = sf::Texture();
+	t.loadFromFile("background.png");
+	sf::Sprite s(t);
+
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
@@ -19,6 +21,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 	m_goalLevel = m_goal[m_levelNumber];
 	m_finish_level = false;
 	m_level.read_level(m_levelNumber);
+
+	
 	while (gold_miner.isOpen())
 	{
 		gold_miner.draw(s);
@@ -59,9 +63,12 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 						{
 
 							if (!mouse_button_released(event))
+							{
+								resetValues();
+								m_level.set_Board().clear();
 								return EXIT;
 
-
+							}
 							break;
 						}
 					}
@@ -97,6 +104,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 			{
 				totalMoney = 0;
 				resetValues();
+				m_level.set_Board().clear();
 					return TIME_OVER;
 			}
 
@@ -121,16 +129,12 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 		}
 
 	}
-	}
-		catch (FileError)
-		{
-			cout << "Could not load file" << endl;
-		}
+
 }
 //------------------------------------------------------------------------------
 void Controller::resetValues()
 {
-	m_level.set_Board().clear();
+	
 	m_level.makeAllValuesFalse();
 	m_time = 60;
 	m_level = 1;
@@ -146,20 +150,34 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 			if (m_getObject)
 			{
 				
-
-				//bring it up and once is done the function moveOBJECT WILL RETURN false
-				if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+				if (m_level.set_Board()[m_row][m_col] != nullptr)
 				{
-					// once we are done taking the object 
-					m_money =m_level(m_row, m_col)->get_value();
-					m_drawMoney = true;
-					drawMoney(gold_miner);
-					m_moneySound.play();
-					m_moneyCounter +=m_money;
+					//bring it up and once is done the function moveOBJECT WILL RETURN false
+					if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+					{
+						// once we are done taking the object 
+						m_money = m_level(m_row, m_col)->get_value();
+						m_drawMoney = true;
+						drawMoney(gold_miner);
+						m_moneySound.play();
+						m_moneyCounter += m_money;
+						m_level.set_Board()[m_row][m_col] = nullptr;
+						m_getObject = false;
+					}
+				}
+				if (m_level.CheckIfBomb(m_row, m_col))
+				{
+					m_getObject = false;
+					m_level.set_Board()[(int)m_row+3][m_col] = nullptr;
+					m_level.set_Board()[(int)m_row-3][m_col] = nullptr;
+					m_level.set_Board()[m_row][(int)m_col+3] = nullptr;
+					m_level.set_Board()[m_row][(int)m_col-3] = nullptr;
 					m_level.set_Board()[m_row][m_col] = nullptr;
-					m_getObject = false;			
+
 				}
 			}
+
+			//m_drawMoney = false;
 
 			if (m_rope.isOpen())
 			{
@@ -179,14 +197,11 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 
 						if (m_level.CheckIfBomb(row, col))
 						{
+							
 							m_explosion.setLocation(sf::Vector2f(col, row)*SIZE );
 							m_explosionSound.play();
 
-							
-							m_level.set_Board()[row-2][col] = nullptr;
-							m_level.set_Board()[row + 2][col] = nullptr;
-							m_level.set_Board()[row ][col-2] = nullptr;
-							m_level.set_Board()[row][col +2] = nullptr;
+						
 						}
 
 						m_rope.connectToObject(timePass);
@@ -196,6 +211,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 							m_level(row, col)->setAngle(m_ropeAngle);
 							m_row = row, m_col = col;
 							m_getObject = true;
+
 					}
 				}
 
@@ -270,12 +286,11 @@ bool Controller::isAttach(int &final_row, int &final_col)
 			{
 				if (m_level(row, col)->is_intersected(floatrect))
 				{
-					
-					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
-						m_mouseMoving = false;
-
 					final_row = row;
 					final_col = col;
+
+					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
+						m_mouseMoving = false;
 					return true;
 				}
 			}
@@ -287,6 +302,7 @@ bool Controller::isAttach(int &final_row, int &final_col)
 //----------------------------------------------------------------------------------------------
 bool Controller:: checkIfBoardEmty()
 {
+
 	for (auto row = 0; row < m_level.getRows(); ++row)
 	{
 		for (auto col = 0; col < m_level.getCols(); ++col)
@@ -300,3 +316,4 @@ bool Controller:: checkIfBoardEmty()
 
 	return true;
 }
+//--------------------------------------------------------------------------------------------------------------------------------------------

@@ -34,6 +34,7 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 				case sf::Event::MouseButtonReleased:
 					if (mouse_button_released(Event))
 					{
+						level = 0;
 						return START_SCREEN;
 					}
 					break;
@@ -74,8 +75,6 @@ bool  GameOverScreen::mouse_button_released(sf::Event event)
 	auto x = event.mouseButton.x;
 	auto y = event.mouseButton.y;
 	sf::Vector2i pos(x, y);
-
-	//std:: cout << pos.x << " " << pos.y << std::endl;
 
 	if ((pos.x > 415*1.5 && pos.x < 627*1.5) && (pos.y < 425*1.5 && pos.y > 360*1.5))
 		return true;

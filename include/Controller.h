@@ -23,7 +23,7 @@ public:
 	Controller() {};
 	~Controller() = default;
 	void drawMoney(sf::RenderWindow& gold_miner);
-	int startGame(sf::RenderWindow& gold_miner, int& totalMoney);
+	int startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level);
 	void update_state(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
@@ -40,21 +40,20 @@ private:
 		Explosion()
 		{
 			m_explosion_sprite.scale(0.25f, 0.25f);
-		}
-		void setLocation(const sf::Vector2f& location)
-		{
-
-			m_explode = true;
-			m_explosion_sprite.setPosition(location);
 			auto rect = m_explosion_sprite.getGlobalBounds();
 			m_explosion_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height * 1.5),
 				((float)SIZE / rect.height * 1.5)));
-			m_explosion_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
+		}
+		void setLocation(const sf::Vector2f& location)
+		{
+			m_explode = true;
+			m_explosion_sprite.setPosition(location);
+			
+			//m_explosion_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 		}
 		void draw(sf::RenderWindow& gold_miner)
 		{
 			m_explosion_sprite.setTextureRect(sf::IntRect(256 * currentState % 8, 248 * currentState / 6, 256, 248)); //rows
-			//m_explosion.setTextureRect(sf::IntRect(256 * currentState % 8, 248 * currentState / 6, 256, 248)); //works cols
 			gold_miner.draw(m_explosion_sprite);
 			currentState++;
 			if (currentState == 32)
@@ -65,7 +64,6 @@ private:
 		}
 
 		bool m_explode = false;
-		/*sf::Vector2f explodeLocation = sf::Vector2f();*/
 		sf::Sprite m_explosion_sprite = sf::Sprite(FileManager::instance().get_icon(12), sf::IntRect(0, 0, 256, 248));
 		size_t currentState = 0;
 	};
@@ -81,9 +79,6 @@ private:
 	Toolbar m_toolbar;
 	Player m_player = Player{ {600.f, 90.f} };
 	Rope m_rope = Rope{ {579.f, 118.f} };
-
-
-
 	bool m_finish_level = true;
 	Level m_level;
 	bool m_mouseMoving= true;

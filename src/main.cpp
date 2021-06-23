@@ -1,9 +1,7 @@
+#include <SFML/Graphics.hpp>
 #include "ManagerScreen.h"
-#include <fstream>
 
-const auto LOG = "log.txt";
-
-int main() try
+int main()
 {
     ManagerScreen s;
 
@@ -11,18 +9,4 @@ int main() try
 
     return EXIT_SUCCESS;
    
-}
-
-catch (std::exception& e)
-{
-    auto file = std::ofstream(LOG);
-    file << e.what() << '\n';
-    return EXIT_FAILURE;
-}
-
-catch (...)
-{
-    auto file = std::ofstream(LOG);
-    file << "Unknown Excpetion\n";
-    return EXIT_FAILURE;
 }

@@ -58,7 +58,7 @@ void Rope::openRope(const sf::Time& time )
 	// to open the rope 
 	if (m_scale.y < 4.5 &&  !m_closingRope )
 	{
-		float LengthAddition = Rope::lenghRope * time.asSeconds()*4.4.f;
+		float LengthAddition = Rope::lenghRope * time.asSeconds()*4.4f;
 		m_scale.y += LengthAddition;
 		m_sprite.setScale(m_scale);
 		m_ropeSound.play();

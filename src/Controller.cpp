@@ -1,15 +1,16 @@
 #include "Controller.h"
 class ActionError{};
+class FileError {};
 
 
 int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 {
-
-	m_moneyCounter = totalMoney;
-	auto t = sf::Texture();
-	t.loadFromFile("background.png");
-	sf::Sprite s(t);
-
+	try {
+		m_moneyCounter = totalMoney;
+		auto t = sf::Texture();
+		if (!t.loadFromFile("background.png"))
+			throw FileError();
+		sf::Sprite s(t);
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
@@ -18,8 +19,6 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 	m_goalLevel = m_goal[m_levelNumber];
 	m_finish_level = false;
 	m_level.read_level(m_levelNumber);
-
-	
 	while (gold_miner.isOpen())
 	{
 		gold_miner.draw(s);
@@ -122,7 +121,11 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney)
 		}
 
 	}
-
+	}
+		catch (FileError)
+		{
+			cout << "Could not load file" << endl;
+		}
 }
 //------------------------------------------------------------------------------
 void Controller::resetValues()
@@ -284,7 +287,6 @@ bool Controller::isAttach(int &final_row, int &final_col)
 //----------------------------------------------------------------------------------------------
 bool Controller:: checkIfBoardEmty()
 {
-
 	for (auto row = 0; row < m_level.getRows(); ++row)
 	{
 		for (auto col = 0; col < m_level.getCols(); ++col)

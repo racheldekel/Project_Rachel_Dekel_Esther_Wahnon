@@ -33,7 +33,7 @@ const float& Rope::getRotation() const
 	return m_sprite.getRotation();
 }
 //---------------------------------------------------------------------
-bool Rope ::getRopeState()
+bool Rope ::getRopeState()const
 {
 	return m_rotate ;
 }
@@ -48,7 +48,8 @@ void Rope::connectToObject(const sf::Time& time)
 
 		m_sprite.setScale(m_scale);
 }
-//----------------------------------------------------------------------
+//-------------------------------------------------------------------------------
+//opening the rope 
 void Rope::openRope(const sf::Time& time )
 {
 	m_rotate = false;
@@ -91,6 +92,7 @@ void Rope:: foundObject()
 	m_found_object = true;
 }
 //-------------------------------------------------------------------------------------------
+//in case that we have to close the rope
 void Rope :: closeRope(sf :: Vector2f scale, const sf::Time& time, float LengthAddition)
 {
 	m_rotate = false;
@@ -124,6 +126,7 @@ void Rope::draw(sf::RenderWindow& window)
 }
 
 //-------------------------------------------------------------------------------------------------
+//rotating the rope
 void Rope::rotateRope(const sf::Time& DeltaTime)
 {
 	m_found_object = false;

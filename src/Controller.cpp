@@ -4,7 +4,7 @@ class ActionError{};
 
 int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level)
 {
-
+	//if the game strats again , due to the user pressed exit or the user wants to play again or times over
 	if (level == 1)
 		resetValues();
 	m_levelNumber = level;
@@ -13,13 +13,14 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 	t.loadFromFile("background.png");
 	sf::Sprite s(t);
 
+	//starting the clock
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;
 	static sf::Time AITime = sf::seconds(1.0f);
 	m_moneySound.setBuffer(FileManager::instance().getSound(GETMONEY_s));
 	m_explosionSound.setBuffer(FileManager::instance().getSound(EXPLOSION_s));
 	m_goalLevel = m_goal[m_levelNumber];
-	m_finish_level = false;
+	m_finish_level = false; 
 	m_level.read_level(m_levelNumber);
 
 	
@@ -44,7 +45,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 				{
 					if (m_rope.getRopeState())
 					{
-
+						// it will return false only if the user pressed false , otherwise it will check if user pressed any botton for the rope
 						if (!mouse_button_released(event))
 						{
 							resetValues();
@@ -61,10 +62,11 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 					{
 						if (m_rope.getRopeState())
 						{
-
+							// it will return false only if the user pressed false , otherwise it will check if user pressed any botton for the rope
 							if (!mouse_button_released(event))
 							{
 								resetValues();
+								//cleaning the board
 								m_level.set_Board().clear();
 								return EXIT;
 
@@ -85,6 +87,8 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 			m_level(m_level.mouseLocation().x, m_level.mouseLocation().y)->moveMouse();
 
 
+		//this function updates all the time the state of the rope , and it will detect if the user chnage the state of the rope and do all the work
+		//this is the main function of the game 
 		update_state(gold_miner, clock.getElapsedTime() * 10.f);
 
 		auto passedTime = clock.restart().asSeconds();
@@ -98,8 +102,9 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 		gold_miner.clear();
 		clock.restart();
 
-		if (m_time == 0)
+		if (m_time < TIME_OVER)
 		{
+			//in case that the time is over and we did not reach the money goal
 			if (m_moneyCounter < m_goalLevel)
 			{
 				totalMoney = 0;
@@ -108,20 +113,22 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 					return TIME_OVER;
 			}
 
+			//in case that we reach the money goal
 			else
 				m_finish_level = true;
 
 		}
 		
+		//going to the next level 
 		if (m_finish_level || checkIfBoardEmty())
-
 		{
 			m_level.set_Board().clear();
 			m_level.makeAllValuesFalse();
 			totalMoney = m_moneyCounter;
 			saveValue(m_moneyCounter);
-			m_time = 60;
-			m_levelNumber++;
+			m_time = ONE_MINUTE;
+				m_levelNumber++;
+
 			m_mouseMoving = true;
 			m_drawMoney = false;
 			gold_miner.clear();
@@ -132,11 +139,12 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 
 }
 //------------------------------------------------------------------------------
+//reseting the vslues
 void Controller::resetValues()
 {
 	
 	m_level.makeAllValuesFalse();
-	m_time = 60;
+	m_time = ONE_MINUTE;
 	m_level = 1;
 	m_levelNumber = 1;
 	m_moneyCounter = 0;
@@ -159,9 +167,9 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 						m_money = m_level(m_row, m_col)->get_value();
 						m_drawMoney = true;
 						drawMoney(gold_miner);
-						m_moneySound.play();
-						m_moneyCounter += m_money;
-						m_level.set_Board()[m_row][m_col] = nullptr;
+							m_moneySound.play();
+							m_moneyCounter += m_money;
+							m_level.set_Board()[m_row][m_col] = nullptr;
 						m_getObject = false;
 					}
 				}
@@ -205,11 +213,9 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 
 						if (m_level.CheckIfBomb(row, col))
 						{
-							
 							m_explosion.setLocation(sf::Vector2f(col, row)*SIZE );
 							m_explosionSound.play();
-
-						
+	
 						}
 
 						m_rope.connectToObject(timePass);
@@ -233,6 +239,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 			}	
 }
 //---------------------------------------------------------------------------
+//everytime that we get an object it will print the value of the object
 void Controller:: drawMoney(sf::RenderWindow& gold_miner)
 {
 	m_text.setString(std::to_string(m_money)+"$");
@@ -271,7 +278,7 @@ bool Controller::mouse_button_released(sf::Event event)
 
 		return true;
 }
-//--------------------------------------------------------------------------------------------
+//--------------------------------------------------------------------------------------------------------------------------------
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {
 	m_level.draw_static_figures(gold_miner);
@@ -281,7 +288,7 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 	}
 	m_toolbar.draw(gold_miner, m_levelNumber, m_moneyCounter, m_goalLevel, m_time);
 }
-//----------------------------------------------------------------
+//---------------------------------------------------------------------------------------------------------------------------------
 bool Controller::isAttach(int &final_row, int &final_col)
 {
 	auto floatrect = m_rope.get_objects_bounds();
@@ -290,13 +297,16 @@ bool Controller::isAttach(int &final_row, int &final_col)
 	{
 		for (auto col = 0; col < m_level.getCols(); ++col)
 		{
+			//checking that theres an object an is not nullptr
 			if (m_level(row, col) != nullptr)
 			{
+				//in case that the object touches the rope 
 				if (m_level(row, col)->is_intersected(floatrect))
 				{
 					final_row = row;
 					final_col = col;
 
+					// to stop the mose from moving 
 					if (m_level(m_level.mouseLocation().x, m_level.mouseLocation().y) == m_level(row, col))
 						m_mouseMoving = false;
 					return true;
@@ -308,6 +318,7 @@ bool Controller::isAttach(int &final_row, int &final_col)
 		return false;
 }
 //----------------------------------------------------------------------------------------------
+//in case that the board is emty it will go to the next level 
 bool Controller:: checkIfBoardEmty()
 {
 
@@ -321,11 +332,10 @@ bool Controller:: checkIfBoardEmty()
 			}
 		}
 	}
-
 	return true;
 }
 //--------------------------------------------------------------------------------------------------------------------------------------------
-
+// defining the explotion
 Controller::Explosion::Explosion()
 {
 		m_explosion_sprite.scale(0.25f, 0.25f);
@@ -333,15 +343,13 @@ Controller::Explosion::Explosion()
 	m_explosion_sprite.setScale(sf::Vector2f(((float)SIZE / rect.height * 1.5),
 		((float)SIZE / rect.height * 1.5)));
 }
-
+//---------------------------------------------------------------------------------------------------------------------------------------
 void Controller::Explosion::setLocation(const sf::Vector2f& location)
 {
 		m_explode = true;
 		m_explosion_sprite.setPosition(location);
-		
-		//m_explosion_sprite.setOrigin({ rect.width / 2, rect.height / 2 });
 }
-
+//-------------------------------------------------------------------------------------------------------------------------------------
 void Controller::Explosion::draw(sf::RenderWindow& gold_miner)
 {
 	{

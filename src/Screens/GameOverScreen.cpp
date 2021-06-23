@@ -62,15 +62,13 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 		gold_miner.display();
 	}
 
-	//Never reaching this point normally, but just in case, exit the gold_minerlication
+	//Never reaching this point normally
 	return (-1);
 
 
 }
-
 //-------------------------------------------------------
 bool  GameOverScreen::mouse_button_released(sf::Event event)
-
 {
 
 	auto x = event.mouseButton.x;

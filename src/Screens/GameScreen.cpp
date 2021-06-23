@@ -28,7 +28,7 @@ int GameScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 					
 				}
 
-				if (number == TIME_OVER)
+				if (number ==TIME_OVER)
 				{
 					totalMoney = 0;
 					level = 0;

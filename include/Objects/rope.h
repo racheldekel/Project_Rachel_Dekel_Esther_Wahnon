@@ -15,14 +15,8 @@ public:
 	Rope(sf::Vector2f pos);
 	~Rope() = default;
 	void foundObject();
-
 	bool isOpen()const { return m_open; }
-
-	sf::FloatRect get_objects_bounds() const
-	{
-
-		return m_rect.getGlobalBounds();
-	}
+	sf::FloatRect get_objects_bounds() const {return m_rect.getGlobalBounds();}
 	void openRope(const sf::Time& timePass);
 	void rotateRope(const sf::Time& DeltaTime);
 	const double  lenghRope = 1;
@@ -35,7 +29,7 @@ public:
 	const float& getRotation() const;
 	
 	sf::Vector2f  get_position() const;
-	bool getRopeState();
+	bool getRopeState()const;
 	void update_end_rope();
 	sf::RectangleShape getRect() { return m_rect; }
 

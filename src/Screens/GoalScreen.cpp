@@ -20,6 +20,7 @@ int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
 	}
+
 	Sprite.scale(1.5, 1.5);
 	Sprite.setTexture(Texture);
 	m_nextLevelSound.play();

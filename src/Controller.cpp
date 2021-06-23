@@ -9,9 +9,10 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 		resetValues();
 	m_levelNumber = level;
 	m_moneyCounter = totalMoney;
-	/*auto t = sf::Texture();
+
+	auto t = sf::Texture();
 	t.loadFromFile("background.png");
-	sf::Sprite s(t);*/
+	sf::Sprite s(t);
 
 	auto clock = sf::Clock();
 	static sf::Clock AITimer;

@@ -11,7 +11,7 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 	sf::Font Font;
 
 	int menu = 0;
-	if (!Texture.loadFromFile("gameover.jpeg"))
+	if (!Texture.loadFromFile("gameover.jpg"))
 	{
 		std::cerr << "Error loading presentation.gif" << std::endl;
 		return (-1);
@@ -35,6 +35,7 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 					if (mouse_button_released(Event))
 					{
 						level = 0;
+						totalMoney=0;
 						return START_SCREEN;
 					}
 					break;

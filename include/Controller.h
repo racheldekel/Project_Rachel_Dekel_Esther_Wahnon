@@ -68,6 +68,7 @@ private:
 
 	bool m_drawMoney = false;
 	int m_money = 0;
+	sf::Sprite m_background = sf::Sprite(FileManager::instance().get_icon(BACKGROUND));
 	sf::Text m_text = sf::Text({}, *FileManager::instance().getFont(0));
 	Mouse m_mouse{{} };
 	bool m_checked_object = true;
@@ -82,7 +83,6 @@ private:
 	bool m_mouseMoving= true;
 	sf::Vector2f m_position;
 	Explosion m_explosion;
-	void  changeObjectState();
 	int m_row = 0;
 	int m_col = 0;
 	int m_levelNumber = 1;

@@ -2,7 +2,7 @@
 #include "Level.h"
 FileManager::FileManager()
 {
-
+	//texture
 	m_pTexture[PLAYER].loadFromFile("playerStand.png");
 	m_pTexture[PLAYERGRAB].loadFromFile("playerGrab.png");
 	m_pTexture[BOMB].loadFromFile("bomb.png");
@@ -16,6 +16,7 @@ FileManager::FileManager()
 	m_pTexture[ROPE].loadFromFile("rope.png"); 
 	m_pTexture[MOUSE].loadFromFile("mouse.png");
 	m_pTexture[EXPLOSION].loadFromFile("explosion.png");
+	m_pTexture[BACKGROUND].loadFromFile("background.png");
 	//fonts
 
 	m_font[0].loadFromFile("gameFont.otf");

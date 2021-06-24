@@ -19,7 +19,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 	m_explosionSound.setBuffer(FileManager::instance().getSound(EXPLOSION_s));
 	m_goalLevel = m_goal[m_levelNumber];
 	m_finish_level = false; 
-	m_level.read_level(m_levelNumber);
+	m_level.readLevel(m_levelNumber);
 
 	
 	while (gold_miner.isOpen())
@@ -276,7 +276,7 @@ bool Controller::mouseButtonfunction(sf::Event event)
 //--------------------------------------------------------------------------------------------------------------------------------
 void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 {
-	m_level.draw_static_figures(gold_miner);
+	m_level.drawStaticFigures(gold_miner);
 	if (m_explosion.m_explode)
 	{
 		m_explosion.draw(gold_miner);

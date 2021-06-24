@@ -17,11 +17,11 @@ const auto BOARDER = sf::Vector2f(15.f, 150.f);
 
 Level::Level(int levelNumber) :m_level(levelNumber)
 {
-	read_level(levelNumber);
+	readLevel(levelNumber);
 }
 
 //----------------------------------------------------------------------------------
-void Level::read_level(int levelNumber)
+void Level::readLevel(int levelNumber)
 {
 	ifstream input;
 
@@ -122,7 +122,7 @@ const sf::Vector2i& Level::mouseLocation()const
 	return m_mouseLocation;
 }
 //_--------------------------------------------------------------------
-void Level::draw_static_figures(sf::RenderWindow& window)
+void Level::drawStaticFigures(sf::RenderWindow& window)
 {
 	for (const auto& row : m_board)
 	{

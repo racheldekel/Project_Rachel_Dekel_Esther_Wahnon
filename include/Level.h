@@ -25,7 +25,7 @@
 using std::ifstream;
 using std::string;
 
-//const auto SIZE = 60;
+
 class Level
 {
 
@@ -35,12 +35,9 @@ public:
 	void addOnBoard(char c, size_t i, size_t j);
 	Level(int levelNumber);
 	Object* operator()(size_t row, size_t col);
-	Object& getObjectAt(size_t row, size_t col) {
-		return *m_board[row][col];
-	}
-	void draw_static_figures(sf::RenderWindow& window);
+	void drawStaticFigures(sf::RenderWindow& window);
 	void setBoardSize(int rows, int cols);
-	void read_level(int levelNumber);
+	void readLevel(int levelNumber);
 	int getCols() const;
 	int getRows()const;
 	vector<vector<std::unique_ptr<Object>>>&set_Board()

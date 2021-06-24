@@ -41,36 +41,38 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 					break;
 				case (sf::Event::MouseButtonReleased):
 				{
+					auto x1 = event.mouseButton.x;
+					auto y1 = event.mouseButton.y;
+					sf::Vector2i pos1(x1, y1);
+
+					if ((pos1.x > 1070 && pos1.x < 1133) && (pos1.y < 82 && pos1.y > 26))
+					{
+						resetValues();
+						return EXIT;
+					}
+
+
 					if (m_rope.getRopeState())
 					{
-						// it will return false only if the user pressed false , otherwise it will check if user pressed any botton for the rope
-						if (!mouse_button_released(event))
-						{
-							resetValues();
-							return EXIT;
-						}
-
+						mouseButtonfunction(event);
+						
+					}
 
 						break;
-					}
+					
 				}
 				case (sf::Event::KeyPressed):
 				{
+					
 					if ((event.key.code == sf::Keyboard::Down))
 					{
 						if (m_rope.getRopeState())
 						{
-							// it will return false only if the user pressed false , otherwise it will check if user pressed any botton for the rope
-							if (!mouse_button_released(event))
-							{
-								resetValues();
-								//cleaning the board
-								m_level.set_Board().clear();
-								return EXIT;
+							mouseButtonfunction(event);
 
-							}
-							break;
+
 						}
+							break;
 					}
 				}
 			}
@@ -262,14 +264,9 @@ bool Controller::levelFinished()
 	return m_finish_level;
 }
 //--------------------------------------------------------------------------
-bool Controller::mouse_button_released(sf::Event event)
+bool Controller::mouseButtonfunction(sf::Event event)
 {
-	auto x1 = event.mouseButton.x;
-	auto y1 = event.mouseButton.y;
-	sf::Vector2i pos1(x1, y1);
-
-	if ((pos1.x > 1070 && pos1.x < 1133) && (pos1.y < 82 && pos1.y > 26))
-		return false;
+	
 
 	m_ropeAngle = m_rope.getRotation();
 	m_rope.changeState();

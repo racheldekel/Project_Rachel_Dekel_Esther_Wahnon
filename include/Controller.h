@@ -27,7 +27,7 @@ public:
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
 	void saveValue(int & money);
-	bool mouse_button_released(sf::Event event);
+	bool mouseButtonfunction(sf::Event event);
 	int getLevel()const;
 	bool isAttach(int& row, int& col);
 	void resetValues();

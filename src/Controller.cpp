@@ -205,7 +205,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				if (m_checked_object)
 				{
 					int row = 0, col = 0;
-					// if we found an object , theres no need to check for more objects 
+					// if we found an object , theres no need to check for more Object 
 					// the fucntion isAttact in case something is found would return the values found and put it in the row and col
 					
 					if (isAttach(row, col))
@@ -291,7 +291,7 @@ void Controller::drawAllObject(sf::RenderWindow& gold_miner)
 //---------------------------------------------------------------------------------------------------------------------------------
 bool Controller::isAttach(int &final_row, int &final_col)
 {
-	auto floatrect = m_rope.get_objects_bounds();
+	auto floatrect = m_rope.getObjectsBounds();
 
 	for (auto row = 0; row < m_level.getRows(); ++row) 
 	{

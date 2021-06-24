@@ -1,5 +1,5 @@
 #pragma once
-#include "Objects.h"
+#include "Object.h"
 
 
 const auto MAX_ANGLE= 270.f;
@@ -8,7 +8,7 @@ const auto MIN_ANGLE = 90.f;
 const auto RIGHT = -1;
 const auto LEFT = 1;
 
-class Rope : public Objects
+class Rope : public Object
 {
 public:
 
@@ -16,7 +16,7 @@ public:
 	~Rope() = default;
 	void foundObject();
 	bool isOpen()const { return m_open; }
-	sf::FloatRect get_objects_bounds() const {return m_rect.getGlobalBounds();}
+	sf::FloatRect getObjectsBounds() const {return m_rect.getGlobalBounds();}
 	void openRope(const sf::Time& timePass);
 	void rotateRope(const sf::Time& DeltaTime);
 	const double  lenghRope = 1;

@@ -1,10 +1,10 @@
 #pragma once
-#include "Objects.h"
+#include "Object.h"
 
-class Present : public Objects
+class Present : public Object
 {
 public:
-	Present(sf::Vector2f pos) : Objects(FileManager::instance().get_icon(PRESENT), pos, 100) {	};
+	Present(sf::Vector2f pos) : Object(FileManager::instance().get_icon(PRESENT), pos, 100) {	};
 
 private:
 

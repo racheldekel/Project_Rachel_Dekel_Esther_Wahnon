@@ -18,11 +18,11 @@ using std::vector;
 
 const auto SIZE = 40.f;
 
-class Objects
+class Object
 {
 public:
 	
-	Objects(const sf::Texture& texture, sf::Vector2f location, int value) : m_sprite(texture)
+	Object(const sf::Texture& texture, sf::Vector2f location, int value) : m_sprite(texture)
 	{
 		m_sprite.setPosition(location);
 		m_value = value;
@@ -38,8 +38,8 @@ public:
 	float getAngle()const{ return  m_angle;}
 	//----------------------------------------------------------------------------------------
 	sf::Vector2f getPosition(){ return m_sprite.getPosition();}
-	Objects(sf::Vector2f location){m_sprite.setPosition(location);}
-	~Objects() = default;
+	Object(sf::Vector2f location){m_sprite.setPosition(location);}
+	~Object() = default;
 	void draw(sf::RenderWindow& window) const;
 	void  moveMouse() ;
 	int get_value() const;

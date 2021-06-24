@@ -158,7 +158,7 @@ bool Level::CheckIfBomb(size_t row, size_t col)
 }
 //-----------------------------------------------------------------
 
-Objects* Level::operator()(size_t row, size_t col)
+Object* Level::operator()(size_t row, size_t col)
 {
 	if (row >= m_board.size() || col >= m_board.begin()->size())
 		return nullptr;

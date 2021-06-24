@@ -14,4 +14,4 @@
 								"Toolbar.cpp"
 								"Mouse.cpp"
 								"Rope.cpp"
-								"Objects.cpp")
+								"Object.cpp")

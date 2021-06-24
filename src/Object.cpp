@@ -1,21 +1,21 @@
-#include "Objects/Objects.h"
+#include "Object/Object.h"
 //_--------------------------------------------------------------------------------
-void Objects::draw(sf::RenderWindow& window) const
+void Object::draw(sf::RenderWindow& window) const
 {
 	window.draw(m_sprite);
 }
 //---------------------------------------------------------------------------------------
-int Objects:: get_value() const
+int Object:: get_value() const
 {
 	return m_value;
 };
 //_-------------------------------------------------------------------------------------
-bool Objects:: is_intersected( sf::FloatRect & rect)
+bool Object:: is_intersected( sf::FloatRect & rect)
 {
 	return rect.intersects((m_sprite.getGlobalBounds()));
 }
 //--------------------------------------------------------------------------------------------------
-bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float angle)
+bool Object:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float angle)
 {
 	auto& pos = m_sprite.getPosition();
 	auto distance = hypotf(pos.x - posRope.x, pos.y - posRope.y);
@@ -28,7 +28,7 @@ bool Objects:: moveObject(const sf::Time & timePass, sf::Vector2f posRope, float
 		return false;
 }
 //---------------------------------------------------------------------------------------------
-void Objects:: moveMouse() 
+void Object:: moveMouse() 
 {
 	auto pos = m_sprite.getPosition();
 
@@ -50,7 +50,7 @@ void Objects:: moveMouse()
 	}
 }
 //----------------------------------------------------------------------------
-void Objects::MakeBigger()
+void Object::MakeBigger()
 {
 	m_sprite.setScale(1.75, 1.75);
 }

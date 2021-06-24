@@ -1,13 +1,13 @@
 #pragma once
-#include "Objects.h"
+#include "Object.h"
 
-class Player : public Objects
+class Player : public Object
 {
 public:
 
 
 
-	Player(sf::Vector2f pos) : Objects(pos)
+	Player(sf::Vector2f pos) : Object(pos)
 	{
 		m_sprite.setTexture(FileManager::instance().get_icon(PLAYER));
 		auto rect = m_sprite.getGlobalBounds();

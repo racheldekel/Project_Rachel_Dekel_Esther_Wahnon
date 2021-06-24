@@ -10,7 +10,7 @@ const auto ONE_MINUTE = 60;
 #include "Level.h"
 #include <fstream>
 #include <sstream>
-#include "Objects/diamond.h"
+#include "Object/diamond.h"
 #include "Toolbar.h"
 using std::vector;
 #include <iostream>

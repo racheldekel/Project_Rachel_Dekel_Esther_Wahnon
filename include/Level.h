@@ -2,20 +2,20 @@
 #include <SFML\Graphics.hpp>
 #include <SFML\Window.hpp>
 #include <SFML\System.hpp>
-#include  "Objects/Objects.h"
+#include  "Object/Object.h"
 
 
-#include  "Objects/bomb.h"
-#include  "Objects/bone.h"
-#include "Objects/diamond.h"
-#include "Objects/bigGold.h"
-#include  "Objects/SmallGold.h"
-#include "Objects/Present.h"
-#include "Objects/bigRock.h"
-#include "Objects/smallRock.h"
-#include "Objects/Rope.h"
-#include "Objects/Player.h"
-#include "Objects/Mouse.h"
+#include  "Object/bomb.h"
+#include  "Object/bone.h"
+#include "Object/diamond.h"
+#include "Object/bigGold.h"
+#include  "Object/SmallGold.h"
+#include "Object/Present.h"
+#include "Object/bigRock.h"
+#include "Object/smallRock.h"
+#include "Object/Rope.h"
+#include "Object/Player.h"
+#include "Object/Mouse.h"
 #include <fstream>
 #include <iostream>
 #include <memory>
@@ -34,8 +34,8 @@ public:
 	Level()= default;
 	void addOnBoard(char c, size_t i, size_t j);
 	Level(int levelNumber);
-	Objects* operator()(size_t row, size_t col);
-	Objects& getObjectAt(size_t row, size_t col) {
+	Object* operator()(size_t row, size_t col);
+	Object& getObjectAt(size_t row, size_t col) {
 		return *m_board[row][col];
 	}
 	void draw_static_figures(sf::RenderWindow& window);
@@ -43,7 +43,7 @@ public:
 	void read_level(int levelNumber);
 	int getCols() const;
 	int getRows()const;
-	vector<vector<std::unique_ptr<Objects>>>&set_Board()
+	vector<vector<std::unique_ptr<Object>>>&set_Board()
 	{
 		return m_board;
 	}
@@ -60,7 +60,7 @@ private:
 	sf::Vector2f m_pos;
 	sf::Vector2i m_mouseLocation;
 
-	std::vector <std::vector<std::unique_ptr<Objects>>> m_board;
+	std::vector <std::vector<std::unique_ptr<Object>>> m_board;
 	bool m_bombBoard[10][25] = { false };
 
 

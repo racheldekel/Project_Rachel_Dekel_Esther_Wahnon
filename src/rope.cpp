@@ -1,4 +1,4 @@
-#include "Objects/rope.h"
+#include "Object/rope.h"
 const auto SPEED = 0.5f;
 //------------------------------------------------------------------------------
 void Rope :: update_end_rope()
@@ -12,7 +12,7 @@ void Rope::changeDirection()
 	m_direction = (m_direction == 1) ? -1 : 1;
 }
 //--------------------------------------------------------------------------------
-Rope::Rope(sf::Vector2f pos) : Objects(pos)
+Rope::Rope(sf::Vector2f pos) : Object(pos)
 {
 	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
 	m_sprite.setPosition(pos);
@@ -70,7 +70,7 @@ void Rope::openRope(const sf::Time& time )
 
 	 if (m_closingRope )
 	 {
-		 if (!m_found_object) // in case that the rope closes w/o any objects 
+		 if (!m_found_object) // in case that the rope closes w/o any Object 
 		 {
 			 float LengthAddition = Rope::lenghRope * time.asSeconds()*6.f; 
 			 closeRope(m_scale, time, LengthAddition);

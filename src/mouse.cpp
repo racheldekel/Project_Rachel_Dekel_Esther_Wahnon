@@ -1,4 +1,4 @@
-#include "Objects/Mouse.h"
+#include "Object/Mouse.h"
 //--------------------------------------------------------------------------
 sf::Vector2f Mouse :: getPosition()
 {

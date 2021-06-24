@@ -23,7 +23,7 @@ Rope::Rope(sf::Vector2f pos) : Object(pos)
 	m_sprite.setOrigin({ rect.width / 2, 0 });
 }
 //------------------------------------------------------------
-sf:: Vector2f  Rope::get_position() const
+sf:: Vector2f  Rope::getPosition() const
 {
 	return m_sprite.getPosition();
 }
@@ -80,7 +80,7 @@ void Rope::openRope(const sf::Time& time )
 		 {
 			
 			 // here we have to calculate according to each object that has caught
-			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.4f; //* time.asSeconds();
+			 float LengthAddition = Rope::lenghRope * time.asSeconds() * 4.45f; //* time.asSeconds();
 			 closeRope(m_scale, time, LengthAddition);
 			 m_pullingSound.play();
 		 }
@@ -116,6 +116,9 @@ void Rope::draw(sf::RenderWindow& window)
 	auto angle = m_direction * SPEED;
 	m_rect.setSize(sf::Vector2f(0.5, 0.5));
 
+
+	//the m_rect helps us to get the collision with the objects very exact 
+	//the m_rope its located at the end of the rope 
 		if (angle2 >= 0 && angle2 < 90)
 			m_rect.setPosition(rect.left +10, m_sprite.getPosition().y + rect.height-15 );
 				else

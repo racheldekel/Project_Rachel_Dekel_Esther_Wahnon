@@ -28,7 +28,7 @@ public:
 
 	const float& getRotation() const;
 	
-	sf::Vector2f  get_position() const;
+	sf::Vector2f  getPosition() const;
 	bool getRopeState()const;
 	void update_end_rope();
 	sf::RectangleShape getRect() { return m_rect; }

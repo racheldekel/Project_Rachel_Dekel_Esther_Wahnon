@@ -87,7 +87,7 @@ int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int lev
 
 		//this function updates all the time the state of the rope , and it will detect if the user chnage the state of the rope and do all the work
 		//this is the main function of the game 
-		update_state(gold_miner, clock.getElapsedTime() * 10.f);
+		updateState(gold_miner, clock.getElapsedTime() * 10.f);
 
 		auto passedTime = clock.restart().asSeconds();
 		m_rope.draw(gold_miner);
@@ -150,7 +150,7 @@ void Controller::resetValues()
 	m_drawMoney = false;
 }
 //----------------------------------------------------------------------------------------------------
-void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& timePass)
+void Controller::updateState(sf::RenderWindow& gold_miner, const sf::Time& timePass)
 {
 	//if we have found and object and we are taking it 
 			if (m_getObject)
@@ -159,7 +159,7 @@ void Controller::update_state(sf::RenderWindow& gold_miner, const sf::Time& time
 				if (m_level.set_Board()[m_row][m_col] != nullptr)
 				{
 					//bring it up and once is done the function moveOBJECT WILL RETURN false
-					if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.get_position(), m_level(m_row, m_col)->getAngle()))
+					if (!m_level(m_row, m_col)->moveObject(timePass, m_rope.getPosition(), m_level(m_row, m_col)->getAngle()))
 					{
 						// once we are done taking the object 
 						m_money = m_level(m_row, m_col)->get_value();

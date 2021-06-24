@@ -23,7 +23,7 @@ public:
 	~Controller() = default;
 	void drawMoney(sf::RenderWindow& gold_miner);
 	int startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level);
-	void update_state(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
+	void updateState(sf::RenderWindow & gold_miner, const sf::Time& timePass = sf::Time());
 	void drawAllObject(sf::RenderWindow& gold_miner);
 	bool levelFinished();
 	void saveValue(int & money);

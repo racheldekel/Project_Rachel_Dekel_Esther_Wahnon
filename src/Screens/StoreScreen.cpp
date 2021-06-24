@@ -58,7 +58,7 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 				}
 
 				//present
-				if ((pos.x > 370 && pos.x < 469) && (pos.y < 402 && pos.y > 325))
+				if ((pos.x > 370 && pos.x < 469) && (pos.y < 402 && pos.y > 325) && m_presentDisplay)
 				{
 					if (totalMoney > 30)
 					{
@@ -75,7 +75,7 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 					}
 				}
 				//diamond
-				if ((pos.x > 560 && pos.x < 660) && (pos.y < 400 && pos.y > 326))
+				if ((pos.x > 560 && pos.x < 660) && (pos.y < 400 && pos.y > 326) && m_diamondDisplay)
 				{
 					
 					if (totalMoney > 50)
@@ -86,7 +86,7 @@ void  StoreScreen::startStore(sf::RenderWindow& gold_miner, int& totalMoney)
 					}
 				}
 				//gold rock
-				if ((pos.x > 785 && pos.x < 880) && (pos.y < 388 && pos.y > 326))
+				if ((pos.x > 785 && pos.x < 880) && (pos.y < 388 && pos.y > 326) && m_bigGoldDisplay)
 				{
 					totalMoney -= 40;
 

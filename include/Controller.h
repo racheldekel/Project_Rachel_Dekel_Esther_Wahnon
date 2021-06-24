@@ -44,13 +44,13 @@ private:
 
 
 		bool m_explode = false;
-		sf::Sprite m_explosion_sprite = sf::Sprite(FileManager::instance().get_icon(12), sf::IntRect(0, 0, 256, 248));
+		sf::Sprite m_explosion_sprite = sf::Sprite(FileManager::instance().getIcon(12), sf::IntRect(0, 0, 256, 248));
 		size_t currentState = 0;
 	};
 
 	bool m_drawMoney = false;
 	int m_money = 0;
-	sf::Sprite m_background = sf::Sprite(FileManager::instance().get_icon(BACKGROUND));
+	sf::Sprite m_background = sf::Sprite(FileManager::instance().getIcon(BACKGROUND));
 	sf::Text m_text = sf::Text({}, *FileManager::instance().getFont(0));
 	Mouse m_mouse{{} };
 	bool m_checked_object = true;

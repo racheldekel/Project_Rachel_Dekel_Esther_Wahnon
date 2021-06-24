@@ -1,11 +1,5 @@
 #include "Object/rope.h"
 const auto SPEED = 0.5f;
-//------------------------------------------------------------------------------
-void Rope :: update_end_rope()
-{
-	auto height = m_sprite.getLocalBounds().height * m_sprite.getScale().y;
-	auto new_y_pos = m_sprite.getPosition().y + height;
-}
 //-----------------------------------------------------------------------------
 void Rope::changeDirection()
 {
@@ -14,7 +8,7 @@ void Rope::changeDirection()
 //--------------------------------------------------------------------------------
 Rope::Rope(sf::Vector2f pos) : Object(pos)
 {
-	m_sprite.setTexture(FileManager::instance().get_icon(ROPE));
+	m_sprite.setTexture(FileManager::instance().getIcon(ROPE));
 	m_sprite.setPosition(pos);
 	auto rect = m_sprite.getGlobalBounds();
 	m_sprite.setScale(sf::Vector2f(((float)60 / rect.height) * 1.5,

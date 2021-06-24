@@ -4,7 +4,7 @@
 class bone : public Object
 {
 public:
-	bone(sf::Vector2f pos) : Object(FileManager::instance().get_icon(BONE), pos, 5) {	};
+	bone(sf::Vector2f pos) : Object(FileManager::instance().getIcon(BONE), pos, 5) {	};
 	
 
 

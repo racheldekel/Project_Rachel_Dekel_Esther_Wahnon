@@ -11,7 +11,7 @@ class Mouse : public Object
 {
 public:
 
-	Mouse(sf::Vector2f pos) : Object(FileManager::instance().get_icon(MOUSE), pos, 2) {	};
+	Mouse(sf::Vector2f pos) : Object(FileManager::instance().getIcon(MOUSE), pos, 2) {	};
 
 	sf::Vector2f getPosition();
 	void setPosition(sf::Vector2f pos);

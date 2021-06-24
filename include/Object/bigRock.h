@@ -6,7 +6,7 @@ class bigRock : public Object
 {
 public:
 
-	bigRock(sf::Vector2f pos) : Object(FileManager::instance().get_icon(BIGROCK), pos, 30) {	};
+	bigRock(sf::Vector2f pos) : Object(FileManager::instance().getIcon(BIGROCK), pos, 30) {	};
 	~bigRock() {};
 
 

@@ -9,5 +9,4 @@ public:
 	~ManagerScreen() {};
 	void main_run();
 
-private:
 };

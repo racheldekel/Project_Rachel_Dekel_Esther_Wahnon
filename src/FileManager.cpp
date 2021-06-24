@@ -31,7 +31,7 @@ FileManager::FileManager()
 
 }
 // this functions gets icon texture and return the shpe
-const sf::Texture& FileManager::get_icon(size_t shape) const
+const sf::Texture& FileManager::getIcon(size_t shape) const
 {
 	return m_pTexture[shape];
 }

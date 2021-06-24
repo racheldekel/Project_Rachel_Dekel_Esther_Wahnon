@@ -6,7 +6,7 @@ class smallRock: public Object
 public:
 
 
-	smallRock(sf::Vector2f pos) : Object(FileManager::instance().get_icon(SMALLROCK), pos, 15) {	};
+	smallRock(sf::Vector2f pos) : Object(FileManager::instance().getIcon(SMALLROCK), pos, 15) {	};
 	
 private:
 

@@ -6,7 +6,7 @@ class diamond: public Object
 public:
 
 
-	diamond(sf::Vector2f pos) : Object(FileManager::instance().get_icon(DIAMOND), pos, 100) {	};
+	diamond(sf::Vector2f pos) : Object(FileManager::instance().getIcon(DIAMOND), pos, 100) {	};
 	
 
 

@@ -40,10 +40,7 @@ public:
 	void readLevel(int levelNumber);
 	int getCols() const;
 	int getRows()const;
-	vector<vector<std::unique_ptr<Object>>>&set_Board()
-	{
-		return m_board;
-	}
+	vector<vector<std::unique_ptr<Object>>>&set_Board(){return m_board;}
 	const sf::Vector2i& mouseLocation()const;
 	void setNewArray();
 	void makeAllValuesFalse();

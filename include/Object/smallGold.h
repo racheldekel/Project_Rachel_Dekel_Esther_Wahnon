@@ -5,7 +5,7 @@ class smallGold : public Object
 {
 public:
 
-	smallGold(sf::Vector2f pos) : Object(FileManager::instance().get_icon(SMALLGOLD), pos, 50) {	};
+	smallGold(sf::Vector2f pos) : Object(FileManager::instance().getIcon(SMALLGOLD), pos, 50) {	};
 private:
 
 	

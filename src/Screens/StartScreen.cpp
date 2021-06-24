@@ -42,10 +42,7 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 					
 					break;
 
-				case sf::Event::KeyPressed:
-					throw std::invalid_argument("Please click the mouses");
-
-					break;
+				
 
 				}
 			

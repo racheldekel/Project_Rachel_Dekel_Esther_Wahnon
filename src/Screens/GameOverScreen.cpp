@@ -38,10 +38,7 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 					}
 					break;
 
-				case sf::Event::KeyPressed:
-					throw std::invalid_argument("Please click the mouses");
-
-					break;
+				
 
 				}
 

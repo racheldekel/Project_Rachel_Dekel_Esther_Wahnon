@@ -6,7 +6,6 @@
 
 const auto WAIT_TIME = sf::seconds(3);
 
-class ActionError {};
 int  GoalScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 

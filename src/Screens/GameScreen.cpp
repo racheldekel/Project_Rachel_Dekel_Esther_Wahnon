@@ -1,7 +1,7 @@
 #include "Screens/GameScreen.h"
 #include <iostream>
 #include <stdexcept>
-class ActionError {};
+
 int GameScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 

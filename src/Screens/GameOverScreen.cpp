@@ -1,7 +1,7 @@
 #include "Screens/GameOverScreen.h"
 #include <iostream>
 #include <stdexcept>
-class ActionError {};
+
 int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMoney)
 {
 	sf::Event Event;
@@ -24,8 +24,6 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 		
 		while (gold_miner.pollEvent(Event))
 		{
-			try
-			{
 				switch (Event.type)
 				{
 				case sf::Event::Closed:
@@ -41,17 +39,11 @@ int GameOverScreen::run(sf::RenderWindow& gold_miner, int &level, int& totalMone
 					break;
 
 				case sf::Event::KeyPressed:
-					throw ActionError();
+					throw std::invalid_argument("Please click the mouses");
 
 					break;
 
 				}
-			}
-			catch (ActionError& de)
-			{
-				std::cout << "Please click the mouse" << std::endl;
-
-			}
 
 		}
 

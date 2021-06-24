@@ -14,7 +14,6 @@ using std::ifstream;
 
 const auto BOARDER = sf::Vector2f(15.f, 150.f);
 
-class FileError {};
 
 Level::Level(int levelNumber) :m_level(levelNumber)
 {
@@ -25,22 +24,13 @@ Level::Level(int levelNumber) :m_level(levelNumber)
 void Level::read_level(int levelNumber)
 {
 	ifstream input;
-	try
-	{
 
 		std::cout << levelNumber << std::endl;
 		string file = std::to_string(levelNumber) + ".txt";
 		input.open(file);
 		if (!input.is_open())
-		{
-			throw FileError();
-		}
-	}
-	catch (FileError)
-	{
-		std::cerr << "could not open file\n";
-		exit(EXIT_FAILURE);
-	}
+			throw std::invalid_argument("Could not open file");
+
 
 	int rows, cols;
 	char c;

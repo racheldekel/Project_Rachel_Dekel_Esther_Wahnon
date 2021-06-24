@@ -15,7 +15,7 @@ int main() try
 }
 catch (std::exception& e)
 {
-    std::cout << "Unknown Exception" << '\n';
+  /*  std::cout << "Unknown Exception" << '\n';*/
     auto file = std::ofstream(LOG);
     file << e.what() << '\n';
     return EXIT_FAILURE;
@@ -24,6 +24,6 @@ catch (...)
 {
     auto file = std::ofstream(LOG);
     file << "Unknown Exception" << '\n';
-    std::cout << "Unknown Exception" << '\n';
+    //std::cout << "Unknown Exception" << '\n';
     return EXIT_FAILURE;
 }

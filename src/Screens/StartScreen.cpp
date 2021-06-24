@@ -2,7 +2,7 @@
 #include <iostream>
 #include <stdexcept>
 
-class ActionError {};
+
 int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 	
@@ -30,9 +30,6 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 		//Verifying events
 		while (gold_miner.pollEvent(Event))
 		{
-			try
-			{
-				
 				switch (Event.type)
 				{
 				case sf::Event::Closed:
@@ -46,17 +43,12 @@ int StartScreen ::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 					break;
 
 				case sf::Event::KeyPressed:
-					throw ActionError();
+					throw std::invalid_argument("Please click the mouses");
 
 					break;
 
 				}
-			}
-			catch (ActionError& de)
-			{
-				std::cout << "Please click the mouse" << std::endl;
-
-			}
+			
 			
 		}
 		

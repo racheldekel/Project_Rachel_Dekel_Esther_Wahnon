@@ -1,6 +1,4 @@
 #include "Controller.h"
-class ActionError{};
-
 
 int Controller::startGame(sf::RenderWindow& gold_miner, int& totalMoney, int level)
 {

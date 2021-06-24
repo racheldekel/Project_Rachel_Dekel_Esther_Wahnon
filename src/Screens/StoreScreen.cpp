@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-class ActionError {};
 int StoreScreen::run(sf::RenderWindow& gold_miner, int& level, int& totalMoney)
 {
 

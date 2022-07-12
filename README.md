@@ -1,30 +1,30 @@
-OOP 2 – Project – Gold Miner Game - README 
-מגישות :  אסתר והנון 330002429 ורחל דקל 318754850
-הסבר כללי : מטרת המשחק היא לאסוף כמה שיותר כסף ולעבור את השלבים, עבור כל שלב יש מספר אובייקטים עם ערך כספי שונה , פצצות ואובייקטים זזים. ניתן לאסוף את האובייקטים על ידי משיכת החבל – השולה את האובייקט, אם לא הצלחנו לתפוס אובייקט , החבל ימשך בצורה מהירה יותר . לכל שלב מוקצה זמן ומחיר מינימלי למעבר שלב , ישנה חנות בה ניתן לרכוש אובייקטים במחיר מוזל יותר.
-Controller  - מחלקה ראשית של המשחק, אחראית על המסך הראשי שבו השלבים קורים, קולטת פעולות מהמשתמש , מאפסת את השלבים, בודקת מתי נגמר כל שלב 
-Object מחלקת אב האחראית על כל האובייקטים במשחק, כל האובייקטים יורשים ממנה. מכילה פונקציות וירטואליות של משקל מחיר והאם נאכל
-Toolbar - מחלקה שהאחראית להדפיס את הזמן, כסף, מטרה 
-ManagerScreens מחלקה אב האחראית על מסכי המשחק: מסף פתיחה, מסך הסבר, תפריט, משחק, מטרת שלב, חנות ,סוף משחק.
+OOP 2 - Project - Gold Miner Game - README
+Presenters: Esther and Hanon 330002429 and Rachel Dekel 318754850
+General explanation: The object of the game is to collect as much money as possible and go through the stages, for each stage there are several objects with different monetary value, bombs and moving objects. The objects can be collected by pulling the rope - the edge of the object, if we could not catch an object, the rope will pull faster. Each stage is assigned a minimum time and price to go through a stage, there is a shop where you can purchase objects at a cheaper price.
+Controller - the main department of the game, responsible for the main screen where the stages take place, captures actions from the user, resets the stages, checks when each stage ends
+Object A parent class that is responsible for all objects in the game, all objects inherit from it. Contains virtual functions of price weight and whether we eat
+Toolbar - a department that is responsible for printing time, money, purpose
+ManagerScreens A master class that is responsible for the game screens: opening screen, explanation screen, menu, game, stage goal, store, end of game.
 
-Main קובץ הראשי שמריץ את התוכנית (יוצר controller) 
-Level מחלקה האחראית על כל שלב, כמות האובייקטים הזמן וסכום הכסף שנותר כדי לעבור
-FileManager - מחלקת סינגלטון האחראית למוזיקה, לפונטים ולטקסטורות במשחק
-Player  - מחלקה האחראית על השחקן, שומרת את כמות החיים שלו ומספר הכסף שהוא צריך להגיע אליו על מנת לעבור שלב
-Gold – מחלקה של האובייקט זהב היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי
-Rope– מחלקה מobjects
-Diamond– מחלקה של האובייקט יהלום היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי
-Present– מחלקה של האובייקט מתנה היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי
-Rock– מחלקה של האובייקט אבן היורשת מ  object מכילה בבנאי תמונה, מיקום
-Bomb– מחלקה של האובייקט פיצוץ היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי
-Bone– מחלקה של האובייקט עצם היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי
-Mouse - מחלקה של האובייקט עכבר היורשת מobject מכילה בבנאי תמונה, מיקום, וערך כספי , מזיזה את האובייקט
-Rope – מחלקה האחראי על האובייקט של החבל , בודקת מה הגבולות של התזוזה ומה המהירות.
-אלגוריתמים הראויים לציון : 
-כשלוקחים אובייקט מתבצע בדיקה של intersection  עם הROPE – יש משתנה m_rect שהוא ריבוע העוקב אחרי הrope  בכל שלב והוא בודק האם בוצע התנגשות 
-הערות אחרות : 
-ברגע שנזרקת שגיאה מהתוכנית (לדוגמא כאשר לא מצליח לפתוח קובץ TXT של השלב), השגיאה נכתבת לתוך קובץ Log  השמורה בתוך תיקיית ה Out
+Main The main file that runs the program (creates controller)
+Level A department that is responsible for each stage, the amount of time objects and the amount of money left to pass
+FileManager - Singleton's department responsible for music, fonts and game textures
+Player - A department responsible for the player, saving his amount of life and the number of money he needs to reach in order to pass a stage
+Gold - A class of the object that inherits from an object contains in the image builder, location, and monetary value
+Rope - a class of objects
+Diamond - A class of the diamond object that inherits from an object contains in the image builder, location, and monetary value
+Present - A class of object that inherits from an object contains in the image builder, location, and monetary value
+Rock - A class of object that inherits from an object contains an image builder, a location
+Bomb - A class of the object that the explorer inherits from an object contains in the image builder, location, and monetary value
+Bone - A class of the object object that inherits from an object contains in the image builder, location, and monetary value
+Mouse - A class of object that inherits from an object contains in the image builder, location, and monetary value, moves the object
+Rope - a department responsible for the object of the rope, checking what the limits of displacement and what the speed is.
+Notable algorithms:
+When taking an object, an intersection test is performed with the ROPE - there is a m_rect variable which is a square that follows the rope at each stage and it checks if a collision has taken place
+Other notes:
+Once an error is thrown out of the program (for example when it fails to open the TXT file of the step), the error is written into the Log file stored inside the Out folder
 
-הנראית כך
+Which looks like this
 
-קישורים שימושיים :
-https://github.com/SFML/SFML/wiki/Tutorial%3A-Manage-different-Screens 
+Useful Links :
+https://github.com/SFML/SFML/wiki/Tutorial%3A-Manage-different-Screens
